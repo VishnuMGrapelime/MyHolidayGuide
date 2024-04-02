@@ -1,0 +1,7 @@
+{
+  "title": "Ajouter un utilisateur",
+  "user-email": "E-mail de l'utilisateur",
+  "password": "Mot de passe",
+  "confirm-password": "Confirmez le mot de passe",
+  "user-role": "Rôle d'utilisateur"
+}

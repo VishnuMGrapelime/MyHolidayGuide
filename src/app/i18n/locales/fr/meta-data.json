@@ -1,0 +1,22 @@
+{
+  "signin": {
+    "metatitle": "Page de connexion",
+    "metadescription": "Composants prédéfinis avec des valeurs par défaut impressionnantes"
+  },
+  "signup": {
+    "metatitle": "Page d'inscription",
+    "metadescription": "Pre-built components with awesome default"
+  },
+  "forgotpassword": {
+    "metatitle": "Page Mot de passe oublié",
+    "metadescription": "Pre-built components with awesome default"
+  },
+  "components": {
+    "metatitle": "Composants",
+    "metadescription": "Pre-built components with awesome default"
+  },
+  "adduser": {
+    "metatitle": "Ajouter un utilisateur",
+    "metadescription": "Pre-built components with awesome default"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "main-title": "Next.js + Tailwind CSS + TypeScript Starter",
+  "sub-title": "A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky",
+  "counter_other": "{{count}} selected",
+  "see-all-component": "See all components",
+  "logout": "Back to home"
+}

@@ -1,0 +1,7 @@
+{
+  "title": "Add User",
+  "user-email": "User Email",
+  "password": "Password",
+  "confirm-password": "Confirm Password",
+  "user-role": "User Role"
+}
