@@ -3,7 +3,7 @@ export const Button = ({ label }) =>
   return (
     <>
       <button
-        type="button"
+        type="submit"
         className="cursor-pointer select-none  disabled:cursor-not-allowed disabled:opacity-75 disabled:pointer-events-none
         duration-300 transition-all rounded-xl text-lg  px-9 py-3 sm:py-[0.875rem] sm:text-p1 sm:font-semibold text-neutral-900 border-2 border-transparent
         bg-[#3bd6f0] shadow-md transition-all duration-500 bg-size-200  w-full sm:w-auto sm:min-w-[270px] 

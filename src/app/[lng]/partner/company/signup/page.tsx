@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import SignupOne from '@/components/company/SignupOne';
-import SignupOne from '@/components/company/SignupOne';
 import SignUpThree from '@/components/company/SignupThree';
 import SignUpTwo from '@/components/company/SignupTwo';
 import Stepper from '@/components/Elements/Stepper';
