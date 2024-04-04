@@ -6,6 +6,7 @@ import { Button } from '@/components/Elements/Button';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
+  companyIdNo: Yup.string().required(),
   companyName: Yup.string().required(),
   companyName2: Yup.string().required(),
   address1: Yup.string().required(),
@@ -19,6 +20,7 @@ const schema = Yup.object().shape({
 
 const SignupOne = ({ nextStep, formData, updateFormData }) => {
   const [formState, setFormState] = useState({
+    companyIdNo: '',
     companyName: '',
     companyName2: '',
     address1: '',
@@ -33,6 +35,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
   useEffect(() => {
     if (formData) {
       setFormState({
+        companyIdNo: formData.companyIdNo,
         companyName: formData.companyName,
         companyName2: formData.companyName2,
         address1: formData.address1,
@@ -53,6 +56,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
   };
 
   const [errors, setErrors] = useState({
+    companyIdNo: '',
     companyName: '',
     companyName2: '',
     address1: '',
@@ -129,9 +133,18 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
     <div>
       <div className='m-12 p-12'>
         <div className='w-full  mx-auto text-center'>
-          <h2 className="pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold"><span>Company information</span></h2>
-          <p className="text-p1 md:text-[1.3125rem] leading-6 font-bold"><span>Please be a as precise as possible</span></p>
-          <p className="text-[1rem] leading-6 pt-2 md:pt-9"><span>Some basic information about your company, for receipts, contact etc.</span></p>
+          <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
+            <span>Company information</span>
+          </h2>
+          <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
+            <span>Please be a as precise as possible</span>
+          </p>
+          <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
+            <span>
+              Some basic information about your company, for receipts, contact
+              etc.
+            </span>
+          </p>
         </div>
       </div>
       {initialValues && (
@@ -309,6 +322,32 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
 
         <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
           <form onSubmit={handleSubmit}>
+            <div className='space-y-1'>
+              <div className='relative '>
+                <input
+                  type='text'
+                  id='default_outlined'
+                  className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                  placeholder=' '
+                  name='companyIdNo'
+                  value={formState.companyIdNo}
+                  onChange={handleChange}
+                />
+                <label
+                  htmlFor='default_outlined'
+                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                >
+                  Company Identification no.(OIB)
+                </label>
+                <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
+                  <ClipboardCheck color='#1CCFB9' />
+                </div>
+              </div>
+              <p className='text- md:text- px-4 '>
+                <span>Please enter your company identification no</span>
+              </p>
+            </div>
+
             <div className='space-y-1'>
               <div className='relative '>
                 <input

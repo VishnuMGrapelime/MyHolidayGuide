@@ -14,7 +14,7 @@ export const Button = ({ label }) =>
   );
 };
 
-export const ButtonOutline = ({ label }) =>
+export const ButtonOutline = ({ label, prevStep }) =>
 {
   return (
     <button
@@ -23,7 +23,7 @@ export const ButtonOutline = ({ label }) =>
     disabled:pointer-events-none sm:font-semibold	duration-300 transition-all rounded-xl text-p2 px-9 py-3 sm:py-[0.875rem] 
     font-medium bg-neutral-50 text-neutral-900 border-2  sm:text-p1 border-[#1CCFB9] hover:bg-accent-100 focus:ring-accent-500 
     shadow-md dark:bg-neutral-800 dark:text-neutral-50 dark:hover:text-neutral-50 dark:hover:bg-accent-500 dark:hover:bg-opacity-10 
-    w-full sm:w-auto sm:min-w-[270px]"><span>{label}</span></button>
+    w-full sm:w-auto sm:min-w-[270px]" onClick={prevStep} ><span>{label}</span></button>
   );
 }
 

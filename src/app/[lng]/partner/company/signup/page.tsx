@@ -37,7 +37,7 @@ const CompanySignUpPage = () => {
 
     console.log('final submit data');
     console.log(finalData);
-    const filteredData = finalData;
+    const filteredData = { ...finalData };
 
     delete filteredData.confirmPassword;
     delete filteredData.password;
@@ -213,8 +213,8 @@ const CompanySignUpPage = () => {
       {/* <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'> */}
       <div className='xl:container'>
         <div className='mx-auto lg:w-10/12 xl:w-8/12'>
-          <Stepper />
-          {step === 3 && (
+          <Stepper currPage={step} />
+          {step === 1 && (
             <SignupOne
               nextStep={nextStep}
               formData={formData}
@@ -236,7 +236,7 @@ const CompanySignUpPage = () => {
               updateFormData={updateFormData}
             />
           )}
-          {step === 1 && (
+          {step === 3 && (
             <SignUpThree
               nextStep={nextStep}
               prevStep={prevStep}
