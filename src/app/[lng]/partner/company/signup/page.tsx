@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-import SignupOne from '@/components/company/SignupOne';
+import SignUpThree from '@/components/company/SignupThree';
 import SignUpTwo from '@/components/company/SignupTwo';
 
 const CompanySignUpPage = () => {
@@ -158,8 +158,15 @@ const CompanySignUpPage = () => {
     <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
       <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'>
         {step === 1 && (
-          <SignupOne
+          // <SignupOne
+          //   nextStep={nextStep}
+          //   formData={formData}
+          //   updateFormData={updateFormData}
+          // />
+
+          <SignUpThree
             nextStep={nextStep}
+            prevStep={prevStep}
             formData={formData}
             updateFormData={updateFormData}
           />
@@ -168,25 +175,17 @@ const CompanySignUpPage = () => {
           <SignUpTwo
             nextStep={nextStep}
             prevStep={prevStep}
+            formData={formData}
             updateFormData={updateFormData}
           />
         )}
         {step === 3 && (
-          <div>
-            <h2 className='text-xl font-bold mb-4'>Step 3: Confirmation</h2>
-            <p>First Name: {formData.firstName}</p>
-            <p>Last Name: {formData.lastName}</p>
-            <p>Email: {formData.email}</p>
-            <button
-              className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-              onClick={prevStep}
-            >
-              Back
-            </button>
-            <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded'>
-              Submit
-            </button>
-          </div>
+          <SignUpThree
+            nextStep={nextStep}
+            prevStep={prevStep}
+            formData={formData}
+            updateFormData={updateFormData}
+          />
         )}
       </div>
     </div>

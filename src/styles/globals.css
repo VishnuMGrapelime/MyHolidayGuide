@@ -156,3 +156,10 @@
 .modal-content {
   /* Add additional styles for modal content */
 }
+.cedatepicker {
+  max-width: 100%;
+}
+
+.cedatepicker input {
+  padding-left: 25px;
+}
