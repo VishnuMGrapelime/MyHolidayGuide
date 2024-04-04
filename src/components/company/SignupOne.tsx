@@ -128,10 +128,10 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
   return (
     <div>
       <div className='m-12 p-12'>
-        <div className='w-1/4 mx-auto '>
-          <h2 className='pb-6 md:pb-3 text-h2 md:text-h1 font-bold'>
-            <span>Company information</span>
-          </h2>
+        <div className='w-full  mx-auto text-center'>
+          <h2 className="pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold"><span>Company information</span></h2>
+          <p className="text-p1 md:text-[1.3125rem] leading-6 font-bold"><span>Please be a as precise as possible</span></p>
+          <p className="text-[1rem] leading-6 pt-2 md:pt-9"><span>Some basic information about your company, for receipts, contact etc.</span></p>
         </div>
       </div>
       {initialValues && (

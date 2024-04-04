@@ -4,6 +4,7 @@ import Select from 'react-select';
 import * as Yup from 'yup';
 
 import DynamicTabs from '@/components/DynamicTabs';
+import { Button, ButtonOutline } from '@/components/Elements/Button';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -281,7 +282,25 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
             </a>
           </label>
         </div>
-
+        <div className='space-y-1'>
+          <div className="relative ">
+            <input
+              type="text"
+              id="country"
+              className="block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              htmlFor="country"
+              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+            >
+              Country
+            </label>
+          </div>
+          <p className="text- md:text- px-4 ">
+            <span>Please enter the country of your company headquarters </span></p>
+        </div>
+        {/* 
         <button
           className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           onClick={prevStep}
@@ -295,7 +314,11 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
           type='submit'
         >
           Next
-        </button>
+        </button> */}
+        <div className='py-6 flex flex-col gap-y-6 md:gap-x-20  justify-center w-full md:w-1/4 mx-auto'>
+          <ButtonOutline label={'Back'} />
+          <Button label={'Send'} />
+        </div>
       </form>
     </div>
   );

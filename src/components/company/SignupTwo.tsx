@@ -168,34 +168,41 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
           </button>
         </Form>
       </Formik> */}
-       <div className="grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1">
-          <div className='space-y-1'>
-            <div className="relative ">
-              <input
-                type="text"
-                id="default_outlined"
-                className="block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder=" "
-              />
-              <label
-                htmlFor="default_outlined"
-                className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-              >
-                Company Name
-              </label>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2">
-                <ClipboardCheck color='#1CCFB9' />
-              </div>
-            </div>
-            <p className="text- md:text- px-4 ">
-              <span>Please enter your company name</span></p>
-          </div>
-
-          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-center w-full'>
-            <ButtonOutline label={'Back'} />
-            <Button label={'Next'} />
-          </div>
+      <div className='m-12 p-12'>
+        <div className='w-full  mx-auto text-center'>
+          <h2 className="pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold"><span>Company owner information</span></h2>
+          <p className="text-p1 md:text-[1.3125rem] leading-6 font-bold"><span>This person will be the administrator of the account.</span></p>
+          <p className="text-[1rem] leading-6 pt-2 md:pt-9"><span>You can add additional users to your company after the registration.</span></p>
         </div>
+      </div>
+      <div className="grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1">
+        <div className='space-y-1'>
+          <div className="relative ">
+            <input
+              type="text"
+              id="default_outlined"
+              className="block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+            />
+            <label
+              htmlFor="default_outlined"
+              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+            >
+              Company Name
+            </label>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-2">
+              <ClipboardCheck color='#1CCFB9' />
+            </div>
+          </div>
+          <p className="text- md:text- px-4 ">
+            <span>Please enter your company name</span></p>
+        </div>
+
+        <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-center w-full'>
+          <ButtonOutline label={'Back'} />
+          <Button label={'Next'} />
+        </div>
+      </div>
     </div>
   );
 };
