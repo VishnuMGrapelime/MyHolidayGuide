@@ -40,21 +40,22 @@ const LangSwitcher: React.FC = ({ lang }) => {
   };
 
   return (
-    <div className='flex items-center justify-center bg-gray-100'>
-      <div className='relative text-lg w-48'>
+    <div className='flex items-center justify-center'>
+      <div className='relative text-lg '>
         <button
-          className=' justify-between w-full border border-gray-500 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+          className='justify-between hover:bg-gray-100 hover:rounded-lg
+           focus:outline-none font-normal bg-white  text-sm px-5 py-2.5 text-center 
+          inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           onClick={() => setIsOptionsExpanded(!isOptionsExpanded)}
           onBlur={() => setIsOptionsExpanded(false)}
         >
-          Select Language
+          En&nbsp;
           <svg
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
-            className={`h-4 w-4 transform transition-transform duration-200 ease-in-out ${
-              isOptionsExpanded ? 'rotate-180' : 'rotate-0'
-            }`}
+            className={`h-4 w-4 transform transition-transform duration-200 ease-in-out ${isOptionsExpanded ? 'rotate-180' : 'rotate-0'
+              }`}
           >
             <path
               strokeLinecap='round'
@@ -65,13 +66,12 @@ const LangSwitcher: React.FC = ({ lang }) => {
           </svg>
         </button>
         <div
-          className={`transition-transform duration-500 ease-custom ${
-            !isOptionsExpanded
-              ? '-translate-y-1/2 scale-y-0 opacity-0'
-              : 'translate-y-0 scale-y-100 opacity-100'
-          }`}
+          className={`transition-transform duration-500 ease-custom ${!isOptionsExpanded
+            ? '-translate-y-1/2 scale-y-0 opacity-0'
+            : 'translate-y-0 scale-y-100 opacity-100'
+            }`}
         >
-          <ul className='absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden'>
+          <ul className='absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden w-48'>
             {options.map((option, index) => (
               <li
                 key={index}

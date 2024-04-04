@@ -51,6 +51,9 @@ export default {
         shimmer: 'shimmer 1.3s linear infinite',
       },
     },
-  },
-  plugins: [require('@tailwindcss/forms'), require('flowbite/plugin')],
+  }, 
+  daisyui: {
+    themes: [],
+ },
+  plugins: [require('@tailwindcss/forms'), require('flowbite/plugin'), require('daisyui'),],
 } satisfies Config;
