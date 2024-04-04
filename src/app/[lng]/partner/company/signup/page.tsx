@@ -4,8 +4,10 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import SignupOne from '@/components/company/SignupOne';
+import SignupOne from '@/components/company/SignupOne';
 import SignUpThree from '@/components/company/SignupThree';
 import SignUpTwo from '@/components/company/SignupTwo';
+import Stepper from '@/components/Elements/Stepper';
 
 import { auth } from '@/firebase/firebase';
 import { addData } from '@/firebase/firestore/data';
@@ -208,38 +210,42 @@ const CompanySignUpPage = () => {
     //   </div>
     // </div>
 
-    <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
-      <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'>
-        {step === 1 && (
-          <SignupOne
-            nextStep={nextStep}
-            formData={formData}
-            updateFormData={updateFormData}
-          />
+    <div className='py-8 md:pt-0 md:pb-20 px-4 flex justify-center'>
+      {/* <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'> */}
+      <div className='xl:container'>
+        <div className='mx-auto lg:w-10/12 xl:w-8/12'>
+          <Stepper />
+          {step === 1 && (
+            <SignupOne
+              nextStep={nextStep}
+              formData={formData}
+              updateFormData={updateFormData}
+            />
 
-          // <SignUpThree
-          //   nextStep={nextStep}
-          //   prevStep={prevStep}
-          //   formData={formData}
-          //   updateFormData={updateFormData}
-          // />
-        )}
-        {step === 2 && (
-          <SignUpTwo
-            nextStep={nextStep}
-            prevStep={prevStep}
-            formData={formData}
-            updateFormData={updateFormData}
-          />
-        )}
-        {step === 3 && (
-          <SignUpThree
-            nextStep={nextStep}
-            prevStep={prevStep}
-            formData={formData}
-            updateFormData={finalSubmit}
-          />
-        )}
+            // <SignUpThree
+            //   nextStep={nextStep}
+            //   prevStep={prevStep}
+            //   formData={formData}
+            //   updateFormData={updateFormData}
+            // />
+          )}
+          {step === 2 && (
+            <SignUpTwo
+              nextStep={nextStep}
+              prevStep={prevStep}
+              formData={formData}
+              updateFormData={updateFormData}
+            />
+          )}
+          {step === 3 && (
+            <SignUpThree
+              nextStep={nextStep}
+              prevStep={prevStep}
+              formData={formData}
+              updateFormData={finalSubmit}
+            />
+          )}
+        </div>
       </div>
     </div>
   );
