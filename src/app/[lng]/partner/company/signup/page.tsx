@@ -1,9 +1,14 @@
 'use client';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import SignupOne from '@/components/company/SignupOne';
 import SignUpThree from '@/components/company/SignupThree';
 import SignUpTwo from '@/components/company/SignupTwo';
+
+import { auth } from '@/firebase/firebase';
+import { addData } from '@/firebase/firestore/data';
 
 const CompanySignUpPage = () => {
   const [step, setStep] = useState(1);
@@ -23,6 +28,53 @@ const CompanySignUpPage = () => {
 
   const updateFormData = (data) => {
     setFormData({ ...formData, ...data });
+  };
+
+  const finalSubmit = (data) => {
+    const finalData = { ...formData, ...data };
+    setFormData(finalData);
+
+    console.log('final submit data');
+    console.log(finalData);
+    const filteredData = finalData;
+
+    delete filteredData.confirmPassword;
+    delete filteredData.password;
+    delete filteredData.email;
+
+    console.log(auth);
+    console.log(finalData.email);
+    console.log(finalData.password);
+
+    createUserWithEmailAndPassword(auth, finalData.email, finalData.password)
+      .then((userCredential) => {
+        // Signed up
+        const user = userCredential.user;
+
+        const userDetails = {
+          email: user.email,
+          userId: user.uid,
+          userRole: 'supplier',
+          displayName: finalData.firstName + ' ' + finalData.lastName,
+          createdAt: user.metadata.createdAt,
+        };
+        const userData = { ...userDetails, ...filteredData };
+        console.log(userData);
+        const { error } = addData('users', userData);
+
+        if (error) {
+          toast.error(error);
+        }
+
+        toast.success('New user created successfully');
+        // ...
+      })
+      .catch((error) => {
+        // const errorCode = error.code;
+        const errorMessage = error.message;
+        toast.error(errorMessage);
+        // ..
+      });
   };
 
   useEffect(() => {
@@ -185,7 +237,7 @@ const CompanySignUpPage = () => {
             nextStep={nextStep}
             prevStep={prevStep}
             formData={formData}
-            updateFormData={updateFormData}
+            updateFormData={finalSubmit}
           />
         )}
       </div>
