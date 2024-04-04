@@ -163,3 +163,21 @@
 .cedatepicker input {
   padding-left: 40px;
 }
+
+.stepper {
+  background-color: #1CCFB9;
+}
+.stepIcon {
+  fill: rgba(0, 0, 0, 0.87);
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+.color-primary {
+  background-color: #1CCFB9;
+  color: white;
+}
+.step-text {
+  font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.43;
+  }

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Main from '~/images/Main.jpg'
 import Main2 from '~/images/Main2.jpg'
 import ScrollToTopButton from '@/components/ScrollToTopButton'
+import {Button} from '@/components/Elements/Button';
 function page() {
   return (
     <>
@@ -28,21 +29,8 @@ function page() {
                         </h1>
                         <p className="text-center">
                           <div className="pt-4 text-center md:pt-6 space-y-4 md:space-x-6">
-                            {/* Private Host Button */}
-                            <button type="button" className="cursor-pointer select-none  disabled:cursor-not-allowed disabled:opacity-75 disabled:pointer-events-none
-                                 duration-300 transition-all rounded-xl text-lg  px-9 py-3 sm:py-[0.875rem] sm:text-p1 sm:font-semibold text-neutral-900 border-2 border-transparent
-                                  bg-[#3bd6f0] shadow-md transition-all duration-500 bg-size-200  w-full sm:w-auto sm:min-w-[270px]
-                                  hover:bg-gradient-to-br from-[#3bd6f0]   to-[#1fce1c]">
-                              <span>Private Host</span>
-                            </button>
-                            {/* Company Host Button */}
-                            <button type="button" className="cursor-pointer select-none  disabled:cursor-not-allowed disabled:opacity-75 disabled:pointer-events-none
-                                 duration-300 transition-all rounded-xl text-lg  px-9 py-3 sm:py-[0.875rem] sm:text-p1 sm:font-semibold text-neutral-900 border-2 border-transparent
-                                  bg-[#3bd6f0] shadow-md transition-all duration-500 bg-size-200  w-full sm:w-auto sm:min-w-[270px]
-                                  hover:bg-gradient-to-br from-[#3bd6f0]   to-[#1fce1c]">
-                              <span>Company Host</span>
-                            </button>
-
+                            <Button label={'Private Host'} />
+                            <Button label={'Company Host'} />
                           </div>
                         </p>
                       </div>
@@ -117,21 +105,8 @@ function page() {
                             <div>
                               <div style={{ outline: "none", width: "100%;" }}>
                                 <div className="pt-4 text-center space-y-4 md:pt-6 md:space-x-6">
-                                  {/* Private Host Button */}
-                                  <button type="button" className="cursor-pointer select-none  disabled:cursor-not-allowed disabled:opacity-75 disabled:pointer-events-none
-                                 duration-300 transition-all rounded-xl text-lg  px-9 py-3 sm:py-[0.875rem] sm:text-p1 sm:font-semibold text-neutral-900 border-2 border-transparent
-                                  bg-[#3bd6f0] shadow-md transition-all duration-500 bg-size-200  w-full sm:w-auto sm:min-w-[270px] 
-                                  hover:bg-gradient-to-br from-[#3bd6f0]   to-[#1fce1c]">
-                                    <span>Private Host</span>
-                                  </button>
-                                  {/* Company Host Button */}
-                                  <button type="button" className="cursor-pointer select-none  disabled:cursor-not-allowed disabled:opacity-75 disabled:pointer-events-none
-                                 duration-300 transition-all rounded-xl text-lg  px-9 py-3 sm:py-[0.875rem] sm:text-p1 sm:font-semibold text-neutral-900 border-2 border-transparent
-                                  bg-[#3bd6f0] shadow-md transition-all duration-500 bg-size-200  w-full sm:w-auto sm:min-w-[270px] 
-                                  hover:bg-gradient-to-br from-[#3bd6f0]   to-[#1fce1c]">
-                                    <span>Company Host</span>
-                                  </button>
-
+                                  <Button label={'Private Host'}/>
+                                  <Button label={'Company Host'}/>
                                 </div>
                               </div>
                             </div>
