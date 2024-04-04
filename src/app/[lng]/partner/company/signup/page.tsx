@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
+import SignupOne from '@/components/company/SignupOne';
 import SignUpThree from '@/components/company/SignupThree';
 import SignUpTwo from '@/components/company/SignupTwo';
 
@@ -158,18 +159,18 @@ const CompanySignUpPage = () => {
     <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
       <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'>
         {step === 1 && (
-          // <SignupOne
-          //   nextStep={nextStep}
-          //   formData={formData}
-          //   updateFormData={updateFormData}
-          // />
-
-          <SignUpThree
+          <SignupOne
             nextStep={nextStep}
-            prevStep={prevStep}
             formData={formData}
             updateFormData={updateFormData}
           />
+
+          // <SignUpThree
+          //   nextStep={nextStep}
+          //   prevStep={prevStep}
+          //   formData={formData}
+          //   updateFormData={updateFormData}
+          // />
         )}
         {step === 2 && (
           <SignUpTwo

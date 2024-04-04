@@ -1,23 +1,19 @@
 import { Datepicker } from 'flowbite-react';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import * as Yup from 'yup';
 
-// import { Datepicker } from "flowbite-react";
-// import DateSelector from '@/components/MultiselectComponent';
+import DynamicTabs from '@/components/DynamicTabs';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
-  email: Yup.string().email().required(),
-  password: Yup.string().min(6).max(24).required(),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords must match',
-  ),
-  phone: Yup.string().required(),
-  firstName: Yup.string().required(),
-  lastName: Yup.string().required(),
+  companyWebsite: Yup.string().required(),
+  employeeCount: Yup.string().required(),
+  turnOver: Yup.string().required(),
+  companyLanguage: Yup.string().required(),
+  acceptTerms: Yup.boolean()
+    .oneOf([true], 'You must accept the terms and conditions')
+    .required('You must accept the terms and conditions'),
 });
 
 const options = [
@@ -27,195 +23,280 @@ const options = [
 ];
 
 const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
-  const [initialValues, setInitialValues] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
+  const [formState, setFormState] = useState({
+    companyWebsite: '',
+    employeeCount: '',
+    turnOver: '',
+    companyLanguage: '',
+    acceptTerms: false,
   });
 
+  const [errors, setErrors] = useState({
+    companyWebsite: '',
+    employeeCount: '',
+    turnOver: '',
+    companyLanguage: '',
+    acceptTerms: '',
+  });
+
+  const [tabs, setTabs] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
 
-  useState(() => {
+  useEffect(() => {
     if (formData) {
-      setInitialValues(formData);
+      setFormState({
+        companyWebsite: formData.companyWebsite,
+        employeeCount: formData.employeeCount,
+        turnOver: formData.turnOver,
+        companyLanguage: formData.companyLanguage,
+        acceptTerms: formData.acceptTerms,
+      });
+      setSelectedOption(formData.compBusinessType);
     }
-
-    console.log(formData);
   }, []);
 
-  const onSubmit = (values) => {
-    console.log(values);
-    updateFormData(values);
-    nextStep();
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Validate the form data
+
+      const businessType = [];
+      console.log(selectedOption);
+
+      if (selectedOption.length > 0) {
+        selectedOption.map((item) => {
+          businessType.push(item.value);
+        });
+      }
+      setFormState({ ...formState, compBusinessType: businessType });
+
+      const socialData = [];
+      if (tabs.length > 0) {
+        tabs.map((item) => {
+          //console.log(item);
+          socialData.push(item.values);
+        });
+
+        setFormState({ ...formState, socialUrl: socialData });
+      }
+
+      console.log(businessType);
+      await schema.validate(formState, { abortEarly: false });
+
+      console.log('Form is valid', formState);
+      updateFormData(formState);
+    } catch (error) {
+      if (error instanceof Yup.ValidationError) {
+        // Update the errors state with the validation errors
+        const errorMessages = error.inner.reduce((acc, curr) => {
+          acc[curr.path] = curr.message;
+          return acc;
+        }, {});
+        console.log(errorMessages);
+        setErrors(errorMessages);
+      }
+    }
+  };
+
+  const setTermsAndConditions = (value) => {
+    setFormState({ ...formState, acceptTerms: value });
+  };
+
+  const handleDateChange = (date) => {
+    const givenDateTime = new Date(date);
+
+    // Convert the Date object to a date string
+    const formattedDate = `${givenDateTime.getDate().toString().padStart(2, '0')}/${(givenDateTime.getMonth() + 1).toString().padStart(2, '0')}/${givenDateTime.getFullYear()}`;
+
+    setFormState({ ...formState, existSince: formattedDate });
+    // console.log(formState);
   };
 
   return (
     <div>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={onSubmit}
-      >
-        <Form>
-          <h2 className='text-xl font-bold mb-6'>Additional Information</h2>
-          <div>
-            <label
-              htmlFor='email'
-              className='block text-sm font-medium leading-6'
-            >
-              Company Website
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='companyWebsite'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='companyWebsite' component='div' />
-            </div>
+      <form onSubmit={handleSubmit}>
+        <h2 className='text-xl font-bold mb-6'>Additional Information</h2>
+        <div>
+          <label
+            htmlFor='email'
+            className='block text-sm font-medium leading-6'
+          >
+            Company Website
+          </label>
+          <div className='mt-2'>
+            <input
+              type='text'
+              name='companyWebsite'
+              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              value={formState.companyWebsite}
+              onChange={handleChange}
+            />
           </div>
+        </div>
 
-          <div>
-            <label
-              htmlFor='employeeCount'
-              className='block text-sm font-medium leading-6'
-            >
-              Company employee count
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='employeeCount'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='employeeCount' component='div' />
-            </div>
+        <div>
+          <div className='mt-2'>
+            <DynamicTabs tabs={tabs} setTabs={setTabs} />
           </div>
+        </div>
 
-          <div>
-            <label
-              htmlFor='existSince'
-              className='block text-sm font-medium leading-6'
-            >
-              Company exist since
-            </label>
-            <div className='mt-2'>
-              {/* <Field
+        <div>
+          <label
+            htmlFor='employeeCount'
+            className='block text-sm font-medium leading-6'
+          >
+            Company employee count
+          </label>
+          <div className='mt-2'>
+            <input
+              type='text'
+              name='employeeCount'
+              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              value={formState.employeeCount}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label
+            htmlFor='existSince'
+            className='block text-sm font-medium leading-6'
+          >
+            Company exist since
+          </label>
+          <div className='mt-2'>
+            {/* <Field
                 type='text'
                 name='existSince'
                 className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
               /> */}
 
-              <div className='relative max-w-sm cedatepicker'>
-                {/* <div className='absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none'>
-                  <svg
-                    className='w-4 h-4 text-gray-500 dark:text-gray-400'
-                    aria-hidden='true'
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='currentColor'
-                    viewBox='0 0 20 20'
-                  >
-                    <path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
-                  </svg>
-                </div> */}
-
-                <Datepicker />
-              </div>
-              <ErrorMessage name='existSince' component='div' />
+            <div className='relative max-w-sm cedatepicker'>
+              <Datepicker onSelectedDateChanged={handleDateChange} />
             </div>
           </div>
+        </div>
 
-          <div>
-            <label
-              htmlFor='turnOver'
-              className='block text-sm font-medium leading-6'
+        <div>
+          <label
+            htmlFor='turnOver'
+            className='block text-sm font-medium leading-6'
+          >
+            Company Gross turn over per year
+          </label>
+          <div className='mt-2'>
+            <select
+              as='select'
+              name='turnOver'
+              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              value={formState.turnOver}
+              onChange={handleChange}
             >
-              Company Gross turn over per year
-            </label>
-            <div className='mt-2'>
-              <Field
-                as='select'
-                name='turnOver'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              >
-                <option value='no'>----</option>
-                <option value='0-50000'>0-50000 EUR</option>
-                <option value='50000-100000'>50000-100000 EUR</option>
-                <option value='100000-300000'>100000-300000 EUR</option>
-                <option value='300000-500000'>300000-500000 EUR</option>
-                <option value='500000-1000000'>500000-1000000 EUR</option>
-                <option value='1000000+'>1000000+ EUR</option>
-              </Field>
-              <ErrorMessage name='turnOver' component='div' />
-            </div>
+              <option value='no'>----</option>
+              <option value='0-50000'>0-50000 EUR</option>
+              <option value='50000-100000'>50000-100000 EUR</option>
+              <option value='100000-300000'>100000-300000 EUR</option>
+              <option value='300000-500000'>300000-500000 EUR</option>
+              <option value='500000-1000000'>500000-1000000 EUR</option>
+              <option value='1000000+'>1000000+ EUR</option>
+            </select>
           </div>
+        </div>
 
-          <div>
-            <label
-              htmlFor='businessType'
-              className='block text-sm font-medium leading-6'
-            >
-              Company business types
-            </label>
-            <div className='mt-2'>
-              {/* <Field
+        <div>
+          <label
+            htmlFor='businessType'
+            className='block text-sm font-medium leading-6'
+          >
+            Company business types
+          </label>
+          <div className='mt-2'>
+            {/* <Field
                 type='text'
                 name='businessType'
                 className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
               /> */}
 
-              <Select
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                options={options}
-                isMulti
-              />
+            <Select
+              defaultValue={selectedOption}
+              onChange={setSelectedOption}
+              options={options}
+              isMulti
+            />
 
-              {/* <DateSelector label='Select Date' name='date' /> */}
-              <ErrorMessage name='businessType' component='div' />
-            </div>
+            {/* <DateSelector label='Select Date' name='date' /> */}
           </div>
+        </div>
 
-          <div>
-            <label
-              htmlFor='companyLanguage'
-              className='block text-sm font-medium leading-6'
+        <div>
+          <label
+            htmlFor='companyLanguage'
+            className='block text-sm font-medium leading-6'
+          >
+            Company language
+          </label>
+          <div className='mt-2'>
+            <select
+              as='select'
+              name='companyLanguage'
+              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              value={formState.companyLanguage}
+              onChange={handleChange}
             >
-              Company language
-            </label>
-            <div className='mt-2'>
-              <Field
-                as='select'
-                name='companyLanguage'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              >
-                <option value='english'>English</option>
-                <option value='german'>German</option>
-                <option value='croatian'>Croatian</option>
-              </Field>
-              <ErrorMessage name='companyLanguage' component='div' />
-            </div>
+              <option value='english'>English</option>
+              <option value='german'>German</option>
+              <option value='croatian'>Croatian</option>
+            </select>
           </div>
+        </div>
 
-          <button
-            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-            onClick={prevStep}
+        <div className='flex items-start mb-5'>
+          <div className='flex items-center h-5'>
+            <input
+              id='terms'
+              type='checkbox'
+              name='acceptTerms'
+              checked={formState.acceptTerms}
+              onChange={(e) => setTermsAndConditions(e.target.checked)}
+              className='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800'
+            />
+          </div>
+          <label
+            htmlFor='acceptTerms'
+            className='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'
           >
-            Back
-          </button>
+            I have read and accept the{' '}
+            <a
+              href='#'
+              className='text-blue-600 hover:underline dark:text-blue-500'
+            >
+              terms and conditions
+            </a>
+          </label>
+        </div>
 
-          <button
-            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-            // onClick={nextStep}
-            type='submit'
-          >
-            Next
-          </button>
-        </Form>
-      </Formik>
+        <button
+          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+          onClick={prevStep}
+        >
+          Back
+        </button>
+
+        <button
+          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+          // onClick={checkData}
+          type='submit'
+        >
+          Next
+        </button>
+      </form>
     </div>
   );
 };
