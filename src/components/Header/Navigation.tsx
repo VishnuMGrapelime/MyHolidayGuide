@@ -13,7 +13,6 @@ import { useTranslation } from '../../app/i18n/client';
 
 // import logo from '/images/Logo.png';
 import Logo from '~/images/Logo.png';
-import TempProfile from '~/images/profile.png';
 
 export const Navigation = ({ user, lang }) => {
   const themeSwitcherRef = useRef<HTMLDivElement>(null);
@@ -23,7 +22,6 @@ export const Navigation = ({ user, lang }) => {
   const pathname = usePathname();
   const [isAdminPage, setIsAdminPage] = useState(true);
   const [theme, setTheme] = useState('light');
-
 
   const handleLogout = () => {
     signOut().then(() => {
@@ -46,34 +44,28 @@ export const Navigation = ({ user, lang }) => {
 
   useEffect(() => {
     const storedTheme = localStorage.getItem('color-theme');
-    const initialTheme = storedTheme || 'light'; 
+    const initialTheme = storedTheme || 'light';
     setTheme(initialTheme);
     document.documentElement.classList.add(initialTheme);
- }, []);
+  }, []);
 
- const toggleTheme = () => {
+  const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.documentElement.classList.remove(theme); 
-    document.documentElement.classList.add(newTheme); 
+    document.documentElement.classList.remove(theme);
+    document.documentElement.classList.add(newTheme);
     localStorage.setItem('color-theme', newTheme);
- };
+  };
 
   return (
     <nav className='py-9 md:py-0 px-4 dark:text-neutral-50 sticky z-10'>
       <div className='xl:container mx-auto flex flex-wrap items-center justify-between '>
         <div className='flex flex-wrap gap-7  justify-between'>
-
           <Link
             href='http://localhost:3000/'
             className='flex items-center space-x-3 rtl:space-x-reverse'
           >
-            <Image
-              src={Logo}
-              className='h-15'
-              alt='Logo'
-              width='80'
-            />
+            <Image src={Logo} className='h-15' alt='Logo' width='80' />
           </Link>
           {!isAdminPage && (
             <>
@@ -87,18 +79,51 @@ export const Navigation = ({ user, lang }) => {
           )}
         </div>
 
-
         <button
-          id="theme-toggle"
-          type="button"
-          className="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+          id='theme-toggle'
+          type='button'
+          className='text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5'
           onClick={toggleTheme}
         >
           {theme === 'light' && (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-sun"><circle cx="12" cy="12" r="4" /><path d="M12 2v2" /><path d="M12 20v2" /><path d="m4.93 4.93 1.41 1.41" /><path d="m17.66 17.66 1.41 1.41" /><path d="M2 12h2" /><path d="M20 12h2" /><path d="m6.34 17.66-1.41 1.41" /><path d="m19.07 4.93-1.41 1.41" /></svg>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              className='lucide lucide-sun'
+            >
+              <circle cx='12' cy='12' r='4' />
+              <path d='M12 2v2' />
+              <path d='M12 20v2' />
+              <path d='m4.93 4.93 1.41 1.41' />
+              <path d='m17.66 17.66 1.41 1.41' />
+              <path d='M2 12h2' />
+              <path d='M20 12h2' />
+              <path d='m6.34 17.66-1.41 1.41' />
+              <path d='m19.07 4.93-1.41 1.41' />
+            </svg>
           )}
           {theme === 'dark' && (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" /></svg>
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='24'
+              height='24'
+              viewBox='0 0 24 24'
+              fill='none'
+              stroke='currentColor'
+              strokeWidth='2'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              className='lucide lucide-moon'
+            >
+              <path d='M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z' />
+            </svg>
           )}
         </button>
       </div>

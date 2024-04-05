@@ -86,28 +86,6 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
       }
     }
   };
-  const [initialValues, setInitialValues] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
-  });
-
-  useState(() => {
-    if (formData) {
-      setInitialValues(formData);
-    }
-
-    console.log(formData);
-  }, []);
-
-  const onSubmit = (values) => {
-    console.log(values);
-    updateFormData(values);
-    nextStep();
-  };
 
   const gotoPrevStep = () => {
     updateFormData(formState);

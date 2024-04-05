@@ -11,9 +11,11 @@ import { ValidationBox } from '@/components/Elements/ValidationBox';
 // Yup schema to validate the form
 const schema = Yup.object().shape({
   companyWebsite: Yup.string().required(),
-  employeeCount: Yup.string().required(),
-  turnOver: Yup.string().required(),
-  companyLanguage: Yup.string().required(),
+  employeeCount: Yup.string().required('Employee count is a required field'),
+  turnOver: Yup.string().required('Turn over is a required field'),
+  companyLanguage: Yup.string().required(
+    'Company language is a required field',
+  ),
   acceptTerms: Yup.boolean()
     .oneOf([true], 'You must accept the terms and conditions')
     .required('You must accept the terms and conditions'),
@@ -42,7 +44,7 @@ const customStyles = {
   control: (base, state) => ({
     ...base,
     padding: '5px',
-    border: '1px 1CCFB9'
+    border: '1px 1CCFB9',
   }),
   dropdownIndicator: (base, state) => ({
     ...base,
@@ -62,7 +64,7 @@ const SignUpThree = ({
     companyWebsite: 'https://',
     employeeCount: '',
     turnOver: '',
-    companyLanguage: '',
+    companyLanguage: 'english',
     acceptTerms: false,
   });
 
@@ -81,12 +83,15 @@ const SignUpThree = ({
   const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
+    // console.log(formData.companyLanguage);
     if (formData) {
       setFormState({
         companyWebsite: formData.companyWebsite,
         employeeCount: formData.employeeCount,
         turnOver: formData.turnOver,
-        companyLanguage: formData.companyLanguage,
+        companyLanguage: formData.companyLanguage
+          ? formData.companyLanguage
+          : formState.companyLanguage,
         acceptTerms: formData.acceptTerms,
       });
       console.log(formData.selectedOption);
@@ -111,8 +116,7 @@ const SignUpThree = ({
       // Validate the form data
 
       const businessType = [];
-      // console.log(typeof selectedOption !== 'undefined');
-      // console.log(selectedOption.length);
+
       if (typeof selectedOption !== 'undefined') {
         //if (selectedOption.length > 0) {
         selectedOption.map((item) => {
@@ -131,6 +135,8 @@ const SignUpThree = ({
 
         setFormState({ ...formState, socialUrl: socialData });
       }
+
+      console.log(formState);
 
       await schema.validate(formState, { abortEarly: false });
 
@@ -187,7 +193,6 @@ const SignUpThree = ({
     <>
       <form onSubmit={handleSubmit}>
         <div className='m-12 p-12'>
-
           <div className='w-full  mx-auto text-center'>
             <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
               <span>Company information</span>
@@ -259,20 +264,24 @@ const SignUpThree = ({
           </div>
 
           <div className='space-y-1'>
-            <div className="relative">
+            <div className='relative'>
               <Datepicker
-                id="existSince"
+                id='existSince'
+                value={selectedDate}
                 onSelectedDateChanged={handleDateChange}
                 style={{ backgroundColor: 'white' }}
-                className="block  pt-7 w-full  text-sm text-gray-900 bg-transparent rounded-lg border-1 bg-white border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+                className='block  pt-7 w-full  text-sm text-gray-900 bg-transparent rounded-lg border-1 bg-white border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600'
               />
               <label
-                htmlFor="existSince"
-                className="absolute top-[17px] bg-white  left-[5px]  z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                htmlFor='existSince'
+                className='absolute top-[17px] bg-white  left-[5px]  z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
               >
                 Company exist since
               </label>
-              <p className='text- md:text-px mb-4' style={{ paddingLeft: '1rem' }}>
+              <p
+                className='text- md:text-px mb-4'
+                style={{ paddingLeft: '1rem' }}
+              >
                 <span>Please enter your company name exist since</span>
               </p>
             </div>
@@ -310,21 +319,22 @@ const SignUpThree = ({
             </p>
           </div>
           <div className='space-y-1'>
-            <div className="relative">
+            <div className='relative'>
               <label
-                className="absolute top-3 left-[5px] z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
-                htmlFor="businessType"
+                className='absolute top-3 left-[5px] z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
+                htmlFor='businessType'
               >
                 Company business types
               </label>
               <Select
-                className="block w-full   pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer"
-                id="businessType"
+                className='block w-full   pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                id='businessType'
                 options={options}
                 isMulti
-                defaultValue={selectedOption}
+                //defaultValue={selectedOption}
+                value={selectedOption}
                 onChange={handleBusinessTypeChange}
-                placeholder=""
+                placeholder=''
                 styles={customStyles}
               />
             </div>
@@ -337,9 +347,10 @@ const SignUpThree = ({
               <select
                 id='companyLanguage'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
-                name='companyName'
+                name='companyLanguage'
                 value={formState.companyLanguage}
                 onChange={handleChange}
+                defaultValue={formState.companyLanguage}
               >
                 <option value='english'>English</option>
                 <option value='german'>German</option>
@@ -387,7 +398,6 @@ const SignUpThree = ({
         </div>
       </form>
     </>
-
   );
 };
 
