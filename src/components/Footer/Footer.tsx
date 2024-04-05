@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 export const Footer = () => {
@@ -13,6 +14,14 @@ export const Footer = () => {
             . All Rights Reserved.
           </span>
           <ul className='flex md:flex-wrap justify-center items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0'>
+            <li>
+              {/* <a href='#' className='hover:underline me-4 md:me-6'>
+                About
+              </a> */}
+              <Link href='/Supplier' className='hover:underline me-4 md:me-6'>
+                Supplier Registration
+              </Link>
+            </li>
             <li>
               <a href='#' className='hover:underline me-4 md:me-6'>
                 About

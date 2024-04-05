@@ -35,7 +35,7 @@ const SignUpTwo = ({
     personalWebsite: '',
     password: '',
     confirmPassword: '',
-    preferedLanguage: '',
+    preferedLanguage: 'english',
   });
 
   useEffect(() => {
@@ -46,7 +46,9 @@ const SignUpTwo = ({
         personalWebsite: formData.personalWebsite,
         password: formData.password,
         confirmPassword: formData.confirmPassword,
-        preferedLanguage: formData.preferedLanguage,
+        preferedLanguage: formData.preferedLanguage
+          ? formData.preferedLanguage
+          : formState.preferedLanguage,
       });
 
       if (formData.socialTabs) {

@@ -1,4 +1,3 @@
-
 import { BookOpen, DollarSign, Expand } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
@@ -39,7 +38,10 @@ function page() {
                         </h1>
                         <p className='text-center'>
                           <div className='pt-4 text-center md:pt-6 space-y-4 md:space-x-6'>
-                            <LinkButton label='Private Host' link='/about' />
+                            <LinkButton
+                              label='Private Host'
+                              link='/partner/private/signup'
+                            />
                             <LinkButton
                               label='Company Host'
                               link='/partner/company/signup'

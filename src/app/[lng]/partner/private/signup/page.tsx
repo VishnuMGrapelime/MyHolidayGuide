@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
-import Stepper from '@/components/Elements/Stepper';
+import StepperTwo from '@/components/Elements/stepperTwo';
 import SignupOne from '@/components/private/SignupOne';
 import SignUpTwo from '@/components/private/SignupTwo';
 
@@ -65,7 +65,7 @@ const CompanySignUpPage = () => {
           toast.error(error);
         }
 
-        toast.success('New user created successfully');
+        toast.success('New supplier created successfully');
         router.push('/partner/company/signup');
         // ...
       })
@@ -82,12 +82,18 @@ const CompanySignUpPage = () => {
     console.log(formData);
   }, [formData]);
 
+  // const stepDetails = [
+  //   { stepid: 1, stepTitle: 'Personal Information' },
+  //   { stepid: 2, stepTitle: 'Additional Information' },
+  // ];
   return (
     <div className='py-8 md:pt-0 md:pb-20 px-4 flex justify-center'>
       {/* <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'> */}
       <div className='xl:container'>
         <div className='mx-auto lg:w-10/12 xl:w-8/12'>
-          <Stepper currPage={step} />
+          {/* <Stepper currPage={step} /> */}
+          <StepperTwo currPage={step} />
+          {/* <DynamicStepper currPage={step} stepDetails={stepDetails} /> */}
           {step === 1 && (
             <SignupOne
               nextStep={nextStep}
