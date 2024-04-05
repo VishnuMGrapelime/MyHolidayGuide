@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
 import { Button } from '@/components/Elements/Button';
+import { ValidationBox } from '@/components/Elements/ValidationBox';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -68,9 +69,11 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
     country: '',
   });
 
+  const [errorStatus, setErrorStatus] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setErrorStatus(false);
     try {
       // Validate the form data
       console.log(formState);
@@ -80,6 +83,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
       updateFormData(formState);
       nextStep();
     } catch (error) {
+      setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
         const errorMessages = error.inner.reduce((acc, curr) => {
@@ -130,6 +134,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
           </p>
         </div>
       </div>
+      {errorStatus && <ValidationBox errors={errors} />}
       {initialValues && (
         // <Formik
         //   initialValues={initialValues}

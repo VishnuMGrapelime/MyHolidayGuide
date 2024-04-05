@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
 import { Button, ButtonOutline } from '@/components/Elements/Button';
+import { ValidationBox } from '@/components/Elements/ValidationBox';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -55,8 +56,11 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
     lastName: formData.lastName,
   });
 
+  const [errorStatus, setErrorStatus] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorStatus(false);
 
     try {
       // Validate the form data
@@ -67,6 +71,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
       updateFormData(formState);
       nextStep();
     } catch (error) {
+      setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
         const errorMessages = error.inner.reduce((acc, curr) => {
@@ -250,6 +255,9 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
             </p>
           </div>
         </div>
+
+        {errorStatus && <ValidationBox errors={errors} />}
+
         <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
           <div className='space-y-1'>
             <div className='relative '>
@@ -379,6 +387,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
               <span>Please enter the first name of the company owner</span>
             </p>
           </div>
+
           <div className='space-y-1'>
             <div className='relative '>
               <input

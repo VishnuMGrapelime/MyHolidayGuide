@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 
 import DynamicTabs from '@/components/DynamicTabs';
 import { Button, ButtonOutline } from '@/components/Elements/Button';
+import { ValidationBox } from '@/components/Elements/ValidationBox';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -72,6 +73,8 @@ const SignUpThree = ({
     acceptTerms: '',
   });
 
+  const [errorStatus, setErrorStatus] = useState(false);
+
   const [tabs, setTabs] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -101,20 +104,23 @@ const SignUpThree = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorStatus(false);
 
     try {
       // Validate the form data
 
       const businessType = [];
-      console.log(selectedOption);
-
-      if (selectedOption.length > 0) {
+      // console.log(typeof selectedOption !== 'undefined');
+      // console.log(selectedOption.length);
+      if (typeof selectedOption !== 'undefined') {
+        //if (selectedOption.length > 0) {
         selectedOption.map((item) => {
           businessType.push(item.value);
         });
+        setFormState({ ...formState, compBusinessType: businessType });
       }
-      setFormState({ ...formState, compBusinessType: businessType });
 
+      console.log('working 1');
       const socialData = [];
       if (tabs.length > 0) {
         tabs.map((item) => {
@@ -130,6 +136,7 @@ const SignUpThree = ({
       console.log('Form is valid', formState);
       finalSubmit(formState);
     } catch (error) {
+      setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
         const errorMessages = error.inner.reduce((acc, curr) => {
@@ -195,10 +202,12 @@ const SignUpThree = ({
           </div>
         </div>
 
+        {errorStatus && <ValidationBox errors={errors} />}
+
         <div className='space-y-1'>
           <div className='relative '>
             <input
-              type='email'
+              type='text'
               id='companyWebsite'
               className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
               placeholder=' '

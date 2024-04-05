@@ -43,10 +43,6 @@ const CompanySignUpPage = () => {
     delete filteredData.password;
     delete filteredData.email;
 
-    console.log(auth);
-    console.log(finalData.email);
-    console.log(finalData.password);
-
     createUserWithEmailAndPassword(auth, finalData.email, finalData.password)
       .then((userCredential) => {
         // Signed up
@@ -229,7 +225,7 @@ const CompanySignUpPage = () => {
             //   updateFormData={updateFormData}
             // />
           )}
-          {step === 3 && (
+          {step === 2 && (
             <SignUpTwo
               nextStep={nextStep}
               prevStep={prevStep}
@@ -237,7 +233,7 @@ const CompanySignUpPage = () => {
               updateFormData={updateFormData}
             />
           )}
-          {step === 2 && (
+          {step === 3 && (
             <SignUpThree
               nextStep={nextStep}
               prevStep={prevStep}
