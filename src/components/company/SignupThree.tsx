@@ -184,109 +184,61 @@ const SignUpThree = ({
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div className='m-12 p-12'>
-          <div className='w-full  mx-auto text-center'>
-            <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
-              <span>Company information</span>
-            </h2>
-            <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
-              <span>Please be a as precise as possible</span>
-            </p>
-            <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
-              <span>
-                Some basic information about your company, for receipts, contact
-                etc.
-              </span>
+    <>
+      <div className='m-12 p-12'>
+
+        <div className='w-full  mx-auto text-center'>
+          <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
+            <span>Company information</span>
+          </h2>
+          <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
+            <span>Please be a as precise as possible</span>
+          </p>
+          <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
+            <span>
+              Some basic information about your company, for receipts, contact
+              etc.
+            </span>
+          </p>
+        </div>
+      </div>
+      <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
+        <form onSubmit={handleSubmit}>
+
+          {errorStatus && <ValidationBox errors={errors} />}
+
+          <div className='space-y-1'>
+            <div className='relative '>
+              <input
+                type='text'
+                id='companyWebsite'
+                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                placeholder=' '
+                name='companyWebsite'
+                value={formState.companyWebsite}
+                onChange={handleChange}
+              />
+              <label
+                htmlFor='companyWebsite'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+              >
+                Company Website
+              </label>
+              <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
+                <ClipboardCheck color='#1CCFB9' />
+              </div>
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>Your main domain on the web</span>
             </p>
           </div>
-        </div>
-        <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
 
-
-        {errorStatus && <ValidationBox errors={errors} />}
-
-        <div className='space-y-1'>
-          <div className='relative '>
-            <input
-              type='text'
-              id='companyWebsite'
-              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-              placeholder=' '
-              name='companyWebsite'
-              value={formState.companyWebsite}
-              onChange={handleChange}
-            />
-            <label
-              htmlFor='companyWebsite'
-              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
-            >
-              Company Website
-            </label>
-            <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-              <ClipboardCheck color='#1CCFB9' />
+          <div>
+            <div className='mt-2'>
+              <DynamicTabs tabs={tabs} setTabs={setTabs} />
             </div>
           </div>
-          <p className='text- md:text- px-4 '>
-            <span>Your main domain on the web</span>
-          </p>
-        </div>
 
-        <div>
-          <div className='mt-2'>
-            <DynamicTabs tabs={tabs} setTabs={setTabs} />
-          </div>
-        </div>
-
-        <div className='space-y-1'>
-          <div className='relative '>
-            <input
-              type='text'
-              id='employeeCount'
-              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-              placeholder=' '
-              name='employeeCount'
-              value={formState.employeeCount}
-              onChange={handleChange}
-            />
-            <label
-              htmlFor='employeeCount'
-              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
-            >
-              Company employee count
-            </label>
-          </div>
-          <p className='text- md:text- px-4 '>
-            <span>Please enter your company name</span>
-          </p>
-        </div>
-
-        <div className='space-y-1'>
-          <div className='relative '>
-            <Datepicker
-              value={selectedDate}
-              onSelectedDateChanged={handleDateChange}
-              id='existSince'
-              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-            />
-            <label
-              htmlFor='existSince'
-              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
-            >
-              Company exist since
-            </label>
-          </div>
-          <p className='text- md:text- px-4 '>
-            <span>How many employees does your company have</span>
-          </p>
-        </div>
-
-        <div className='space-y-1'>
-          <div className='relative '>
-            <select
-              id='turnOver'
-              className='block px-2.5   pb-2.5 pt-3 w-full text-sm 
           <div className='space-y-1'>
             <div className='relative '>
               <input
@@ -294,7 +246,7 @@ const SignUpThree = ({
                 id='employeeCount'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
                 placeholder=' '
-                name='companyName'
+                name='employeeCount'
                 value={formState.employeeCount}
                 onChange={handleChange}
               />
@@ -304,12 +256,12 @@ const SignUpThree = ({
               >
                 Company employee count
               </label>
-
             </div>
             <p className='text- md:text- px-4 '>
               <span>Please enter your company name</span>
             </p>
           </div>
+
 
           <div className='space-y-1'>
             <div className="relative">
@@ -326,7 +278,7 @@ const SignUpThree = ({
                 Company exist since
               </label>
             </div>
-            <p className='text- md:text- px-4 '>
+            <p className='text-md:text- px-4 '>
               <span>How many employees does your company have</span>
             </p>
           </div>
@@ -336,68 +288,38 @@ const SignUpThree = ({
               <select
                 id='turnOver'
                 className='block px-2.5   pb-2.5 pt-3 w-full text-sm 
->>>>>>> e76668f (changed border color and improved alignment)
               text-gray-900 bg-transparent rounded-lg 
               border-1 border-gray-300 appearance-none dark:text-white
               dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
                focus:ring-0 focus:border-blue-600 peer'
-              name='turnOver'
-              value={formState.turnOver}
-              onChange={handleChange}
-            >
-              <option value='no'>----</option>
-              <option value='0-50000'>0-50000 EUR</option>
-              <option value='50000-100000'>50000-100000 EUR</option>
-              <option value='100000-300000'>100000-300000 EUR</option>
-              <option value='300000-500000'>300000-500000 EUR</option>
-              <option value='500000-1000000'>500000-1000000 EUR</option>
-              <option value='1000000+'>1000000+ EUR</option>
-            </select>
-            <label
-              htmlFor='turnOver'
-              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
-            >
-              Company Gross turn over per year
-            </label>
+                name='turnOver'
+                value={formState.turnOver}
+                onChange={handleChange}
+              >
+                <option value='no'>----</option>
+                <option value='0-50000'>0-50000 EUR</option>
+                <option value='50000-100000'>50000-100000 EUR</option>
+                <option value='100000-300000'>100000-300000 EUR</option>
+                <option value='300000-500000'>300000-500000 EUR</option>
+                <option value='500000-1000000'>500000-1000000 EUR</option>
+                <option value='1000000+'>1000000+ EUR</option>
+              </select>
+              <label
+                htmlFor='turnOver'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+              >
+                Company Gross turn over per year
+              </label>
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>Please enter your company name</span>
+            </p>
           </div>
-          <p className='text- md:text- px-4 '>
-            <span>Please enter your company name</span>
-          </p>
-        </div>
 
-        <div className='relative'>
-          <label
-            className='absolute top-3 left-5 z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
-            htmlFor='businessType'
-          >
-            Company business types
-          </label>
-          <Select
-            className='block w-full pb-2.5 pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-            id='businessType'
-            options={options}
-            isMulti
-            //defaultValue={selectedOption}
-            value={selectedOption}
-            onChange={handleBusinessTypeChange}
-            placeholder=''
-            styles={customStyles}
-          />
-        </div>
 
-        <div className='space-y-1'>
-          <div className='relative '>
-            <select
-              id='companyLanguage'
-              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-              name='companyLanguage'
-              value={formState.companyLanguage}
-              onChange={handleChange}
-            >
-              <option value='english'>English</option>
-              <option value='german'>German</option>
-              <option value='croatian'>Croatian</option>
-            </select>
+
+
+
           <div className="relative">
             <label
               className="absolute top-3 left-5 z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
@@ -467,13 +389,9 @@ const SignUpThree = ({
             </label>
           </div>
 
-            >
-              terms and conditions
-            </a>
-          </label>
-        </div>
 
-        {/* 
+
+          {/* 
         <button
           className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           onClick={prevStep}
@@ -492,9 +410,10 @@ const SignUpThree = ({
             <ButtonOutline label='Back' prevStep={gotoPrevStep} />
             <Button label='Send' />
           </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
+
   );
 };
 
