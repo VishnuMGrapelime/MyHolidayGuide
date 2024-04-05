@@ -4,7 +4,7 @@ const DynamicTabs = ({ tabs, setTabs }) => {
   const [activeTab, setActiveTab] = useState(1); // State to track the active tab
 
   const activeClass =
-    'text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500';
+    'text-[#1CCFB9] border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500';
   const inactiveClass =
     'border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300';
 
@@ -102,7 +102,7 @@ const DynamicTabs = ({ tabs, setTabs }) => {
   return (
     <div className=''>
       <button
-        className='py-2.5 px-5 me-2 text-center align-content  mb-2 text-sm w-full font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-[#1CCFB9] hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
+        className='py-2.5  px-5 me-2 text-center align-content  mb-2 text-sm w-full font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-[#1CCFB9] hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
         onClick={addTab}
       >
         <svg

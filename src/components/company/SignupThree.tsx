@@ -236,7 +236,7 @@ const SignUpThree = ({
             </p>
           </div>
 
-          <div>
+          <div className=''>
             <DynamicTabs tabs={tabs} setTabs={setTabs} />
           </div>
 
