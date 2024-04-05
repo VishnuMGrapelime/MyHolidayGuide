@@ -215,7 +215,7 @@ const CompanySignUpPage = () => {
       <div className='xl:container'>
         <div className='mx-auto lg:w-10/12 xl:w-8/12'>
           <Stepper currPage={step} />
-          {step === 1 && (
+          {step === 3 && (
             <SignupOne
               nextStep={nextStep}
               formData={formData}
@@ -237,7 +237,7 @@ const CompanySignUpPage = () => {
               updateFormData={updateFormData}
             />
           )}
-          {step === 3 && (
+          {step === 1 && (
             <SignUpThree
               nextStep={nextStep}
               prevStep={prevStep}

@@ -233,29 +233,7 @@ const SignUpThree = ({
             <span>Please enter your company name</span>
           </p>
         </div>
-        <div>
-          <label
-            htmlFor='existSince'
-            className='block text-sm font-medium leading-6'
-          >
-
-          </label>
-          <div className='mt-2'>
-            {/* <Field
-                type='text'
-                name='existSince'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              /> */}
-
-            <div className='relative max-w-sm cedatepicker'>
-
-              <Datepicker
-                value={selectedDate}
-                onSelectedDateChanged={handleDateChange}
-              />
-            </div>
-          </div>
-        </div>
+      
         <div className='space-y-1'>
           <div className='relative '>
             <Datepicker onSelectedDateChanged={handleDateChange}
@@ -274,29 +252,7 @@ const SignUpThree = ({
             <span>How many employees does your company have</span>
           </p>
         </div>
-        <div className='space-y-1'>
-          <div className="relative">
-            <input
-              type="date"
-              id="existSince"
-              className="block px-2.5 pb-2.5 pt-4 w-full text-sm
-             text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-              onClick={handleDateChange}
-            >
-
-            </input>
-            <label
-              htmlFor="existSince"
-              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-            >
-              Company exist since
-            </label>
-          </div>
-          <p className='text- md:text- px-4 '>
-            <span>How many employees does your company have</span>
-          </p>
-        </div>
+    
         <div className='space-y-1'>
           <div className='relative '>
             <select
@@ -343,7 +299,7 @@ const SignUpThree = ({
             options={options}
             isMulti
             defaultValue={selectedOption}
-            onChange={setSelectedOption}
+            onChange={handleBusinessTypeChange}
             placeholder=""
             styles={customStyles}
 
@@ -399,25 +355,7 @@ const SignUpThree = ({
           </label>
         </div>
 
-        <div className='space-y-1'>
-          <div className='relative '>
-            <input
-              type='text'
-              id='country'
-              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-              placeholder=' '
-            />
-            <label
-              htmlFor='country'
-              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
-            >
-              Country
-            </label>
-          </div>
-          <p className='text- md:text- px-4 '>
-            <span>Please enter the country of your company headquarters </span>
-          </p>
-        </div>
+
 
         {/* 
         <button
