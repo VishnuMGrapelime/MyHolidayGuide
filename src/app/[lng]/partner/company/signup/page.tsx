@@ -229,7 +229,7 @@ const CompanySignUpPage = () => {
             //   updateFormData={updateFormData}
             // />
           )}
-          {step === 2 && (
+          {step === 3 && (
             <SignUpTwo
               nextStep={nextStep}
               prevStep={prevStep}
@@ -237,7 +237,7 @@ const CompanySignUpPage = () => {
               updateFormData={updateFormData}
             />
           )}
-          {step === 3 && (
+          {step === 2 && (
             <SignUpThree
               nextStep={nextStep}
               prevStep={prevStep}

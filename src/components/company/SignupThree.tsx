@@ -57,7 +57,7 @@ const SignUpThree = ({
   finalSubmit,
 }) => {
   const [formState, setFormState] = useState({
-    companyWebsite: '',
+    companyWebsite: 'https://',
     employeeCount: '',
     turnOver: '',
     companyLanguage: '',
@@ -88,6 +88,9 @@ const SignUpThree = ({
       console.log(formData.selectedOption);
       setSelectedOption(formData.selectedOption);
       setSelectedDate(formData.existSince);
+      if (formData.socialTabs) {
+        setTabs(formData.socialTabs);
+      }
     }
   }, []);
 
@@ -161,8 +164,14 @@ const SignUpThree = ({
   };
 
   const gotoPrevStep = () => {
+    // setFormState({ ...formState, socialTabs: tabs });
+    if (tabs) {
+      updateFormData({ ...formState, socialTabs: tabs });
+    } else {
+      updateFormData(formState);
+    }
+
     console.log(formState);
-    updateFormData(formState);
     prevStep();
   };
 

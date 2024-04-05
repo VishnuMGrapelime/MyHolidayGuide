@@ -8,7 +8,7 @@ import { Button } from '@/components/Elements/Button';
 const schema = Yup.object().shape({
   companyIdNo: Yup.string().required(),
   companyName: Yup.string().required(),
-  companyName2: Yup.string().required(),
+  // companyName2: Yup.string().required(),
   address1: Yup.string().required(),
   address2: Yup.string().required(),
   streetNumber: Yup.string().required(),
@@ -379,7 +379,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
                 </div>
               </div>
               <p className='text- md:text- px-4 '>
-                <span>Please enter your company name</span>
+                <span>Please enter your company name 2 (optional)</span>
               </p>
             </div>
 

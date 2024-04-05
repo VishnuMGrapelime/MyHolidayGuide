@@ -1,4 +1,3 @@
-import { CircleFadingPlus } from 'lucide-react';
 import { useState } from 'react';
 
 const DynamicTabs = ({ tabs, setTabs }) => {
@@ -16,7 +15,7 @@ const DynamicTabs = ({ tabs, setTabs }) => {
       title: `SOCIAL MEDIA ACCOUNT ${tabs.length + 1}`,
       content: `Content ${tabs.length + 1}`,
       values: {
-        socialMedia: '',
+        socialMedia: 'youtube',
         socialUrl: '',
       },
     };
@@ -100,22 +99,31 @@ const DynamicTabs = ({ tabs, setTabs }) => {
   //   }
   //  });
 
-
   return (
     <div className=''>
       <button
         className='py-2.5 px-5 me-2 text-center align-content  mb-2 text-sm w-full font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-[#1CCFB9] hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
         onClick={addTab}
       >
-        <svg className="w-6 h-6  text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-          <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z" clip-rule="evenodd" />
+        <svg
+          className='w-6 h-6  text-gray-800 dark:text-white'
+          aria-hidden='true'
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          fill='currentColor'
+          viewBox='0 0 24 24'
+        >
+          <path
+            fill-rule='evenodd'
+            d='M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z'
+            clip-rule='evenodd'
+          />
         </svg>
-        <span>
-          &nbsp;&nbsp;Add social media account
-        </span>
+        <span>&nbsp;&nbsp;Add social media account</span>
       </button>
       <div className='border-b border-gray-200 dark:border-gray-700'>
-        <div className="scroll-container">
+        <div className='scroll-container'>
           <ul className='flex flex-nowrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
             {tabs.map((tab) => (
               <li key={tab.id} className='me-2'>
@@ -141,7 +149,6 @@ const DynamicTabs = ({ tabs, setTabs }) => {
           </ul>
         </div>
       </div>
-
 
       <div className='mt-4'>
         {tabs.map((tab) => (
@@ -222,7 +229,6 @@ const DynamicTabs = ({ tabs, setTabs }) => {
                   >
                     URL
                   </label>
-
                 </div>
                 <p className='text- md:text- px-4 '>
                   <span>Please enter your company name</span>
