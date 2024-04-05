@@ -112,23 +112,6 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
     console.log(formData);
   }, []);
 
-  // const initialValues = {
-  //   companyName: '',
-  //   companyName2: '',
-  //   address1: '',
-  //   address2: '',
-  //   streetNumber: '',
-  //   postOffice: '',
-  //   zipCode: '',
-  //   city: '',
-  //   country: '',
-  // };
-
-  const onSubmit = (values) => {
-    console.log(values);
-    updateFormData(values);
-  };
-
   return (
     <div>
       <div className='m-12 p-12'>

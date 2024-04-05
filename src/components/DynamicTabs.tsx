@@ -8,7 +8,8 @@ const DynamicTabs = ({ tabs, setTabs }) => {
   const inactiveClass =
     'border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300';
 
-  const addTab = () => {
+  const addTab = (e) => {
+    e.preventDefault();
     const newTab = {
       id: tabs.length + 1,
       title: `SOCIAL MEDIA ACCOUNT ${tabs.length + 1}`,

@@ -23,7 +23,13 @@ const options = [
   { value: 'transfers', label: 'Transfers' },
 ];
 
-const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
+const SignUpThree = ({
+  nextStep,
+  prevStep,
+  formData,
+  updateFormData,
+  finalSubmit,
+}) => {
   const [formState, setFormState] = useState({
     companyWebsite: '',
     employeeCount: '',
@@ -42,6 +48,7 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
 
   const [tabs, setTabs] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   useEffect(() => {
     if (formData) {
@@ -52,7 +59,9 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
         companyLanguage: formData.companyLanguage,
         acceptTerms: formData.acceptTerms,
       });
-      setSelectedOption(formData.compBusinessType);
+      console.log(formData.selectedOption);
+      setSelectedOption(formData.selectedOption);
+      setSelectedDate(formData.existSince);
     }
   }, []);
 
@@ -87,11 +96,10 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
         setFormState({ ...formState, socialUrl: socialData });
       }
 
-      console.log(businessType);
       await schema.validate(formState, { abortEarly: false });
 
       console.log('Form is valid', formState);
-      updateFormData(formState);
+      finalSubmit(formState);
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
@@ -117,6 +125,18 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
 
     setFormState({ ...formState, existSince: formattedDate });
     // console.log(formState);
+
+    setSelectedDate(date);
+  };
+
+  const handleBusinessTypeChange = (value) => {
+    setSelectedOption(value);
+    setFormState({ ...formState, selectedOption: value });
+  };
+
+  const gotoPrevStep = () => {
+    updateFormData(formState);
+    prevStep();
   };
 
   return (
@@ -180,7 +200,10 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
               /> */}
 
             <div className='relative max-w-sm cedatepicker'>
-              <Datepicker onSelectedDateChanged={handleDateChange} />
+              <Datepicker
+                value={selectedDate}
+                onSelectedDateChanged={handleDateChange}
+              />
             </div>
           </div>
         </div>
@@ -226,8 +249,9 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
               /> */}
 
             <Select
-              defaultValue={selectedOption}
-              onChange={setSelectedOption}
+              //defaultValue={selectedOption}
+              value={selectedOption}
+              onChange={handleBusinessTypeChange}
               options={options}
               isMulti
             />
@@ -283,22 +307,23 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
           </label>
         </div>
         <div className='space-y-1'>
-          <div className="relative ">
+          <div className='relative '>
             <input
-              type="text"
-              id="country"
-              className="block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
+              type='text'
+              id='country'
+              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              placeholder=' '
             />
             <label
-              htmlFor="country"
-              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+              htmlFor='country'
+              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
             >
               Country
             </label>
           </div>
-          <p className="text- md:text- px-4 ">
-            <span>Please enter the country of your company headquarters </span></p>
+          <p className='text- md:text- px-4 '>
+            <span>Please enter the country of your company headquarters </span>
+          </p>
         </div>
         {/* 
         <button
@@ -316,8 +341,8 @@ const SignUpThree = ({ nextStep, prevStep, formData, updateFormData }) => {
           Next
         </button> */}
         <div className='py-6 flex flex-col gap-y-6 md:gap-x-20  justify-center w-full md:w-1/4 mx-auto'>
-          <ButtonOutline label={'Back'} />
-          <Button label={'Send'} />
+          <ButtonOutline label='Back' prevStep={gotoPrevStep} />
+          <Button label='Send' />
         </div>
       </form>
     </div>

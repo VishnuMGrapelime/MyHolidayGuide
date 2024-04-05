@@ -73,6 +73,7 @@ const CompanySignUpPage = () => {
       .catch((error) => {
         // const errorCode = error.code;
         const errorMessage = error.message;
+        setStep(2);
         toast.error(errorMessage);
         // ..
       });
@@ -241,7 +242,8 @@ const CompanySignUpPage = () => {
               nextStep={nextStep}
               prevStep={prevStep}
               formData={formData}
-              updateFormData={finalSubmit}
+              updateFormData={updateFormData}
+              finalSubmit={finalSubmit}
             />
           )}
         </div>
