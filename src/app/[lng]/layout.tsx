@@ -60,8 +60,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang={lng} dir={dir(lng)} className='h-full bg-white-900'>
-      <body className='h-full'>
+    <html lang={lng} dir={dir(lng)} className='h-full bg-white-900 '>
+      <body className='h-full dark:bg-black'>
         <NextTopLoader />
         <ReduxProvider>
           <SessionProvider>

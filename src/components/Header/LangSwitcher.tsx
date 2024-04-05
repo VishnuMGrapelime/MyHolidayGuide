@@ -43,18 +43,18 @@ const LangSwitcher: React.FC = ({ lang }) => {
     <div className='flex items-center justify-center'>
       <div className='relative text-lg '>
         <button
-          className='justify-between hover:bg-gray-100 hover:rounded-lg
-           focus:outline-none font-normal bg-white  text-sm px-5 py-2.5 text-center 
-          inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+          className='justify-between rounded-lg hover:bg-gray-100 hover:rounded-lg
+           focus:outline-none font-normal bg-white  dark:bg-black text-sm px-2 py-2.5 text-center 
+          inline-flex items-center dark:focus:ring-blue-800 dark:hover:bg-neutral-800'
           onClick={() => setIsOptionsExpanded(!isOptionsExpanded)}
           onBlur={() => setIsOptionsExpanded(false)}
         >
-          En&nbsp;
+          <span>En</span>&nbsp;
           <svg
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
-            className={`h-4 w-4 transform transition-transform duration-200 ease-in-out ${isOptionsExpanded ? 'rotate-180' : 'rotate-0'
+            className={`h-4 w-4  transform transition-transform duration-200 ease-in-out ${isOptionsExpanded ? 'rotate-180' : 'rotate-0'
               }`}
           >
             <path
@@ -71,7 +71,7 @@ const LangSwitcher: React.FC = ({ lang }) => {
             : 'translate-y-0 scale-y-100 opacity-100'
             }`}
         >
-          <ul className='absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden w-48'>
+          <ul className='absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden w-24 dark:bg-neutral-700'>
             {options.map((option, index) => (
               <li
                 key={index}
@@ -83,7 +83,6 @@ const LangSwitcher: React.FC = ({ lang }) => {
                 onClick={() => setOption(option)}
               >
                 <Image src={option.flag} width='20' height='20' alt='logo' />
-                &nbsp;&nbsp;{option.country}
                 {lang === option.code && (
                   <svg
                     xmlns='http://www.w3.org/2000/svg'

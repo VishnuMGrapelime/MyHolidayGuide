@@ -197,5 +197,15 @@
   display: none;
 }
 
+.text-p3 {
+  font-size: .875rem;
+  line-height: 1.5;
+}
+
+.text-p1 {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
 
  
