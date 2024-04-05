@@ -172,7 +172,7 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
-.vibrant-cyan-blue  {
+.vibrant-cyan  {
   color:  #1CCFB9;;
 }
 .step-text {
@@ -186,8 +186,15 @@
   align-items: center;
 }
 .scroll-container {
-  overflow-x: auto;
-  white-space: nowrap;
+  overflow-y: hidden; /* Hide vertical scroll */
+  overflow-x: auto; /* Enable horizontal scroll */
+  white-space: nowrap; /* Keep content in a single line */
   position: relative;
- }
+}
+
+/* Hide scrollbar */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
  

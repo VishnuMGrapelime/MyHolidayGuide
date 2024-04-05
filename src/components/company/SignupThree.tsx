@@ -42,6 +42,7 @@ const customStyles = {
   control: (base, state) => ({
     ...base,
     padding: '5px',
+    border: '1px 1CCFB9'
   }),
   dropdownIndicator: (base, state) => ({
     ...base,
@@ -201,6 +202,8 @@ const SignUpThree = ({
             </p>
           </div>
         </div>
+        <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
+
 
         {errorStatus && <ValidationBox errors={errors} />}
 
@@ -284,6 +287,56 @@ const SignUpThree = ({
             <select
               id='turnOver'
               className='block px-2.5   pb-2.5 pt-3 w-full text-sm 
+          <div className='space-y-1'>
+            <div className='relative '>
+              <input
+                type='text'
+                id='employeeCount'
+                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                placeholder=' '
+                name='companyName'
+                value={formState.employeeCount}
+                onChange={handleChange}
+              />
+              <label
+                htmlFor='employeeCount'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+              >
+                Company employee count
+              </label>
+
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>Please enter your company name</span>
+            </p>
+          </div>
+
+          <div className='space-y-1'>
+            <div className="relative">
+              <Datepicker
+                id="existSince"
+                onSelectedDateChanged={handleDateChange}
+                style={{ backgroundColor: 'white' }}
+                className="block  pt-7 w-full  text-sm text-gray-900 bg-transparent rounded-lg border-1 bg-white border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600"
+              />
+              <label
+                htmlFor="existSince"
+                className="absolute top-[17px] bg-white  left-3.5  z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+              >
+                Company exist since
+              </label>
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>How many employees does your company have</span>
+            </p>
+          </div>
+
+          <div className='space-y-1'>
+            <div className='relative '>
+              <select
+                id='turnOver'
+                className='block px-2.5   pb-2.5 pt-3 w-full text-sm 
+>>>>>>> e76668f (changed border color and improved alignment)
               text-gray-900 bg-transparent rounded-lg 
               border-1 border-gray-300 appearance-none dark:text-white
               dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
@@ -345,36 +398,75 @@ const SignUpThree = ({
               <option value='german'>German</option>
               <option value='croatian'>Croatian</option>
             </select>
+          <div className="relative">
             <label
-              htmlFor='companyLanguage'
-              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+              className="absolute top-3 left-5 z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+              htmlFor="businessType"
             >
-              Company language
+              Company business types
             </label>
-          </div>
-          <p className='text- md:text- px-4 '>
-            <span>Please enter your company name</span>
-          </p>
-        </div>
-        <div className='flex items-start mb-5'>
-          <div className='flex items-center h-5'>
-            <input
-              id='terms'
-              type='checkbox'
-              name='acceptTerms'
-              checked={formState.acceptTerms}
-              onChange={(e) => setTermsAndConditions(e.target.checked)}
-              className='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800'
+            <Select
+              className="block w-full pb-2.5 pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer"
+              id="businessType"
+              options={options}
+              isMulti
+              defaultValue={selectedOption}
+              onChange={handleBusinessTypeChange}
+              placeholder=""
+              styles={customStyles}
+
             />
           </div>
-          <label
-            htmlFor='acceptTerms'
-            className='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'
-          >
-            I have read and accept the{' '}
-            <a
-              href='#'
-              className='text-blue-600 hover:underline dark:text-blue-500'
+
+          <div className='space-y-1'>
+            <div className='relative '>
+              <select
+                id='companyLanguage'
+                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                name='companyName'
+                value={formState.companyLanguage}
+                onChange={handleChange}
+              >
+                <option value='english'>English</option>
+                <option value='german'>German</option>
+                <option value='croatian'>Croatian</option>
+              </select>
+              <label
+                htmlFor='companyLanguage'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+              >
+                Company language
+              </label>
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>Please enter your company name</span>
+            </p>
+          </div>
+          <div className='flex items-start mb-5'>
+            <div className='flex items-center h-5'>
+              <input
+                id='terms'
+                type='checkbox'
+                name='acceptTerms'
+                checked={formState.acceptTerms}
+                onChange={(e) => setTermsAndConditions(e.target.checked)}
+                className='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800'
+              />
+            </div>
+            <label
+              htmlFor='acceptTerms'
+              className='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+            >
+              I have read and accept the{' '}
+              <a
+                href='#'
+                className='text-blue-600 hover:underline dark:text-blue-500'
+              >
+                terms and conditions
+              </a>
+            </label>
+          </div>
+
             >
               terms and conditions
             </a>
@@ -396,9 +488,10 @@ const SignUpThree = ({
         >
           Next
         </button> */}
-        <div className='py-6 flex flex-col gap-y-6 md:gap-x-20  justify-center w-full md:w-1/4 mx-auto'>
-          <ButtonOutline label='Back' prevStep={gotoPrevStep} />
-          <Button label='Send' />
+          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20  justify-center w-full md:w-1/4 mx-auto'>
+            <ButtonOutline label='Back' prevStep={gotoPrevStep} />
+            <Button label='Send' />
+          </div>
         </div>
       </form>
     </div>

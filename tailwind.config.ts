@@ -55,5 +55,6 @@ export default {
   daisyui: {
     themes: [],
  },
+  darkMode: 'class',
   plugins: [require('@tailwindcss/forms'), require('flowbite/plugin'), require('daisyui'),],
 } satisfies Config;

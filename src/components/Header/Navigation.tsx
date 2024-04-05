@@ -72,8 +72,9 @@ export const Navigation = ({ user, lang }) => {
         </div>
 
 
-        <Sun size={28} />
-      </div>
+        <Sun 
+        size={28} />
+       </div>
     </nav>
   );
 };
