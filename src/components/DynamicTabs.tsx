@@ -122,7 +122,7 @@ const DynamicTabs = ({ tabs, setTabs }) => {
         </svg>
         <span>&nbsp;&nbsp;Add social media account</span>
       </button>
-      <div className='border-b border-gray-200 dark:border-gray-700'>
+      <div className='border-b border-gray-200 dark:border-gray-700 overflow-hidden'>
         <div className='scroll-container'>
           <ul className='flex flex-nowrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
             {tabs.map((tab) => (
@@ -130,8 +130,7 @@ const DynamicTabs = ({ tabs, setTabs }) => {
                 <a
                   href='#'
                   className={`inline-flex items-center justify-center p-4 ${activeTab === tab.id ? activeClass : inactiveClass}`}
-                  onClick={() => handleTabClick(tab.id)}
-                >
+                  onClick={() => handleTabClick(tab.id)}>
                   {tab.title}
                   &nbsp;
                   <svg

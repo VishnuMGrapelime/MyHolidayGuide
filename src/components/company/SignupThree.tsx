@@ -185,28 +185,26 @@ const SignUpThree = ({
 
   return (
     <>
-      <div className='m-12 p-12'>
+      <form onSubmit={handleSubmit}>
+        <div className='m-12 p-12'>
 
-        <div className='w-full  mx-auto text-center'>
-          <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
-            <span>Company information</span>
-          </h2>
-          <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
-            <span>Please be a as precise as possible</span>
-          </p>
-          <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
-            <span>
-              Some basic information about your company, for receipts, contact
-              etc.
-            </span>
-          </p>
+          <div className='w-full  mx-auto text-center'>
+            <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
+              <span>Company information</span>
+            </h2>
+            <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
+              <span>Please be a as precise as possible</span>
+            </p>
+            <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
+              <span>
+                Some basic information about your company, for receipts, contact
+                etc.
+              </span>
+            </p>
+          </div>
         </div>
-      </div>
-      <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
-        <form onSubmit={handleSubmit}>
-
-          {errorStatus && <ValidationBox errors={errors} />}
-
+        {errorStatus && <ValidationBox errors={errors} />}
+        <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
           <div className='space-y-1'>
             <div className='relative '>
               <input
@@ -234,9 +232,7 @@ const SignUpThree = ({
           </div>
 
           <div>
-            <div className='mt-2'>
-              <DynamicTabs tabs={tabs} setTabs={setTabs} />
-            </div>
+            <DynamicTabs tabs={tabs} setTabs={setTabs} />
           </div>
 
           <div className='space-y-1'>
@@ -262,7 +258,6 @@ const SignUpThree = ({
             </p>
           </div>
 
-
           <div className='space-y-1'>
             <div className="relative">
               <Datepicker
@@ -273,16 +268,15 @@ const SignUpThree = ({
               />
               <label
                 htmlFor="existSince"
-                className="absolute top-[17px] bg-white  left-3.5  z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                className="absolute top-[17px] bg-white  left-[5px]  z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
               >
                 Company exist since
               </label>
+              <p className='text- md:text-px mb-4' style={{ paddingLeft: '1rem' }}>
+                <span>Please enter your company name exist since</span>
+              </p>
             </div>
-            <p className='text-md:text- px-4 '>
-              <span>How many employees does your company have</span>
-            </p>
           </div>
-
           <div className='space-y-1'>
             <div className='relative '>
               <select
@@ -312,34 +306,32 @@ const SignUpThree = ({
               </label>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company name</span>
+              <span>Please enter your company name gross turn over</span>
             </p>
           </div>
-
-
-
-
-
-          <div className="relative">
-            <label
-              className="absolute top-3 left-5 z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
-              htmlFor="businessType"
-            >
-              Company business types
-            </label>
-            <Select
-              className="block w-full pb-2.5 pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer"
-              id="businessType"
-              options={options}
-              isMulti
-              defaultValue={selectedOption}
-              onChange={handleBusinessTypeChange}
-              placeholder=""
-              styles={customStyles}
-
-            />
+          <div className='space-y-1'>
+            <div className="relative">
+              <label
+                className="absolute top-3 left-[5px] z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+                htmlFor="businessType"
+              >
+                Company business types
+              </label>
+              <Select
+                className="block w-full   pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer"
+                id="businessType"
+                options={options}
+                isMulti
+                defaultValue={selectedOption}
+                onChange={handleBusinessTypeChange}
+                placeholder=""
+                styles={customStyles}
+              />
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>Please enter your company name gross turn over</span>
+            </p>
           </div>
-
           <div className='space-y-1'>
             <div className='relative '>
               <select
@@ -355,7 +347,7 @@ const SignUpThree = ({
               </select>
               <label
                 htmlFor='companyLanguage'
-                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                className='absolute z-0 text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2  origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 Company language
               </label>
@@ -364,54 +356,36 @@ const SignUpThree = ({
               <span>Please enter your company name</span>
             </p>
           </div>
-          <div className='flex items-start mb-5'>
-            <div className='flex items-center h-5'>
-              <input
-                id='terms'
-                type='checkbox'
-                name='acceptTerms'
-                checked={formState.acceptTerms}
-                onChange={(e) => setTermsAndConditions(e.target.checked)}
-                className='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800'
-              />
-            </div>
-            <label
-              htmlFor='acceptTerms'
-              className='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+        </div>
+        <div className='flex items-start mb-5'>
+          <div className='flex items-center h-5'>
+            <input
+              id='terms'
+              type='checkbox'
+              name='acceptTerms'
+              checked={formState.acceptTerms}
+              onChange={(e) => setTermsAndConditions(e.target.checked)}
+              className='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800'
+            />
+          </div>
+          <label
+            htmlFor='acceptTerms'
+            className='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+          >
+            I have read and accept the{' '}
+            <a
+              href='#'
+              className='text-blue-600 hover:underline dark:text-blue-500'
             >
-              I have read and accept the{' '}
-              <a
-                href='#'
-                className='text-blue-600 hover:underline dark:text-blue-500'
-              >
-                terms and conditions
-              </a>
-            </label>
-          </div>
-
-
-
-          {/* 
-        <button
-          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-          onClick={prevStep}
-        >
-          Back
-        </button>
-
-        <button
-          className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
-          // onClick={checkData}
-          type='submit'
-        >
-          Next
-        </button> */}
-          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20  justify-center w-full md:w-1/4 mx-auto'>
-            <ButtonOutline label='Back' prevStep={gotoPrevStep} />
-            <Button label='Send' />
-          </div>
-        </form>
-      </div>
+              terms and conditions
+            </a>
+          </label>
+        </div>
+        <div className='py-6 px-4 flex flex-col gap-y-6 md:gap-x-20  justify-center items-center w-full mx-auto'>
+          <ButtonOutline label='Back' prevStep={gotoPrevStep} />
+          <Button label='Send' />
+        </div>
+      </form>
     </>
 
   );
