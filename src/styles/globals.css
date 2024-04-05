@@ -172,12 +172,22 @@
   font-size: 1.25rem;
   font-weight: bold;
 }
-.color-primary {
-  background-color: #1CCFB9;
-  color: white;
+.vibrant-cyan-blue  {
+  color:  #1CCFB9;;
 }
 .step-text {
   font-size: 0.875rem;
     font-weight: 400;
     line-height: 1.43;
   }
+.align-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+ }
+ 

@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 
 import DynamicTabs from '@/components/DynamicTabs';
 import { Button, ButtonOutline } from '@/components/Elements/Button';
+import { ClipboardCheck } from 'lucide-react';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -22,6 +23,32 @@ const options = [
   { value: 'boatsyachts', label: 'Boats & Yachts' },
   { value: 'transfers', label: 'Transfers' },
 ];
+const customStyles = {
+  menu: provided => ({
+    ...provided,
+    borderRadius: '0 0 0.5rem 0.5rem', // Round bottom corners
+    marginTop: '0', // Remove top margin
+    boxShadow: 'none', // Remove shadow
+    border: '1px solid #E5E7EB', // Add border
+
+  }),
+  option: provided => ({
+    ...provided,
+    // padding: '0.5rem', // Add padding to options
+  }),
+  indicatorSeparator: (base) => ({
+    display: 'none',
+  }),
+  control: (base, state) => ({
+    ...base,
+    padding: '5px',
+  }),
+  dropdownIndicator: (base, state) => ({
+    ...base,
+    color: '#666', // Change this to your desired color
+    padding: '0'
+  }),
+}
 
 const SignUpThree = ({
   nextStep,
@@ -142,24 +169,40 @@ const SignUpThree = ({
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2 className='text-xl font-bold mb-6'>Additional Information</h2>
-        <div>
-          <label
-            htmlFor='email'
-            className='block text-sm font-medium leading-6'
-          >
-            Company Website
-          </label>
-          <div className='mt-2'>
+        <div className='m-12 p-12'>
+          <div className='w-full  mx-auto text-center'>
+            <h2 className="pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold"><span>Company information</span></h2>
+            <p className="text-p1 md:text-[1.3125rem] leading-6 font-bold"><span>Please be a as precise as possible</span></p>
+            <p className="text-[1rem] leading-6 pt-2 md:pt-9"><span>Some basic information about your company, for receipts, contact etc.</span></p>
+          </div>
+        </div>
+
+        <div className='space-y-1'>
+          <div className='relative '>
             <input
-              type='text'
-              name='companyWebsite'
-              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              type='email'
+              id='companyWebsite'
+              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              placeholder=' '
+              name='companyName'
               value={formState.companyWebsite}
               onChange={handleChange}
             />
+            <label
+              htmlFor='companyWebsite'
+              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+            >
+              Company Website
+            </label>
+            <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
+              <ClipboardCheck color='#1CCFB9' />
+            </div>
           </div>
+          <p className='text- md:text- px-4 '>
+            <span>Your main domain on the web</span>
+          </p>
         </div>
+
 
         <div>
           <div className='mt-2'>
@@ -167,30 +210,35 @@ const SignUpThree = ({
           </div>
         </div>
 
-        <div>
-          <label
-            htmlFor='employeeCount'
-            className='block text-sm font-medium leading-6'
-          >
-            Company employee count
-          </label>
-          <div className='mt-2'>
+        <div className='space-y-1'>
+          <div className='relative '>
             <input
               type='text'
-              name='employeeCount'
-              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              id='employeeCount'
+              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              placeholder=' '
+              name='companyName'
               value={formState.employeeCount}
               onChange={handleChange}
             />
-          </div>
-        </div>
+            <label
+              htmlFor='employeeCount'
+              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+            >
+              Company employee count
+            </label>
 
+          </div>
+          <p className='text- md:text- px-4 '>
+            <span>Please enter your company name</span>
+          </p>
+        </div>
         <div>
           <label
             htmlFor='existSince'
             className='block text-sm font-medium leading-6'
           >
-            Company exist since
+
           </label>
           <div className='mt-2'>
             {/* <Field
@@ -200,6 +248,7 @@ const SignUpThree = ({
               /> */}
 
             <div className='relative max-w-sm cedatepicker'>
+
               <Datepicker
                 value={selectedDate}
                 onSelectedDateChanged={handleDateChange}
@@ -207,19 +256,57 @@ const SignUpThree = ({
             </div>
           </div>
         </div>
+        <div className='space-y-1'>
+          <div className='relative '>
+            <Datepicker onSelectedDateChanged={handleDateChange}
+              id='existSince'
+              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+            />
+            <label
+              htmlFor='existSince'
+              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+            >
+              Company exist since
+            </label>
 
-        <div>
-          <label
-            htmlFor='turnOver'
-            className='block text-sm font-medium leading-6'
-          >
-            Company Gross turn over per year
-          </label>
-          <div className='mt-2'>
+          </div>
+          <p className='text- md:text- px-4 '>
+            <span>How many employees does your company have</span>
+          </p>
+        </div>
+        <div className='space-y-1'>
+          <div className="relative">
+            <input
+              type="date"
+              id="existSince"
+              className="block px-2.5 pb-2.5 pt-4 w-full text-sm
+             text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=" "
+              onClick={handleDateChange}
+            >
+
+            </input>
+            <label
+              htmlFor="existSince"
+              className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+            >
+              Company exist since
+            </label>
+          </div>
+          <p className='text- md:text- px-4 '>
+            <span>How many employees does your company have</span>
+          </p>
+        </div>
+        <div className='space-y-1'>
+          <div className='relative '>
             <select
-              as='select'
-              name='turnOver'
-              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              id='turnOver'
+              className='block px-2.5   pb-2.5 pt-3 w-full text-sm 
+              text-gray-900 bg-transparent rounded-lg 
+              border-1 border-gray-300 appearance-none dark:text-white
+              dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
+               focus:ring-0 focus:border-blue-600 peer'
+              name='companyName'
               value={formState.turnOver}
               onChange={handleChange}
             >
@@ -231,47 +318,44 @@ const SignUpThree = ({
               <option value='500000-1000000'>500000-1000000 EUR</option>
               <option value='1000000+'>1000000+ EUR</option>
             </select>
+            <label
+              htmlFor='turnOver'
+              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+            >
+              Company Gross turn over per year
+            </label>
           </div>
+          <p className='text- md:text- px-4 '>
+            <span>Please enter your company name</span>
+          </p>
         </div>
 
-        <div>
+        <div className="relative">
           <label
-            htmlFor='businessType'
-            className='block text-sm font-medium leading-6'
+            className="absolute top-3 left-5 z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
+            htmlFor="businessType"
           >
             Company business types
           </label>
-          <div className='mt-2'>
-            {/* <Field
-                type='text'
-                name='businessType'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              /> */}
+          <Select
+            className="block w-full pb-2.5 pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            id="businessType"
+            options={options}
+            isMulti
+            defaultValue={selectedOption}
+            onChange={setSelectedOption}
+            placeholder=""
+            styles={customStyles}
 
-            <Select
-              //defaultValue={selectedOption}
-              value={selectedOption}
-              onChange={handleBusinessTypeChange}
-              options={options}
-              isMulti
-            />
-
-            {/* <DateSelector label='Select Date' name='date' /> */}
-          </div>
+          />
         </div>
 
-        <div>
-          <label
-            htmlFor='companyLanguage'
-            className='block text-sm font-medium leading-6'
-          >
-            Company language
-          </label>
-          <div className='mt-2'>
+        <div className='space-y-1'>
+          <div className='relative '>
             <select
-              as='select'
-              name='companyLanguage'
-              className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
+              id='companyLanguage'
+              className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+              name='companyName'
               value={formState.companyLanguage}
               onChange={handleChange}
             >
@@ -279,9 +363,17 @@ const SignUpThree = ({
               <option value='german'>German</option>
               <option value='croatian'>Croatian</option>
             </select>
+            <label
+              htmlFor='companyLanguage'
+              className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+            >
+              Company language
+            </label>
           </div>
+          <p className='text- md:text- px-4 '>
+            <span>Please enter your company name</span>
+          </p>
         </div>
-
         <div className='flex items-start mb-5'>
           <div className='flex items-center h-5'>
             <input
@@ -306,6 +398,7 @@ const SignUpThree = ({
             </a>
           </label>
         </div>
+
         <div className='space-y-1'>
           <div className='relative '>
             <input
@@ -325,6 +418,7 @@ const SignUpThree = ({
             <span>Please enter the country of your company headquarters </span>
           </p>
         </div>
+
         {/* 
         <button
           className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
