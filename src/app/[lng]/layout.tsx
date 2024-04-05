@@ -66,7 +66,7 @@ export default function RootLayout({
         <ReduxProvider>
           <SessionProvider>
             <Header lang={lng} />
-            <Toaster position='bottom-center' />
+            <Toaster position='top-center' duration='4000' />
             {children}
             <Footer />
           </SessionProvider>

@@ -1,5 +1,6 @@
 'use client';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -14,6 +15,7 @@ import { addData } from '@/firebase/firestore/data';
 const CompanySignUpPage = () => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
+  const router = useRouter();
 
   const nextStep = () => {
     setStep(step + 1);
@@ -52,6 +54,7 @@ const CompanySignUpPage = () => {
           email: user.email,
           userId: user.uid,
           userRole: 'supplier',
+          userType: 'company',
           displayName: finalData.firstName + ' ' + finalData.lastName,
           createdAt: user.metadata.createdAt,
         };
@@ -64,6 +67,7 @@ const CompanySignUpPage = () => {
         }
 
         toast.success('New user created successfully');
+        router.push('/partner/company/signup');
         // ...
       })
       .catch((error) => {
@@ -225,7 +229,7 @@ const CompanySignUpPage = () => {
             //   updateFormData={updateFormData}
             // />
           )}
-          {step === 1 && (
+          {step === 2 && (
             <SignUpTwo
               nextStep={nextStep}
               prevStep={prevStep}
@@ -233,7 +237,7 @@ const CompanySignUpPage = () => {
               updateFormData={updateFormData}
             />
           )}
-          {step === 1 && (
+          {step === 3 && (
             <SignUpThree
               nextStep={nextStep}
               prevStep={prevStep}

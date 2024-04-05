@@ -7,16 +7,18 @@ import { ValidationBox } from '@/components/Elements/ValidationBox';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
-  companyIdNo: Yup.string().required(),
-  companyName: Yup.string().required(),
+  companyIdNo: Yup.string().required(
+    'Company identification no is a required field',
+  ),
+  companyName: Yup.string().required('Company name is a required field'),
   // companyName2: Yup.string().required(),
-  address1: Yup.string().required(),
-  address2: Yup.string().required(),
-  streetNumber: Yup.string().required(),
-  postOffice: Yup.string().required(),
-  zipCode: Yup.string().required(),
-  city: Yup.string().required(),
-  country: Yup.string().required(),
+  address1: Yup.string().required('Address1 is a required field'),
+  address2: Yup.string().required('Address2 is a required field'),
+  streetNumber: Yup.string().required('Street number is a required field'),
+  postOffice: Yup.string().required('Post Office is a required field'),
+  zipCode: Yup.string().required('Zipcode is a required field'),
+  city: Yup.string().required('City is a required field'),
+  country: Yup.string().required('Country is a required field'),
 });
 
 const SignupOne = ({ nextStep, formData, updateFormData }) => {

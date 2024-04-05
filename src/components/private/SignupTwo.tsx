@@ -2,12 +2,15 @@ import { ClipboardCheck } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
+import DynamicTabs from '@/components/DynamicTabs';
 import { Button, ButtonOutline } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
   email: Yup.string().email().required('Email is a required field'),
+  phone: Yup.string().required('Phone is a required field'),
+  personalWebsite: Yup.string().required(),
   password: Yup.string()
     .min(6)
     .max(24)
@@ -16,31 +19,39 @@ const schema = Yup.object().shape({
     [Yup.ref('password'), null],
     'Passwords must match',
   ),
-  phone: Yup.string().required('Phone is a required field'),
-  firstName: Yup.string().required('First name is a required field'),
-  lastName: Yup.string().required('Last name is a required field'),
+  preferedLanguage: Yup.string().required(),
 });
 
-const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
+const SignUpTwo = ({
+  nextStep,
+  prevStep,
+  formData,
+  updateFormData,
+  finalSubmit,
+}) => {
   const [formState, setFormState] = useState({
     email: '',
+    phone: '',
+    personalWebsite: '',
     password: '',
     confirmPassword: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
+    preferedLanguage: '',
   });
 
   useEffect(() => {
     if (formData) {
       setFormState({
         email: formData.email,
+        phone: formData.phone,
+        personalWebsite: formData.personalWebsite,
         password: formData.password,
         confirmPassword: formData.confirmPassword,
-        phone: formData.phone,
-        firstName: formData.firstName,
-        lastName: formData.lastName,
+        preferedLanguage: formData.preferedLanguage,
       });
+
+      if (formData.socialTabs) {
+        setTabs(formData.socialTabs);
+      }
     }
   }, []);
 
@@ -52,13 +63,14 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
 
   const [errors, setErrors] = useState({
     email: formData.email,
+    phone: formData.phone,
+    personalWebsite: formData.personalWebsite,
     password: formData.password,
     confirmPassword: formData.confirmPassword,
-    phone: formData.phone,
-    firstName: formData.firstName,
-    lastName: formData.lastName,
+    preferedLanguage: formData.preferedLanguage,
   });
 
+  const [tabs, setTabs] = useState([]);
   const [errorStatus, setErrorStatus] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -71,8 +83,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
       await schema.validate(formState, { abortEarly: false });
 
       console.log('Form is valid', formState);
-      updateFormData(formState);
-      nextStep();
+      finalSubmit(formState);
     } catch (error) {
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
@@ -86,166 +97,23 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
       }
     }
   };
-  const [initialValues, setInitialValues] = useState({
-    email: '',
-    password: '',
-    confirmPassword: '',
-    phone: '',
-    firstName: '',
-    lastName: '',
-  });
-
-  useState(() => {
-    if (formData) {
-      setInitialValues(formData);
-    }
-
-    console.log(formData);
-  }, []);
-
-  const onSubmit = (values) => {
-    console.log(values);
-    updateFormData(values);
-    nextStep();
-  };
 
   const gotoPrevStep = () => {
-    updateFormData(formState);
+    if (tabs) {
+      updateFormData({ ...formState, socialTabs: tabs });
+    } else {
+      updateFormData(formState);
+    }
     prevStep();
   };
 
   return (
     <div>
-      {/* <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={onSubmit}
-      >
-        <Form>
-          <h2 className='text-xl font-bold mb-6'>Company owner information</h2>
-          <div>
-            <label
-              htmlFor='email'
-              className='block text-sm font-medium leading-6'
-            >
-              Email
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='email'
-                name='email'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='email' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='password'
-              className='block text-sm font-medium leading-6'
-            >
-              Password
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='password'
-                name='password'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='password' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='confirmPassword'
-              className='block text-sm font-medium leading-6'
-            >
-              Confirm Password
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='password'
-                name='confirmPassword'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='confirmPassword' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='phone'
-              className='block text-sm font-medium leading-6'
-            >
-              Phone
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='phone'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='phone' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='firstName'
-              className='block text-sm font-medium leading-6'
-            >
-              First Name
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='firstName'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='firstName' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='lastName'
-              className='block text-sm font-medium leading-6'
-            >
-              Last Name
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='lastName'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='lastName' component='div' />
-            </div>
-          </div>
-
-          <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-            onClick={prevStep}
-          >
-            Back
-          </button>
-
-          <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-            // onClick={nextStep}
-            type='submit'
-          >
-            Next
-          </button>
-        </Form>
-      </Formik> */}
       <form onSubmit={handleSubmit}>
         <div className='m-12 p-12'>
           <div className='w-full  mx-auto text-center'>
             <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
-              <span>Company owner information</span>
+              <span>Additional information</span>
             </h2>
             <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
               <span>This person will be the administrator of the account.</span>
@@ -266,7 +134,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
             <div className='relative '>
               <input
                 type='text'
-                id='default_outlined'
+                id='email'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
                 name='email'
@@ -274,7 +142,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
                 onChange={handleChange}
               />
               <label
-                htmlFor='default_outlined'
+                htmlFor='email'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 Email
@@ -284,15 +152,71 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter the e-mail address of the company owner</span>
+              <span>Please enter the e-mail address</span>
             </p>
           </div>
 
           <div className='space-y-1'>
             <div className='relative '>
               <input
+                type='text'
+                id='phone'
+                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                placeholder=' '
+                name='phone'
+                value={formState.phone}
+                onChange={handleChange}
+              />
+              <label
+                htmlFor='phone'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+              >
+                Phone
+              </label>
+              <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
+                <ClipboardCheck color='#1CCFB9' />
+              </div>
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>The contact phone number</span>
+            </p>
+          </div>
+
+          <div className='space-y-1'>
+            <div className='relative '>
+              <input
+                type='text'
+                id='personalWebsite'
+                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                placeholder=' '
+                name='personalWebsite'
+                value={formState.personalWebsite}
+                onChange={handleChange}
+              />
+              <label
+                htmlFor='personalWebsite'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+              >
+                Website
+              </label>
+              <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
+                <ClipboardCheck color='#1CCFB9' />
+              </div>
+            </div>
+            <p className='text- md:text- px-4 '>
+              <span>Your main domain on the web</span>
+            </p>
+          </div>
+          <div>
+            <div className='mt-2'>
+              <DynamicTabs tabs={tabs} setTabs={setTabs} />
+            </div>
+          </div>
+          <div className='space-y-1'>
+            <div className='relative '>
+              <input
                 type='password'
-                id='default_outlined'
+                id='password'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
                 name='password'
@@ -300,7 +224,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
                 onChange={handleChange}
               />
               <label
-                htmlFor='default_outlined'
+                htmlFor='password'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 Password
@@ -318,7 +242,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
             <div className='relative '>
               <input
                 type='text'
-                id='default_outlined'
+                id='confirmPassword'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
                 name='confirmPassword'
@@ -326,7 +250,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
                 onChange={handleChange}
               />
               <label
-                htmlFor='default_outlined'
+                htmlFor='confirmPassword'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 Password confirmation
@@ -342,78 +266,30 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
 
           <div className='space-y-1'>
             <div className='relative '>
-              <input
-                type='text'
-                id='default_outlined'
+              <select
+                id='preferedLanguage'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
-                placeholder=' '
-                name='phone'
-                value={formState.phone}
+                name='preferedLanguage'
+                value={formState.preferedLanguage}
+                defaultValue='english'
                 onChange={handleChange}
-              />
+              >
+                <option value='english'>English</option>
+                <option value='german'>German</option>
+                <option value='croatian'>Croatian</option>
+              </select>
               <label
-                htmlFor='default_outlined'
+                htmlFor='preferedLanguage'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Phone
+                Prefered language
               </label>
-              <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                <ClipboardCheck color='#1CCFB9' />
-              </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>The owner's contact phone number</span>
-            </p>
-          </div>
-          <div className='space-y-1'>
-            <div className='relative '>
-              <input
-                type='text'
-                id='default_outlined'
-                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
-                placeholder=' '
-                name='firstName'
-                value={formState.firstName}
-                onChange={handleChange}
-              />
-              <label
-                htmlFor='default_outlined'
-                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
-              >
-                First name
-              </label>
-              <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                <ClipboardCheck color='#1CCFB9' />
-              </div>
-            </div>
-            <p className='text- md:text- px-4 '>
-              <span>Please enter the first name of the company owner</span>
-            </p>
-          </div>
-
-          <div className='space-y-1'>
-            <div className='relative '>
-              <input
-                type='text'
-                id='default_outlined'
-                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
-                placeholder=' '
-                name='lastName'
-                value={formState.lastName}
-                onChange={handleChange}
-              />
-              <label
-                htmlFor='default_outlined'
-                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
-              >
-                Last name
-              </label>
-              <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                <ClipboardCheck color='#1CCFB9' />
-              </div>
-            </div>
-            <p className='text- md:text- px-4 '>
-              <span>Please enter the last name of the company owner</span>
+              <span>
+                This will be the user-interface language and that product input
+                also occurs in the selected language.
+              </span>
             </p>
           </div>
 
