@@ -1,11 +1,11 @@
 import { Datepicker } from 'flowbite-react';
+import { ClipboardCheck } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import * as Yup from 'yup';
 
 import DynamicTabs from '@/components/DynamicTabs';
 import { Button, ButtonOutline } from '@/components/Elements/Button';
-import { ClipboardCheck } from 'lucide-react';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -24,15 +24,14 @@ const options = [
   { value: 'transfers', label: 'Transfers' },
 ];
 const customStyles = {
-  menu: provided => ({
+  menu: (provided) => ({
     ...provided,
     borderRadius: '0 0 0.5rem 0.5rem', // Round bottom corners
     marginTop: '0', // Remove top margin
     boxShadow: 'none', // Remove shadow
     border: '1px solid #E5E7EB', // Add border
-
   }),
-  option: provided => ({
+  option: (provided) => ({
     ...provided,
     // padding: '0.5rem', // Add padding to options
   }),
@@ -46,9 +45,9 @@ const customStyles = {
   dropdownIndicator: (base, state) => ({
     ...base,
     color: '#666', // Change this to your desired color
-    padding: '0'
+    padding: '0',
   }),
-}
+};
 
 const SignUpThree = ({
   nextStep,
@@ -162,6 +161,7 @@ const SignUpThree = ({
   };
 
   const gotoPrevStep = () => {
+    console.log(formState);
     updateFormData(formState);
     prevStep();
   };
@@ -171,9 +171,18 @@ const SignUpThree = ({
       <form onSubmit={handleSubmit}>
         <div className='m-12 p-12'>
           <div className='w-full  mx-auto text-center'>
-            <h2 className="pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold"><span>Company information</span></h2>
-            <p className="text-p1 md:text-[1.3125rem] leading-6 font-bold"><span>Please be a as precise as possible</span></p>
-            <p className="text-[1rem] leading-6 pt-2 md:pt-9"><span>Some basic information about your company, for receipts, contact etc.</span></p>
+            <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
+              <span>Company information</span>
+            </h2>
+            <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
+              <span>Please be a as precise as possible</span>
+            </p>
+            <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
+              <span>
+                Some basic information about your company, for receipts, contact
+                etc.
+              </span>
+            </p>
           </div>
         </div>
 
@@ -184,7 +193,7 @@ const SignUpThree = ({
               id='companyWebsite'
               className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
               placeholder=' '
-              name='companyName'
+              name='companyWebsite'
               value={formState.companyWebsite}
               onChange={handleChange}
             />
@@ -203,7 +212,6 @@ const SignUpThree = ({
           </p>
         </div>
 
-
         <div>
           <div className='mt-2'>
             <DynamicTabs tabs={tabs} setTabs={setTabs} />
@@ -217,7 +225,7 @@ const SignUpThree = ({
               id='employeeCount'
               className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
               placeholder=' '
-              name='companyName'
+              name='employeeCount'
               value={formState.employeeCount}
               onChange={handleChange}
             />
@@ -227,16 +235,17 @@ const SignUpThree = ({
             >
               Company employee count
             </label>
-
           </div>
           <p className='text- md:text- px-4 '>
             <span>Please enter your company name</span>
           </p>
         </div>
-      
+
         <div className='space-y-1'>
           <div className='relative '>
-            <Datepicker onSelectedDateChanged={handleDateChange}
+            <Datepicker
+              value={selectedDate}
+              onSelectedDateChanged={handleDateChange}
               id='existSince'
               className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
             />
@@ -246,13 +255,12 @@ const SignUpThree = ({
             >
               Company exist since
             </label>
-
           </div>
           <p className='text- md:text- px-4 '>
             <span>How many employees does your company have</span>
           </p>
         </div>
-    
+
         <div className='space-y-1'>
           <div className='relative '>
             <select
@@ -262,7 +270,7 @@ const SignUpThree = ({
               border-1 border-gray-300 appearance-none dark:text-white
               dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
                focus:ring-0 focus:border-blue-600 peer'
-              name='companyName'
+              name='turnOver'
               value={formState.turnOver}
               onChange={handleChange}
             >
@@ -286,23 +294,23 @@ const SignUpThree = ({
           </p>
         </div>
 
-        <div className="relative">
+        <div className='relative'>
           <label
-            className="absolute top-3 left-5 z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4"
-            htmlFor="businessType"
+            className='absolute top-3 left-5 z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
+            htmlFor='businessType'
           >
             Company business types
           </label>
           <Select
-            className="block w-full pb-2.5 pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            id="businessType"
+            className='block w-full pb-2.5 pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+            id='businessType'
             options={options}
             isMulti
-            defaultValue={selectedOption}
+            //defaultValue={selectedOption}
+            value={selectedOption}
             onChange={handleBusinessTypeChange}
-            placeholder=""
+            placeholder=''
             styles={customStyles}
-
           />
         </div>
 
@@ -311,7 +319,7 @@ const SignUpThree = ({
             <select
               id='companyLanguage'
               className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
-              name='companyName'
+              name='companyLanguage'
               value={formState.companyLanguage}
               onChange={handleChange}
             >
@@ -354,8 +362,6 @@ const SignUpThree = ({
             </a>
           </label>
         </div>
-
-
 
         {/* 
         <button
