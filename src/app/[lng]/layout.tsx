@@ -14,6 +14,7 @@ import ReduxProvider from '@/redux/ReduxProvider';
 
 import { languages } from '../i18n/settings';
 import SessionProvider from '../../providers/SessionProvider';
+import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -68,6 +69,7 @@ export default function RootLayout({
             <Header lang={lng} />
             <Toaster position='top-center' duration='4000' />
             {children}
+           <ScrollToTopButton />
             <Footer />
           </SessionProvider>
         </ReduxProvider>
