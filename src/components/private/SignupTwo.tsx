@@ -10,7 +10,7 @@ import { ValidationBox } from '@/components/Elements/ValidationBox';
 const schema = Yup.object().shape({
   email: Yup.string().email().required('Email is a required field'),
   phone: Yup.string().required('Phone is a required field'),
-  personalWebsite: Yup.string().required(),
+  personalWebsite: Yup.string().required('Personal website is a required field'),
   password: Yup.string()
     .min(6)
     .max(24)
@@ -243,7 +243,7 @@ const SignUpTwo = ({
           <div className='space-y-1'>
             <div className='relative '>
               <input
-                type='text'
+                type='password'
                 id='confirmPassword'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '

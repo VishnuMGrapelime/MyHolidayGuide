@@ -15,7 +15,7 @@ const schema = Yup.object().shape({
   address1: Yup.string().required('Address1 is a required field'),
   address2: Yup.string().required('Address2 is a required field'),
   streetNumber: Yup.string().required('Street number is a required field'),
-  postOffice: Yup.string().required('Post Office is a required field'),
+  // postOffice: Yup.string().required('Post Office is a required field'),
   zipCode: Yup.string().required('Zipcode is a required field'),
   city: Yup.string().required('City is a required field'),
   country: Yup.string().required('Country is a required field'),
@@ -40,7 +40,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
       setFormState({
         companyIdNo: formData.companyIdNo,
         companyName: formData.companyName,
-        companyName2: formData.companyName2,
+        companyName2: (formData.companyName2) ? formData.companyName2 : "",
         address1: formData.address1,
         address2: formData.address2,
         streetNumber: formData.streetNumber,

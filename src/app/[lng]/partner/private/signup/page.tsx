@@ -66,7 +66,7 @@ const CompanySignUpPage = () => {
         }
 
         toast.success('New supplier created successfully');
-        router.push('/partner/company/signup');
+        router.push('/partner/private/signup');
         // ...
       })
       .catch((error) => {
@@ -101,7 +101,7 @@ const CompanySignUpPage = () => {
               updateFormData={updateFormData}
             />
           )}
-          {step === 1 && (
+          {step === 2 && (
             <SignUpTwo
               nextStep={nextStep}
               prevStep={prevStep}

@@ -60,10 +60,13 @@ const CompanySignUpPage = () => {
         };
         const userData = { ...userDetails, ...filteredData };
         console.log(userData);
-        const { error } = addData('users', userData);
+        const { result, error } = addData('users', userData);
 
         if (error) {
           toast.error(error);
+        } else {
+          console.log("Printing result");
+          console.log(result);
         }
 
         toast.success('New supplier created successfully');

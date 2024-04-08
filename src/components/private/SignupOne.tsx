@@ -6,7 +6,7 @@ import { Button } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
 const schema = Yup.object().shape({
   personalIdNo: Yup.string().required(
-    'Company identification no is a required field',
+    'Personal identification no is a required field',
   ),
   firstName: Yup.string().required('First name is a required field'),
   lastName: Yup.string().required('Last name is a required field'),
@@ -14,7 +14,7 @@ const schema = Yup.object().shape({
   address2: Yup.string().required('Address2 is a required field'),
   street: Yup.string().required('Street is a required field'),
   streetNumber: Yup.string().required('Street number is a required field'),
-  postOffice: Yup.string().required('Post Office is a required field'),
+  //postOffice: Yup.string().required('Post Office is a required field'),
   zipCode: Yup.string().required('Zipcode is a required field'),
   city: Yup.string().required('City is a required field'),
   country: Yup.string().required('Country is a required field'),
@@ -53,11 +53,62 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
     }
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { name, value } = e.target;
 
     setFormState({ ...formState, [name]: value });
+
+    if (errorStatus) {
+      try {
+        // Validate the form data
+        console.log(formState);
+        await schema.validate(formState, { abortEarly: false });
+
+
+      } catch (error) {
+
+        if (error instanceof Yup.ValidationError) {
+          // Update the errors state with the validation errors
+          const errorMessages = error.inner.reduce((acc, curr) => {
+            acc[curr.path] = curr.message;
+            return acc;
+          }, {});
+
+          setErrors(errorMessages);
+        }
+      }
+
+    }
   };
+
+  // async function handleFieldChange(e) {
+
+  //   const { name, value } = e.target;
+  //   setFormState({ ...formState, [name]: value });
+
+  //   if (errorStatus) {
+  //     try {
+  //       // Validate the form data
+  //       console.log(formState);
+  //       await schema.validate(formState, { abortEarly: false });
+
+
+  //     } catch (error) {
+
+  //       if (error instanceof Yup.ValidationError) {
+  //         // Update the errors state with the validation errors
+  //         const errorMessages = error.inner.reduce((acc, curr) => {
+  //           acc[curr.path] = curr.message;
+  //           return acc;
+  //         }, {});
+
+  //         setErrors(errorMessages);
+  //       }
+  //     }
+
+  //   }
+
+  // }
 
   const [errors, setErrors] = useState({
     personalIdNo: '',
@@ -129,8 +180,9 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
                 name='personalIdNo'
-                value={formState.personalIdNo}
+                value={formState.personalIdNo || ""}
                 onChange={handleChange}
+              // onChange={handleFieldChange}
               />
               <label
                 htmlFor='default_outlined'

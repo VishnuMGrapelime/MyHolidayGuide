@@ -23,8 +23,11 @@ export async function addData(collectionName, data) {
 
     // Add the document to the collection
     const result = await addDoc(myCollection, data);
+    console.log("data after insert");
+    console.log(result);
   } catch (e) {
     error = e;
+    console.log(e);
   }
 
   return { result, error };
