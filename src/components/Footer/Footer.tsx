@@ -3,7 +3,7 @@ import React from 'react';
 
 export const Footer = () => {
   return (
-    <footer className='bg-white rounded-lg shadow  dark:bg-gray-800 '>
+    <footer className='bg-[#0f1b38]   dark:bg-[#0f1b38] text-[#fafafa]'>
       <div className='xl:container mx-auto'>
         <div className='py-6 text-center md:flex md:items-center md:justify-between'>
           <span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
@@ -34,7 +34,7 @@ export const Footer = () => {
             </li>
             <li>
               <a href='#' className='hover:underline me-4 md:me-6'>
-                Licensing
+                Terms and Conditions
               </a>
             </li>
             <li>

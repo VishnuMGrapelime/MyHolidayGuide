@@ -387,7 +387,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
               </span>
             </p>
           </div>
-          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-center w-full'>
+          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-end w-full'>
             {/* <ButtonOutline label='Back' /> */}
             <Button label='Next' />
           </div>

@@ -395,7 +395,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
             </p>
           </div>
 
-          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-center w-full'>
+          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-between w-full'>
             <ButtonOutline label='Back' prevStep={gotoPrevStep} />
             <Button label='Next' />
           </div>

@@ -392,7 +392,7 @@ const SignUpThree = ({
             </a>
           </label>
         </div>
-        <div className='py-6 px-4 flex flex-col gap-y-6 md:gap-x-20  justify-center items-center w-full mx-auto'>
+        <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-between w-full'>
           <ButtonOutline label='Back' prevStep={gotoPrevStep} />
           <Button label='Send' />
         </div>

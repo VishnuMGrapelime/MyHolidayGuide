@@ -27,6 +27,7 @@ const LangSwitcher: React.FC = ({ lang }) => {
     // { country: 'Dutch', code: 'nl', flag: nlFlag },
   ];
 
+  const [language, setLanguage] = useState(options[0].flag)
   const setOption = (option: Option) => {
     let url = pathname?.toString();
     url = url.replace(`/${lang}/`, `/${option.code}/`);
@@ -36,6 +37,7 @@ const LangSwitcher: React.FC = ({ lang }) => {
     //console.log('new url ' + url);
 
     setIsOptionsExpanded(false);
+    setLanguage(option.flag);
     router.push(url);
   };
 
@@ -49,7 +51,7 @@ const LangSwitcher: React.FC = ({ lang }) => {
           onClick={() => setIsOptionsExpanded(!isOptionsExpanded)}
           onBlur={() => setIsOptionsExpanded(false)}
         >
-          <span>En</span>&nbsp;
+          <Image src={language} width='20' height='20' alt='logo' />&nbsp;
           <svg
             fill='none'
             viewBox='0 0 24 24'
