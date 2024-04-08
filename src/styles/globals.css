@@ -166,6 +166,7 @@
 
 .stepper {
   background-color: #1CCFB9;
+  border: none !important;
 }
 .stepIcon {
   fill: rgba(0, 0, 0, 0.87);
