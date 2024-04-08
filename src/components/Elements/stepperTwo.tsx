@@ -10,7 +10,7 @@ export default function StepperTwo({ currPage }) {
               className={`relative flex flex-col items-center justify-center w-10 h-10 border-solid border-black ${currPage == 1 ? 'stepper' : ''} rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0`}
             >
               1
-              <span className='absolute top-full left-1/2 transform -translate-x-1/2 step-text'>
+              <span className='absolute top-full mt-3 left-1/2 transform -translate-x-1/2 step-text'>
                 Personal information
               </span>
             </span>
@@ -30,7 +30,7 @@ export default function StepperTwo({ currPage }) {
               className={`flex relative items-center justify-center w-10 h-10 border-2   border-black ${currPage == 2 ? 'stepper' : ''} rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0`}
             >
               2
-              <span className='absolute top-full left-1/2 transform -translate-x-1/2 step-text'>
+              <span className='absolute mt-3 top-full left-1/2 transform -translate-x-1/2 step-text'>
                 Additional information
               </span>
             </span>

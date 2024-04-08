@@ -378,7 +378,9 @@ const SignUpThree = ({
               name='acceptTerms'
               checked={formState.acceptTerms}
               onChange={(e) => setTermsAndConditions(e.target.checked)}
-              className='w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800'
+              className='w-4 h-4 border border-gray-300 rounded bg-gray-50 
+              focus:ring-[#1CCFB9] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#1CCFB9] 
+              |dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 custom-checkbox'
             />
           </div>
           <label
@@ -388,7 +390,7 @@ const SignUpThree = ({
             I have read and accept the{' '}
             <a
               href='#'
-              className='text-blue-600 hover:underline dark:text-blue-500'
+              className='text-[#1CCFB9] hover:underline dark:text-blue-500'
             >
               terms and conditions
             </a>

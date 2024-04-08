@@ -107,7 +107,7 @@ const CompanySignUpPage = () => {
               updateFormData={updateFormData}
             />
           )}
-          {step === 3 && (
+          {step === 1 && (
             <SignUpThree
               nextStep={nextStep}
               prevStep={prevStep}
