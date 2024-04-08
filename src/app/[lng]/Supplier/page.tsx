@@ -10,7 +10,7 @@ function page() {
   return (
     <>
       <div className='' id='_holidayGuide'>
-        <div id='Supplier_area' className='' style={{ outline: 'none' }}>
+        <div className='' style={{ outline: 'none' }}>
           <div style={{ outline: 'none' }}>
             <div className='min-w-[350]'>
               <div></div>
@@ -18,7 +18,7 @@ function page() {
                 <div className='font-body'>
                   <section
                     className='font-body flex items-center justify-center py-20 px-4 w-full relative bg-cover bg-center h-auto md:py-14 md:min-h-[620px] lg:h-[calc(100vh-300px)] before:inset-0 before:absolute before:z-0 before:bg-gradient-to-b before:from-[#0F1A3666] before:to-[#0F1A3610]'
-                    // style={{ backgroundImage: `url(https://user-images.githubusercontent.com/75487668/141353341-0c11a1a6-89cb-4731-b4c0-c288d2d3c6b0.jpg)` }}>
+                  // style={{ backgroundImage: `url(https://user-images.githubusercontent.com/75487668/141353341-0c11a1a6-89cb-4731-b4c0-c288d2d3c6b0.jpg)` }}>
                   >
                     <div className='absolute inset-0'>
                       <Image
@@ -52,7 +52,7 @@ function page() {
                     </div>
                   </section>
                   {/* 1 */}
-                  <section className='py-9 md:py-20 px-4 dark:text-neutral-50'>
+                  {/* <section className='py-9 md:py-20 px-4 dark:text-neutral-50'>
                     <div className='xl:container xl:mx-auto'>
                       <div className='flex flex-col gap-y-12 md:gap-y-20'>
                         <div className='flex flex-col md:flex-row gap-4'>
@@ -161,10 +161,10 @@ function page() {
                         </div>
                       </div>
                     </div>
-                  </section>
+                  </section> */}
                   {/* 2 */}
 
-                  <section className='md:mb-4'>
+                  {/* <section className='md:mb-4'>
                     <div className='md:w-1/3 mx-auto  flex justify-center text-center'>
                       <h2 className='font-bold'>
                         Are you a private or a company host?
@@ -173,9 +173,9 @@ function page() {
                         company host
                       </h2>
                     </div>
-                  </section>
+                  </section> */}
 
-                  <section className='py-8 md:pt-0 md:pb-20 px-4'>
+                  {/* <section className='py-8 md:pt-0 md:pb-20 px-4'>
                     <div className='xl:container mx-auto'>
                       <div className='mx-auto lg:w-10/12 xl:w-8/12'>
                         <div style={{ outline: 'none' }}>
@@ -192,10 +192,10 @@ function page() {
                         </div>
                       </div>
                     </div>
-                  </section>
+                  </section> */}
 
                   {/* 3 */}
-                  <section
+                  {/* <section
                     className='font-body flex items-center pt-24 pb-52 md:py-14 px-4 w-full relative bg-cover  bg-center md:bg-right-bottom 
                 h-auto min-h-auto md:min-h-[620px] lg:h-[calc(100vh-300px)] after:inset-0 after:absolute after:z-0 after:bg-neutral-800 
                 after:bg-opacity-60 before:inset-0 before:absolute before:z-0 lg:after:bg-opacity-0  
@@ -203,11 +203,11 @@ function page() {
                     style={{
                       backgroundImage: `url(https://user-images.githubusercontent.com/75487668/141359343-ebf316c7-eec0-4267-847b-d8fb61219edd.jpg)`,
                     }}
-                  >
-                    {/* <div className="absolute inset-0">
+                  > */}
+                  {/* <div className="absolute inset-0">
                     <Image src={Main2} alt="Main2" layout='fill' objectFit='cover' />
                   </div> */}
-                    <div className='xl:container mx-auto h-1/2 relative z-10 text-neutral-50'>
+                  {/* <div className='xl:container mx-auto h-1/2 relative z-10 text-neutral-50'>
                       <div className='flex flex-col gap-y-8 '>
                         <div className='flex flex-col gap-y-8 '>
                           <h2 className='text-[1.5rem] md:text-[50px] md:leading-10 lg:w-7/12 xl:w-3/12  font-bold'>
@@ -225,7 +225,7 @@ function page() {
                         </div>
                       </div>
                     </div>
-                  </section>
+                  </section> */}
                 </div>
               </div>
             </div>
