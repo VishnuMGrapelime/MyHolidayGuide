@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import gbFlag from '../../assets/img/bg_flag.png';
 import geFlag from '../../assets/img/german_flag.png';
@@ -27,7 +27,20 @@ const LangSwitcher: React.FC = ({ lang }) => {
     // { country: 'Dutch', code: 'nl', flag: nlFlag },
   ];
 
-  const [language, setLanguage] = useState(options[0].flag)
+  const [language, setLanguage] = useState(options[0].flag.src)
+
+
+
+  useEffect(() => {
+
+    if (lang) {
+      const langOption = options.find(option => option.code === lang);
+      //console.log(langOption.flag.src);
+      setLanguage(langOption.flag.src)
+    }
+
+  }, [lang])
+
   const setOption = (option: Option) => {
     let url = pathname?.toString();
     url = url.replace(`/${lang}/`, `/${option.code}/`);

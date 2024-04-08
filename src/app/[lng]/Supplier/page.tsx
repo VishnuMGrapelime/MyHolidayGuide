@@ -1,3 +1,4 @@
+
 import { BookOpen, DollarSign, Expand } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
@@ -5,8 +6,17 @@ import React from 'react';
 import { Button, LinkButton } from '@/components/Elements/Button';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
+//import { useTranslation } from '../../i18n/client';
+
+import { useTranslation } from '../../i18n/index';
+
+
 import Main from '~/images/Main.jpg';
-function page() {
+function page({ params: { lng } }) {
+  console.log("Selected language is " + lng);
+  const { t } = useTranslation(lng, 'signin');
+  // console.log(t('title'));
+
   return (
     <>
       <div className='' id='_holidayGuide'>
@@ -195,7 +205,7 @@ function page() {
                   </section>
 
                   {/* 3 */}
-                 <section
+                  <section
                     className='font-body flex items-center pt-24 pb-52 md:py-14 px-4 w-full relative bg-cover  bg-center md:bg-right-bottom 
                 h-auto min-h-auto md:min-h-[620px] lg:h-[calc(100vh-300px)] after:inset-0 after:absolute after:z-0 after:bg-neutral-800 
                 after:bg-opacity-60 before:inset-0 before:absolute before:z-0 lg:after:bg-opacity-0  
@@ -203,11 +213,11 @@ function page() {
                     style={{
                       backgroundImage: `url(https://user-images.githubusercontent.com/75487668/141359343-ebf316c7-eec0-4267-847b-d8fb61219edd.jpg)`,
                     }}
-                  > 
-                  {/* <div className="absolute inset-0">
+                  >
+                    {/* <div className="absolute inset-0">
                     <Image src={Main2} alt="Main2" layout='fill' objectFit='cover' />
                   </div> */}
-                  <div className='xl:container mx-auto h-1/2 relative z-10 text-neutral-50'>
+                    <div className='xl:container mx-auto h-1/2 relative z-10 text-neutral-50'>
                       <div className='flex flex-col gap-y-8 '>
                         <div className='flex flex-col gap-y-8 '>
                           <h2 className='text-[1.5rem] md:text-[50px] md:leading-10 lg:w-7/12 xl:w-3/12  font-bold'>
