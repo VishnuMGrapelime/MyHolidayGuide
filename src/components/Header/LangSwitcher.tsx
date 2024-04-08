@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 import gbFlag from '../../assets/img/bg_flag.png';
-import geFlag from '../../assets/img/german_flag.png';
+import frFlag from '../../assets/img/french_flag.png';
 
 const LangSwitcher: React.FC = ({ lang }) => {
   interface Option {
@@ -21,7 +21,7 @@ const LangSwitcher: React.FC = ({ lang }) => {
 
   const options: Option[] = [
     { country: 'English', code: 'en', flag: gbFlag },
-    { country: 'French', code: 'fr', flag: geFlag },
+    { country: 'French', code: 'fr', flag: frFlag },
     // { country: 'Spanish', code: 'es', flag: esFlag },
     // { country: 'Swedish', code: 'sv', flag: svFlag },
     // { country: 'Dutch', code: 'nl', flag: nlFlag },

@@ -1,20 +1,20 @@
-
+"use client"
 import { BookOpen, DollarSign, Expand } from 'lucide-react';
 import Image from 'next/image';
 import React from 'react';
 
 import { Button, LinkButton } from '@/components/Elements/Button';
 
-//import { useTranslation } from '../../i18n/client';
+import { useTranslation } from '../../i18n/client';
 
-import { useTranslation } from '../../i18n/index';
+// import { useTranslation } from '../../i18n/index';
 
 
 import Main from '~/images/Main.jpg';
 function page({ params: { lng } }) {
   console.log("Selected language is " + lng);
-  const { t } = useTranslation(lng, 'signin');
-  // console.log(t('title'));
+  const { t } = useTranslation(lng, 'supplier-page');
+  console.log(t('title'));
 
   return (
     <>
@@ -39,17 +39,16 @@ function page({ params: { lng } }) {
                       <div className='flex flex-col justify-between text-center gap-y-16 md:gap-y-[140px] '>
                         <h1 className='text-[2rem] w-10/12 text-left md:text-[4rem] font-normal md:leading-snug text-neutral-50'>
                           <span className='leading-10'>
-                            Reach hundreds of thousands of customers with your
-                            tours and activities
+                            {t('topBannerText')}
                           </span>
                         </h1>
                         <div className='pt-4 flex flex-col gap-y-6 md:gap-x-6 md:flex-row justify-center w-full'>
                           <LinkButton
-                            label='Private Host'
+                            label={t('privateRegistration')}
                             link='/partner/private/signup'
                           />
                           <LinkButton
-                            label='Company Host'
+                            label={t('companyRegistration')}
                             link='/partner/company/signup'
                           />
                         </div>
@@ -67,12 +66,13 @@ function page({ params: { lng } }) {
                                 <Expand />
                               </span>
                               <h3 className='text-h4 font-semibold'>
-                                Expand your market
+                                {t('benefitCard1.title')}
                               </h3>
                               <p className='text-p3 sm:text-p2'>
-                                Increase awareness of your travel products. We
+                                {/* Increase awareness of your travel products. We
                                 promote and distribute them through our partner
-                                network.
+                                network. */}
+                                {t('benefitCard1.content')}
                               </p>
                             </div>
                           </div>
@@ -82,11 +82,13 @@ function page({ params: { lng } }) {
                                 <BookOpen size={28} />
                               </span>
                               <h3 className='text-h4 font-semibold'>
-                                Create your products in multiple languages
+                                {/* Create your products in multiple languages */}
+                                {t('benefitCard2.title')}
                               </h3>
                               <p className='text-p3 sm:text-p2'>
-                                Our content experts will optimize your products
-                                for the global market in multiple languages.
+                                {/* Our content experts will optimize your products
+                                for the global market in multiple languages. */}
+                                {t('benefitCard2.content')}
                               </p>
                             </div>
                           </div>
@@ -96,21 +98,29 @@ function page({ params: { lng } }) {
                                 <DollarSign size={28} />
                               </span>
                               <h3 className='text-h4 font-semibold'>
-                                Get your payout directly
+                                {/* Get your payout directly */}
+                                {t('benefitCard3.title')}
                               </h3>
                               <p className='text-p3 sm:text-p2'>
-                                You will pay commission only on successful
-                                bookings.
+                                {/* You will pay commission only on successful
+                                bookings. */}
+                                {t('benefitCard3.content')}
                               </p>
                             </div>
                           </div>
                         </div>
                         <div className='text-center'>
                           <h2 className='text-h2 font-bold'>
-                            <span>Becoming a partner is easy</span>
+                            <span>
+                              {/* Becoming a partner is easy */}
+                              {t('becomePartnerText.main')}
+                            </span>
                           </h2>
                           <p className='text-p2'>
-                            <span>It takes less than 10 minutes.</span>
+                            <span>
+                              {/* It takes less than 10 minutes. */}
+                              {t('becomePartnerText.sub')}
+                            </span>
                           </p>
                         </div>
                         <div className='flex flex-col md:flex-row gap-4'>
@@ -123,11 +133,13 @@ function page({ params: { lng } }) {
                               </span>
                               <h3 className='text-h4 font-semibold'>
                                 {' '}
-                                Tell us about your company
+                                {/* Tell us about your company */}
+                                {t('stepCard1.title')}
                               </h3>
                               <p className='text-p3 sm:text-p2'>
-                                We will make your company more competitive and
-                                successful
+                                {/* We will make your company more competitive and
+                                successful */}
+                                {t('stepCard1.content')}
                               </p>
                             </div>
                           </div>
@@ -139,11 +151,12 @@ function page({ params: { lng } }) {
                                 </span>
                               </span>
                               <h3 className='text-h4 font-semibold'>
-                                We review your application
+
+                                {t('stepCard2.title')}
                               </h3>
                               <p className='text-p3 sm:text-p2'>
-                                We look at your company, your business offers,
-                                your business registration and your insurance.
+
+                                {t('stepCard2.content')}
                               </p>
                             </div>
                           </div>
@@ -155,11 +168,13 @@ function page({ params: { lng } }) {
                                 </span>
                               </span>
                               <h3 className='text-h4 font-semibold'>
-                                Start adding your activities and tours
+                                {/* Start adding your activities and tours */}
+                                {t('stepCard3.title')}
                               </h3>
                               <p className='text-p3 sm:text-p2'>
-                                After approval, you can submit your products for
-                                review and optimization.
+                                {/* After approval, you can submit your products for
+                                review and optimization. */}
+                                {t('stepCard3.content')}
                               </p>
                             </div>
                           </div>
@@ -172,10 +187,10 @@ function page({ params: { lng } }) {
                   <section className='md:mb-4'>
                     <div className='md:w-1/3 mx-auto  flex justify-center text-center'>
                       <h2 className='font-bold'>
-                        Are you a private or a company host?
+
+                        {t('userTypeQuestion')}
                         <br />
-                        You will need to provide more information if you are a
-                        company host
+                        {t('userTypeStatement')}
                       </h2>
                     </div>
                   </section>
@@ -188,8 +203,8 @@ function page({ params: { lng } }) {
                             <div>
                               <div style={{ outline: 'none', width: '100%;' }}>
                                 <div className='pt-4 text-center space-y-4 md:pt-6 md:space-x-6'>
-                                  <Button label='Private Host' />
-                                  <Button label='Company Host' />
+                                  <Button label={t('privateRegistration')} />
+                                  <Button label={t('companyRegistration')} />
                                 </div>
                               </div>
                             </div>
@@ -217,14 +232,16 @@ function page({ params: { lng } }) {
                         <div className='flex flex-col gap-y-8 '>
                           <h2 className='text-[1.5rem] md:text-[50px] md:leading-10 lg:w-7/12 xl:w-3/12  font-bold'>
                             <span className='leading-tight'>
-                              We promote local tourism
+                              {/* We promote local tourism */}
+                              {t('bottomBannerTitle')}
                             </span>
                           </h2>
                           <p className='text-[1.125rem]  font-semibold md:text-[31px] md:font-bold lg:w-7/12 xl:w-5/12'>
                             <span className='md:leading-10'>
-                              We are your strong partner in tourism marketing.
+                              {/* We are your strong partner in tourism marketing.
                               Increase your turnover with us and raise your
-                              profile for a successful season.
+                              profile for a successful season. */}
+                              {t('bottomBannerContent')}
                             </span>
                           </p>
                         </div>

@@ -1,7 +1,38 @@
 {
   "title": "Supplier registration",
-  "user-email": "User Email",
-  "password": "Password",
-  "confirm-password": "Confirm Password",
-  "user-role": "User Role"
+  "topBannerText": "Reach hundreds of thousands of customers with your tours and activities",
+  "companyRegistration": "Company Host",
+  "privateRegistration": "Private Host",
+  "bottomBannerTitle": "We promote local tourism",
+  "bottomBannerContent": "We are your strong partner in tourism marketing. Increase your turnover with us and raise your profile for a successful season.",
+  "benefitCard1": {
+    "title": "Expand your market",
+    "content": "Increase awareness of your travel products. We promote and distribute them through our partner network."
+  },
+  "benefitCard2": {
+    "title": "Create your products in multiple languages",
+    "content": "Our content experts will optimize your products for the global market in multiple languages."
+  },
+  "benefitCard3": {
+    "title": "Get your payout directly",
+    "content": "You will pay commission only on successful bookings."
+  },
+  "stepCard1": {
+    "title": "Tell us about your company",
+    "content": "We will make your company more competitive and successful"
+  },
+  "stepCard2": {
+    "title": "We review your application",
+    "content": "We look at your company, your business offers, your business registration and your insurance."
+  },
+  "stepCard3": {
+    "title": "Start adding your activities and tours",
+    "content": "After approval, you can submit your products for review and optimization."
+  },
+  "userTypeQuestion": "Are you a private or a company host?",
+  "userTypeStatement": "You will need to provide more information if you are a company host",
+  "becomePartnerText": {
+    "main": "Becoming a partner is easy",
+    "sub": "It takes less than 10 minutes."
+  }
 }

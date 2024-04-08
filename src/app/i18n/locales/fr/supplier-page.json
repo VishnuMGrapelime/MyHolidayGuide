@@ -1,7 +1,39 @@
 {
-  "title": "Supplier registration",
-  "user-email": "User Email",
-  "password": "Password",
-  "confirm-password": "Confirm Password",
-  "user-role": "User Role"
+ "title": "Inscription du fournisseur",
+ "topBannerText": "Réachérez des centaines de milliers de clients avec vos tours et activités",
+ "companyRegistration": "Hôte d'entreprise",
+ "privateRegistration": "Hôte privé",
+ "bottomBannerTitle": "Nous promouvons le tourisme local",
+ "bottomBannerContent": "Nous sommes votre partenaire fort dans le marketing touristique. Augmentez votre chiffre d'affaires avec nous et élèvez votre profil pour une saison réussie.",
+ "benefitCard1": {
+    "title": "Développez votre marché",
+    "content": "Augmentez la notoriété de vos produits de voyage. Nous les promouvons et les distribuons grâce à notre réseau de partenaires."
+ },
+ "benefitCard2": {
+    "title": "Créez vos produits dans plusieurs langues",
+    "content": "Nos experts en contenu optimiseront vos produits pour le marché mondial dans plusieurs langues."
+ },
+ "benefitCard3": {
+    "title": "Recevez votre paiement directement",
+    "content": "Vous ne payez la commission que sur les réservations réussies."
+ },
+ "stepCard1": {
+    "title": "Parlez-nous de votre entreprise",
+    "content": "Nous rendrons votre entreprise plus compétitive et réussie"
+ },
+ "stepCard2": {
+    "title": "Nous examinons votre candidature",
+    "content": "Nous examinons votre entreprise, vos offres commerciales, votre inscription commerciale et votre assurance."
+ },
+ "stepCard3": {
+    "title": "Commencez à ajouter vos activités et tours",
+    "content": "Après approbation, vous pouvez soumettre vos produits pour examen et optimisation."
+ },
+ "userTypeQuestion": "Êtes-vous un hôte privé ou un hôte d'entreprise ?",
+ "userTypeStatement": "Vous devrez fournir plus d'informations si vous êtes un hôte d'entreprise",
+ "becomePartnerText": {
+    "main": "Devenir partenaire est facile",
+    "sub": "Cela prend moins de 10 minutes."
+ }
 }
+
