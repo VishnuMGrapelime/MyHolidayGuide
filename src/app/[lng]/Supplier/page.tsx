@@ -4,7 +4,6 @@ import Image from 'next/image';
 import React from 'react';
 
 import { Button, LinkButton } from '@/components/Elements/Button';
-import ScrollToTopButton from '@/components/ScrollToTopButton';
 
 //import { useTranslation } from '../../i18n/client';
 
@@ -23,12 +22,10 @@ function page({ params: { lng } }) {
         <div className='' style={{ outline: 'none' }}>
           <div style={{ outline: 'none' }}>
             <div className='min-w-[350]'>
-              <div></div>
               <div style={{ outline: 'none' }}>
                 <div className='font-body'>
                   <section
                     className='font-body flex items-center justify-center py-20 px-4 w-full relative bg-cover bg-center h-auto md:py-14 md:min-h-[620px] lg:h-[calc(100vh-300px)] before:inset-0 before:absolute before:z-0 before:bg-gradient-to-b before:from-[#0F1A3666] before:to-[#0F1A3610]'
-                  // style={{ backgroundImage: `url(https://user-images.githubusercontent.com/75487668/141353341-0c11a1a6-89cb-4731-b4c0-c288d2d3c6b0.jpg)` }}>
                   >
                     <div className='absolute inset-0'>
                       <Image
@@ -39,25 +36,23 @@ function page({ params: { lng } }) {
                       />
                     </div>
                     <div className='xl:container mx-auto relative flex flex-col justify-center items-center'>
-                      <div className='flex flex-col justify-between text-center gap-y-16 md:gap-y-[140px]'>
+                      <div className='flex flex-col justify-between text-center gap-y-16 md:gap-y-[140px] '>
                         <h1 className='text-[2rem] w-10/12 text-left md:text-[4rem] font-normal md:leading-snug text-neutral-50'>
                           <span className='leading-10'>
                             Reach hundreds of thousands of customers with your
                             tours and activities
                           </span>
                         </h1>
-                        <p className='text-center'>
-                          <div className='pt-4 text-center md:pt-6 space-y-4 md:space-x-6'>
-                            <LinkButton
-                              label='Private Host'
-                              link='/partner/private/signup'
-                            />
-                            <LinkButton
-                              label='Company Host'
-                              link='/partner/company/signup'
-                            />
-                          </div>
-                        </p>
+                        <div className='pt-4 flex flex-col gap-y-6 md:gap-x-6 md:flex-row justify-center w-full'>
+                          <LinkButton
+                            label='Private Host'
+                            link='/partner/private/signup'
+                          />
+                          <LinkButton
+                            label='Company Host'
+                            link='/partner/company/signup'
+                          />
+                        </div>
                       </div>
                     </div>
                   </section>
@@ -242,7 +237,6 @@ function page({ params: { lng } }) {
           </div>
         </div>
       </div>
-      <ScrollToTopButton />
     </>
   );
 }
