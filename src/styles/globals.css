@@ -206,6 +206,75 @@
   font-size: 1.125rem;
   line-height: 1.5;
 }
+.text-h2 {
+font-size: 1.625rem;
+line-height: 1.5;
+} 
 
-
+.form-field {
+  display: block; /* block */
+  padding-left: 0.625rem; /* px-2.5 */
+  padding-right: 0.625rem; /* px-2.5 */
+  padding-bottom: 0.625rem; /* pb-2.5 */
+  padding-top: 1rem; /* pt-4 */
+  width: 100%; /* w-full */
+  font-size: 0.875rem; /* text-sm */
+  color: #1A202C; /* text-gray-900 */
+  background-color: transparent; /* bg-transparent */
+  border-radius: 0.375rem; /* rounded-lg */
+  border-width: 1px; /* border-1 */
+  border-color: #D1D5DB; /* border-gray-300 */
+  appearance: none; /* appearance-none */
+  outline: none; /* focus:outline-none */
+  box-shadow: none; /* focus:ring-0 */
+  border-color: #1CCFB9; /* focus:border-[#1CCFB9] */
+ }
+ 
+ /* Dark mode styles */
+ .dark .form-field {
+  color: #F9FAFB; /* dark:text-white */
+  border-color: #4B5563; /* dark:border-gray-600 */
+  border-color: #3B82F6; /* dark:focus:border-blue-500 */
+ }
+ .floating-label {
+  position: absolute; /* absolute */
+  z-index: 0; /* z-0 */
+  font-size: 0.875rem; /* text-sm */
+  color: #718096; /* text-gray-500 */
+  background-color: #FFFFFF; /* bg-white */
+  padding-left: 0.5rem; /* px-2 */
+  padding-right: 0.5rem; /* px-2 */
+  transition-duration: 300ms; /* duration-300 */
+  transform: translateY(-1rem) scale(0.75); /* -translate-y-4 scale-75 */
+  top: 0.5rem; /* top-2 */
+  transform-origin: 0 0; /* origin-[0] */
+ }
+ 
+ /* Dark mode styles */
+ .dark .floating-label {
+  color: #9CA3AF; /* dark:text-gray-400 */
+  background-color: #1F2937; /* dark:bg-gray-900 */
+ }
+ 
+ /* Focus styles */
+ .floating-label:focus {
+  padding-left: 0.5rem; /* peer-focus:px-2 */
+  padding-right: 0.5rem; /* peer-focus:px-2 */
+  color: #1CCFB9; /* peer-focus:text-[#1CCFB9] */
+  color: #3B82F6; /* peer-focus:dark:text-blue-500 */
+  transform: translateY(-1rem) scale(0.75); /* peer-focus:-translate-y-4 peer-focus:scale-75 */
+  top: 0.5rem; /* peer-focus:top-2 */
+ }
+ 
+ /* Placeholder shown styles */
+ .floating-label::placeholder-shown {
+  transform: translateY(-0.5rem) scale(1); /* peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 */
+  top: 50%; /* peer-placeholder-shown:top-1/2 */
+ }
+ 
+ /* RTL styles */
+ .rtl .floating-label:focus {
+  transform: translateX(25%); /* rtl:peer-focus:translate-x-1/4 */
+  left: auto; /* rtl:peer-focus:left-auto */
+ }
  

@@ -220,12 +220,12 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
         </Form>
       </Formik> */}
       <form onSubmit={handleSubmit}>
-        <div className='m-12 p-12'>
-          <div className='w-full  mx-auto text-center'>
-            <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
+        <div className='py-6 md:m-12 md:p-12'>
+          <div className='w-full  mx-auto  md:text-center'>
+            <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
               <span>Company owner information</span>
             </h2>
-            <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
+            <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  whitespace-nowrap'>
               <span>This person will be the administrator of the account.</span>
             </p>
             <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
@@ -236,7 +236,6 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
             </p>
           </div>
         </div>
-
         {errorStatus && <ValidationBox errors={errors} />}
 
         <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>

@@ -112,12 +112,12 @@ const SignUpTwo = ({
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className='m-12 p-12'>
-          <div className='w-full  mx-auto text-center'>
-            <h2 className='pb-6 md:pb-6 leading-6 text-h2 md:text-[2.25rem] font-bold'>
+        <div className='py-6 md:m-12 md:p-12'>
+          <div className='w-full  mx-auto  md:text-center'>
+            <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
               <span>Additional information</span>
             </h2>
-            <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold'>
+            <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  whitespace-nowrap'>
               <span>This person will be the administrator of the account.</span>
             </p>
             <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
@@ -128,7 +128,6 @@ const SignUpTwo = ({
             </p>
           </div>
         </div>
-
         {errorStatus && <ValidationBox errors={errors} />}
 
         <div className='grid items-end w-full mx-auto gap-6 mb-6 md:grid-cols-1'>
@@ -189,7 +188,7 @@ const SignUpTwo = ({
               <input
                 type='text'
                 id='personalWebsite'
-                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-[#1CCFB9] rounded-lg border-1 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent border-[#1CCFB9] rounded-lg border-1 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
                 name='personalWebsite'
                 value={formState.personalWebsite}
@@ -197,7 +196,7 @@ const SignUpTwo = ({
               />
               <label
                 htmlFor='personalWebsite'
-                className='absolute text-sm text-[#1CCFB9] dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                className='absolute text-sm text-[#1CCFB9] dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 Website
               </label>
