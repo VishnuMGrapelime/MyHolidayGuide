@@ -1,0 +1,105 @@
+{
+  "title": "Inscription en tant qu'hôte privé",
+  "nextButton": "Suivant",
+  "backButton": "Retour",
+  "step1Text": "Informations personnelles",
+  "step2Text": "Informations supplémentaires",
+  "step1": {
+    "subtext1": "Veuillez être aussi précis que possible",
+    "subtext2": "Quelques informations de base sur vous-même, pour les reçus, les contacts, etc.",
+    "personalIdentification": {
+      "placeholder": "Numéro d'identification personnel",
+      "label": "Veuillez saisir votre numéro d'identification personnel",
+      "validation": "Le numéro d'identification personnel est un champ obligatoire"
+    },
+    "firstName": {
+      "placeholder": "Prénom",
+      "label": "Veuillez saisir le prénom",
+      "validation": "Le prénom est un champ obligatoire"
+    },
+    "lastName": {
+      "placeholder": "Nom de famille",
+      "label": "Veuillez saisir le nom de famille",
+      "validation": "Le nom de famille est un champ obligatoire"
+    },
+    "address1": {
+      "placeholder": "Adresse 1",
+      "label": "Veuillez saisir l'adresse de rue",
+      "validation": "L'adresse 1 est un champ obligatoire"
+    },
+    "address2": {
+      "placeholder": "Adresse 2",
+      "label": "Veuillez saisir l'adresse de rue 2",
+      "validation": "L'adresse 2 est un champ obligatoire"
+    },
+    "street": {
+      "placeholder": "Rue",
+      "label": "Veuillez saisir la rue",
+      "validation": "La rue est un champ obligatoire"
+    },
+    "streetNumber": {
+      "placeholder": "Numéro de rue",
+      "label": "Veuillez saisir le numéro de rue",
+      "validation": "Le numéro de rue est un champ obligatoire"
+    },
+    "postpostOffice": {
+      "placeholder": "Boîte postale",
+      "label": "(facultatif) Veuillez saisir le numéro de boîte postale",
+      "validation": ""
+    },
+    "zipCode": {
+      "placeholder": "Code postal",
+      "label": "Veuillez saisir le code postal",
+      "validation": "Le code postal est un champ obligatoire"
+    },
+    "city": {
+      "placeholder": "Ville",
+      "label": "Veuillez saisir la ville",
+      "validation": "La ville est un champ obligatoire"
+    },
+    "country": {
+      "placeholder": "Pays",
+      "label": "Veuillez saisir le pays",
+      "validation": "Le pays est un champ obligatoire"
+    }
+  },
+  "step2": {
+    "subtext1": "Cette personne sera l'administrateur du compte.",
+    "subtext2": "Vous pouvez ajouter des utilisateurs supplémentaires à votre entreprise après l'inscription.",
+    "email": {
+      "placeholder": "E-mail",
+      "label": "Veuillez saisir l'adresse e-mail",
+      "validation": "L'e-mail est un champ obligatoire"
+    },
+    "phone": {
+      "placeholder": "Téléphone",
+      "label": "Numéro de téléphone de contact",
+      "validation": "Le téléphone est un champ obligatoire"
+    },
+    "personalWebsite": {
+      "placeholder": "Site Web",
+      "label": "Votre domaine principal sur le Web",
+      "validation": "Le site Web personnel est un champ obligatoire"
+    },
+    "AddSocialMedia": {
+      "placeholder": "",
+      "label": "Ajouter un compte de médias sociaux",
+      "validation": ""
+    },
+    "password": {
+      "placeholder": "Mot de passe",
+      "label": "Veuillez saisir un mot de passe (6 à 24 caractères)",
+      "validation": "Le mot de passe est un champ obligatoire"
+    },
+    "confirmPassword": {
+      "placeholder": "Confirmation du mot de passe",
+      "label": "Confirmez votre mot de passe (6 à 24 caractères)",
+      "validation": "Les mots de passe doivent correspondre"
+    },
+    "preferedLanguage": {
+      "placeholder": "Langue préférée",
+      "label": "Il s'agit de la langue de l'interface utilisateur et les entrées de produits se font également dans la langue sélectionnée.",
+      "validation": "La langue préférée est un champ obligatoire"
+    }
+  }
+}

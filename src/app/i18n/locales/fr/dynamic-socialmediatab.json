@@ -1,0 +1,15 @@
+{
+  "addTabButton": "Ajouter un compte de médias sociaux",
+  "youtube": "Youtube",
+  "instagram": "Instagram",
+  "tabTitle": "COMPTE DE MÉDIAS SOCIAUX",
+  "mediaType": {
+    "placeholder": "Type",
+    "label": "Plateforme de médias sociaux"
+  },
+  "mediaURL": {
+    "placeholder": "URL",
+    "label1": "L'adresse du compte",
+    "label2": "ex : 'https://www.youtube.com/channel/abcdefghijklmnop'"
+  }
+}
