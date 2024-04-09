@@ -59,26 +59,12 @@ const LangSwitcher: React.FC = ({ lang }) => {
       <div className='relative text-lg '>
         <button
           className='justify-between rounded-lg hover:bg-gray-100 hover:rounded-lg
-           focus:outline-none font-normal bg-white  dark:bg-black text-sm px-2 py-2.5 text-center 
+           focus:outline-none font-normal bg-white  dark:bg-black text-sm px-2  py-2.5 text-center 
           inline-flex items-center dark:focus:ring-blue-800 dark:hover:bg-neutral-800'
           onClick={() => setIsOptionsExpanded(!isOptionsExpanded)}
           onBlur={() => setIsOptionsExpanded(false)}
         >
           <Image src={language} width='20' height='20' alt='logo' />&nbsp;
-          <svg
-            fill='none'
-            viewBox='0 0 24 24'
-            stroke='currentColor'
-            className={`h-4 w-4  transform transition-transform duration-200 ease-in-out ${isOptionsExpanded ? 'rotate-180' : 'rotate-0'
-              }`}
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth={2}
-              d='M19 9l-7 7-7-7'
-            />
-          </svg>
         </button>
         <div
           className={`transition-transform duration-500 ease-custom ${!isOptionsExpanded
@@ -86,11 +72,11 @@ const LangSwitcher: React.FC = ({ lang }) => {
             : 'translate-y-0 scale-y-100 opacity-100'
             }`}
         >
-          <ul className='absolute left-0 right-0 mb-4 bg-white divide-y rounded-lg shadow-lg overflow-hidden w-24 dark:bg-neutral-700'>
+          <ul className='absolute left-0 right-0 mb-4 bg-white shadow-md  items-center text-center overflow-hidden  '>
             {options.map((option, index) => (
               <li
                 key={index}
-                className='px-3 py-2 transition-colors duration-300 hover:bg-gray-200 flex items-center cursor-pointer'
+                className={`px-3 py-2 transition-colors duration-300   hover:bg-gray-300 flex items-center cursor-pointer ${lang === option.code ? 'bg-gray-100' : ''}`}
                 onMouseDown={(e) => {
                   e.preventDefault();
                   setOption(option);
@@ -98,22 +84,6 @@ const LangSwitcher: React.FC = ({ lang }) => {
                 onClick={() => setOption(option)}
               >
                 <Image src={option.flag} width='20' height='20' alt='logo' />
-                {lang === option.code && (
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                    className='w-7 h-7 text-green-500 ml-auto'
-                  >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      strokeWidth={3}
-                      d='M5 13l4 4L19 7'
-                    />
-                  </svg>
-                )}
               </li>
             ))}
           </ul>

@@ -61,7 +61,7 @@ function page({ params: { lng } }) {
                       <div className='flex flex-col gap-y-12 md:gap-y-20'>
                         <div className='flex flex-col md:flex-row gap-4'>
                           <div className='flex-1'>
-                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-neutral-800 dark:bg-opacity-100 dark:text-neutral-50 h-full'>
+                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-[#0f1b38] dark:bg-opacity-100 dark:text-neutral-50 h-full'>
                               <span className='text-neutral-900 dark:text-neutral-50 bg-transparent scale-125 md:scale-[2.25] md:my-5'>
                                 <Expand />
                               </span>
@@ -77,7 +77,7 @@ function page({ params: { lng } }) {
                             </div>
                           </div>
                           <div className='flex-1'>
-                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-neutral-800 dark:bg-opacity-100 dark:text-neutral-50 h-full'>
+                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-[#0f1b38] dark:bg-opacity-100 dark:text-neutral-50 h-full'>
                               <span className='text-neutral-900 dark:text-neutral-50 bg-transparent scale-125 md:scale-[2.25] md:my-5'>
                                 <BookOpen size={28} />
                               </span>
@@ -93,7 +93,7 @@ function page({ params: { lng } }) {
                             </div>
                           </div>
                           <div className='flex-1'>
-                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-neutral-800 dark:bg-opacity-100 dark:text-neutral-50 h-full'>
+                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-[#0f1b38] dark:bg-opacity-100 dark:text-neutral-50 h-full'>
                               <span className='text-neutral-900 dark:text-neutral-50 bg-transparent scale-125 md:scale-[2.25] md:my-5'>
                                 <DollarSign size={28} />
                               </span>
@@ -125,7 +125,7 @@ function page({ params: { lng } }) {
                         </div>
                         <div className='flex flex-col md:flex-row gap-4'>
                           <div className='flex-1'>
-                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-neutral-800 dark:bg-opacity-100 dark:text-neutral-50 h-full'>
+                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-[#0f1b38] dark:bg-opacity-100 dark:text-neutral-50 h-full'>
                               <span className='text-neutral-900 dark:text-neutral-50 bg-transparent scale-125 md:scale-[2.25] md:my-5'>
                                 <span className='w-10 h-10 flex items-center justify-center rounded-full border border-neutral-900 text-lg font-bold dark:border-neutral-50 md:w-8 md:h-8'>
                                   1
@@ -144,7 +144,7 @@ function page({ params: { lng } }) {
                             </div>
                           </div>
                           <div className='flex-1'>
-                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-neutral-800 dark:bg-opacity-100 dark:text-neutral-50 h-full'>
+                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-[#0f1b38] dark:bg-opacity-100 dark:text-neutral-50 h-full'>
                               <span className='text-neutral-900 dark:text-neutral-50 bg-transparent scale-125 md:scale-[2.25] md:my-5'>
                                 <span className='w-10 h-10 flex items-center justify-center rounded-full border border-neutral-900 text-lg font-bold dark:border-neutral-50 md:w-8 md:h-8'>
                                   2
@@ -161,7 +161,7 @@ function page({ params: { lng } }) {
                             </div>
                           </div>
                           <div className='flex-1'>
-                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-neutral-800 dark:bg-opacity-100 dark:text-neutral-50 h-full'>
+                            <div className=' bg-[#1FCE1C14] bg-opacity-[0.08] text-neutral-900 flex flex-col gap-4 py-8 px-6 md:py-14 md:px-8 items-center text-center font-body rounded-2xl shadow-box-light dark:shadow-box-dark dark:bg-[#0f1b38] dark:bg-opacity-100 dark:text-neutral-50 h-full'>
                               <span className='text-neutral-900 dark:text-neutral-50 bg-transparent scale-125 md:scale-[2.25] md:my-5'>
                                 <span className='w-10 h-10 flex items-center justify-center rounded-full border border-neutral-900 text-lg font-bold dark:border-neutral-50 md:w-8 md:h-8'>
                                   3
@@ -185,7 +185,7 @@ function page({ params: { lng } }) {
                   {/* 2 */}
 
                   <section className='md:mb-4'>
-                    <div className='md:w-1/3 mx-auto  flex justify-center text-center'>
+                    <div className='md:w-1/3 mx-auto  flex justify-center text-center dark:text-neutral-50'>
                       <h2 className='font-bold'>
 
                         {t('userTypeQuestion')}
