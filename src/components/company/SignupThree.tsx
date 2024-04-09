@@ -41,10 +41,16 @@ const customStyles = {
   indicatorSeparator: (base) => ({
     display: 'none',
   }),
-  control: (base, state) => ({
-    ...base,
-    padding: '5px',
-    border: '1px 1CCFB9',
+
+  control: (provided, state) => ({
+    ...provided,
+    padding: ' 5px',
+    borderRadius: '8px',
+    borderColor: state.isFocused ? '#1CCFB9' : provided.borderColor,
+    boxShadow: state.isFocused ? '0 0 0 1px #1CCFB9' : provided.boxShadow,
+    '&:hover': {
+      borderColor: state.isFocused ? '#1CCFB9' : provided.borderColor,
+    },
   }),
   dropdownIndicator: (base, state) => ({
     ...base,
@@ -272,22 +278,20 @@ const SignUpThree = ({
                 defaultValue={selectedDate}
                 onSelectedDateChanged={handleDateChange}
                 style={{ backgroundColor: 'white', paddingTop: '12px', paddingBottom: '11px' }}
-                className='block  pt-7 w-full  text-sm text-gray-900 bg-transparent rounded-lg border-1  border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#1CCFB9] focus:outline-none focus:ring-0 focus:border-[#1CCFB9]'
+                className='block pt-7 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 peer'
               />
               <label
                 htmlFor='existSince'
-                className='absolute top-[17px] bg-white  left-[5px]  z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900  dark:border-gray-600 peer-focus:text-[#1CCFB9]  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
+                className='absolute top-[17px] bg-white left-[5px] z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900 dark:border-gray-600 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
               >
                 Company exist since
               </label>
-              <p
-                className='text- md:text-px mb-4'
-                style={{ paddingLeft: '1rem' }}
-              >
+              <p className='text-md:text-px mb-4' style={{ paddingLeft: '1rem' }}>
                 <span>Please enter your company name exist since</span>
               </p>
             </div>
           </div>
+
           <div className='space-y-1'>
             <div className='relative '>
               <select

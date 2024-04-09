@@ -312,3 +312,17 @@ line-height: 1.5;
   background-position: center;
  }
  
+ /* common footer and dark them background color */
+.dark-footer {
+  background-color: #0f1b38;
+}
+
+.dark-container {
+  background-color: #0f1b38;
+}
+
+
+#existSince:focus {
+  border-color: #1CCFB9 !important;
+  box-shadow: 0 0 0 1px #1CCFB9 !important; 
+}
