@@ -1,0 +1,105 @@
+{
+  "title": "Private host registration",
+  "nextButton": "Next",
+  "backButton": "Back",
+  "step1Text": "Personal information",
+  "step2Text": "Additional information",
+  "step1": {
+    "subtext1": "Please be a as precise as possible",
+    "subtext2": "Some basic information about your self, for receipts, contact etc.",
+    "personalIdentification": {
+      "placeholder": "Personal Identification no.",
+      "label": "Please enter your personal identification no",
+      "validation": "Personal Identification no is a required field"
+    },
+    "firstName": {
+      "placeholder": "First Name",
+      "label": "Please enter the first name",
+      "validation": "First name is a required field"
+    },
+    "lastName": {
+      "placeholder": "Last Name",
+      "label": "Please enter the last name",
+      "validation": "Last name is a required field"
+    },
+    "address1": {
+      "placeholder": "Address 1",
+      "label": "Please enter the street address",
+      "validation": "Address 1 is a required field"
+    },
+    "address2": {
+      "placeholder": "Address 2",
+      "label": "Please enter the street address2",
+      "validation": "Address 2 is a required field"
+    },
+    "street": {
+      "placeholder": "Street",
+      "label": "Please enter the street",
+      "validation": "Street is a required field"
+    },
+    "streetNumber": {
+      "placeholder": "Street Number",
+      "label": "Please enter the street number",
+      "validation": "Street number is a required field"
+    },
+    "postpostOffice": {
+      "placeholder": "Post Office Box",
+      "label": "(optional) Please enter your post office box number",
+      "validation": ""
+    },
+    "zipCode": {
+      "placeholder": "Zip Code",
+      "label": "Please enter the zip code",
+      "validation": "Zipcode is a required field"
+    },
+    "city": {
+      "placeholder": "City",
+      "label": "Please enter the city",
+      "validation": "City is a required field"
+    },
+    "country": {
+      "placeholder": "Country",
+      "label": "Please enter the country",
+      "validation": "Country is a required field"
+    }
+  },
+  "step2": {
+    "subtext1": "This person will be the administrator of the account.",
+    "subtext2": "You can add additional users to your company after the registration.",
+    "email": {
+      "placeholder": "Email",
+      "label": "Please enter the e-mail address",
+      "validation": "Email is a required field"
+    },
+    "phone": {
+      "placeholder": "Phone",
+      "label": "The contact phone number",
+      "validation": "Phone is a required field"
+    },
+    "personalWebsite": {
+      "placeholder": "Website",
+      "label": "Your main domain on the web",
+      "validation": "Personal website is a required field"
+    },
+    "AddSocialMedia": {
+      "placeholder": "",
+      "label": "Add social media account",
+      "validation": ""
+    },
+    "password": {
+      "placeholder": "Password",
+      "label": "Please enter a password (6-24 characters)",
+      "validation": "Password is a required field"
+    },
+    "confirmPassword": {
+      "placeholder": "Password Confirmation",
+      "label": "Confirm your password (6-24 characters)",
+      "validation": "Passwords must match"
+    },
+    "preferedLanguage": {
+      "placeholder": "Prefered Language",
+      "label": "This will be the user-interface language and that product input also occurs in the selected language.",
+      "validation": "Prefered language is a required field"
+    }
+  }
+}

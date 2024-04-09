@@ -11,7 +11,7 @@ import SignUpTwo from '@/components/private/SignupTwo';
 import { auth } from '@/firebase/firebase';
 import { addData } from '@/firebase/firestore/data';
 
-const CompanySignUpPage = () => {
+const CompanySignUpPage = ({ params: { lng } }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
   const router = useRouter();
@@ -99,6 +99,7 @@ const CompanySignUpPage = () => {
               nextStep={nextStep}
               formData={formData}
               updateFormData={updateFormData}
+              lang={lng}
             />
           )}
           {step === 2 && (
@@ -108,6 +109,7 @@ const CompanySignUpPage = () => {
               formData={formData}
               updateFormData={updateFormData}
               finalSubmit={finalSubmit}
+              lang={lng}
             />
           )}
         </div>

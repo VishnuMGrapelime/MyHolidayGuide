@@ -5,22 +5,10 @@ import * as Yup from 'yup';
 import DynamicTabs from '@/components/DynamicTabs';
 import { Button, ButtonOutline } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
+import { useTranslation } from '@/app/i18n/client';
 
 // Yup schema to validate the form
-const schema = Yup.object().shape({
-  email: Yup.string().email().required('Email is a required field'),
-  phone: Yup.string().required('Phone is a required field'),
-  personalWebsite: Yup.string().required('Personal website is a required field'),
-  password: Yup.string()
-    .min(6)
-    .max(24)
-    .required('Password is a required field'),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords must match',
-  ),
-  preferedLanguage: Yup.string().required(),
-});
+
 
 const SignUpTwo = ({
   nextStep,
@@ -28,7 +16,28 @@ const SignUpTwo = ({
   formData,
   updateFormData,
   finalSubmit,
+  lang
 }) => {
+
+  const { t } = useTranslation(lang, 'privateRegistration-page');
+
+  const schema = Yup.object().shape({
+    email: Yup.string().email().required(t('step2.email.validation')),
+    phone: Yup.string().required(t('step2.phone.validation')),
+    personalWebsite: Yup.string().required(t('step2.personalWebsite.validation')),
+    password: Yup.string()
+      .min(6)
+      .max(24)
+      .required(t('step2.password.validation')),
+    confirmPassword: Yup.string().oneOf(
+      [Yup.ref('password'), null],
+      t('step2.confirmPassword.validation'),
+    ),
+    preferedLanguage: Yup.string().required(t('step2.preferedLanguage.validation')),
+  });
+
+
+
   const [formState, setFormState] = useState({
     email: '',
     phone: '',
@@ -115,15 +124,14 @@ const SignUpTwo = ({
         <div className='py-6 md:m-12 md:p-12'>
           <div className='w-full  mx-auto  md:text-center'>
             <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
-              <span>Additional information</span>
+              <span>{t('step2Text')}</span>
             </h2>
             <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  whitespace-nowrap'>
-              <span>This person will be the administrator of the account.</span>
+              <span>{t('step2.subtext1')}</span>
             </p>
             <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
               <span>
-                You can add additional users to your company after the
-                registration.
+                {t('step2.subtext2')}
               </span>
             </p>
           </div>
@@ -146,14 +154,14 @@ const SignUpTwo = ({
                 htmlFor='email'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Email
+                {t('step2.email.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter the e-mail address</span>
+              <span>{t('step2.email.label')}</span>
             </p>
           </div>
 
@@ -172,14 +180,14 @@ const SignUpTwo = ({
                 htmlFor='phone'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Phone
+                {t('step2.phone.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>The contact phone number</span>
+              <span>{t('step2.phone.label')}</span>
             </p>
           </div>
 
@@ -198,19 +206,19 @@ const SignUpTwo = ({
                 htmlFor='personalWebsite'
                 className='absolute text-sm text-[#1CCFB9] dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Website
+                {t('step2.personalWebsite.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Your main domain on the web</span>
+              <span>{t('step2.personalWebsite.label')}</span>
             </p>
           </div>
           <div>
             <div className='mt-2 '>
-              <DynamicTabs tabs={tabs} setTabs={setTabs} />
+              <DynamicTabs tabs={tabs} setTabs={setTabs} lang={lang} />
             </div>
           </div>
           <div className='space-y-1'>
@@ -228,14 +236,14 @@ const SignUpTwo = ({
                 htmlFor='password'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Password
+                {t('step2.password.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter a password (6-24 characters)</span>
+              <span>{t('step2.password.label')}</span>
             </p>
           </div>
 
@@ -254,14 +262,14 @@ const SignUpTwo = ({
                 htmlFor='confirmPassword'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Password confirmation
+                {t('step2.confirmPassword.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Confirm your password (6-24 characters)</span>
+              <span>{t('step2.confirmPassword.label')}</span>
             </p>
           </div>
 
@@ -283,20 +291,19 @@ const SignUpTwo = ({
                 htmlFor='preferedLanguage'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Prefered language
+                {t('step2.preferedLanguage.placeholder')}
               </label>
             </div>
             <p className='text- md:text- px-4 '>
               <span>
-                This will be the user-interface language and that product input
-                also occurs in the selected language.
+                {t('step2.preferedLanguage.label')}
               </span>
             </p>
           </div>
 
           <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-between w-full'>
-            <ButtonOutline label='Back' prevStep={gotoPrevStep} />
-            <Button label='Next' />
+            <ButtonOutline label={t('backButton')} prevStep={gotoPrevStep} />
+            <Button label={t('nextButton')} />
           </div>
         </div>
       </form>

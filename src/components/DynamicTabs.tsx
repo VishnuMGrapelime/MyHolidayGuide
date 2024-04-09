@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useTranslation } from '../app/i18n/client';
 
-const DynamicTabs = ({ tabs, setTabs }) => {
+const DynamicTabs = ({ tabs, setTabs, lang }) => {
+
+  const { t } = useTranslation(lang, 'dynamic-socialmediatab');
+
   const [activeTab, setActiveTab] = useState(1); // State to track the active tab
 
   const activeClass =
@@ -12,7 +16,7 @@ const DynamicTabs = ({ tabs, setTabs }) => {
     e.preventDefault();
     const newTab = {
       id: tabs.length + 1,
-      title: `SOCIAL MEDIA ACCOUNT ${tabs.length + 1}`,
+      title: `${t('tabTitle')} ${tabs.length + 1}`,
       content: `Content ${tabs.length + 1}`,
       values: {
         socialMedia: 'youtube',
@@ -120,7 +124,7 @@ const DynamicTabs = ({ tabs, setTabs }) => {
             clipRule='evenodd'
           />
         </svg>
-        <span>&nbsp;&nbsp;Add social media account</span>
+        <span>&nbsp;&nbsp;{t('addTabButton')}</span>
       </button>
       <div className='border-b border-gray-200 dark:border-gray-700 overflow-hidden'>
         <div className='scroll-container'>
@@ -199,11 +203,11 @@ const DynamicTabs = ({ tabs, setTabs }) => {
                   htmlFor='default_outlined'
                   className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
                 >
-                  Type
+                  {t('mediaType.placeholder')}
                 </label>
               </div>
               <p className='text- md:text- px-4 '>
-                <span>Please enter your company name</span>
+                <span>{t('mediaType.label')}</span>
               </p>
             </div>
             <div className='mt-2'>
@@ -236,11 +240,14 @@ const DynamicTabs = ({ tabs, setTabs }) => {
                     htmlFor='url'
                     className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
                   >
-                    URL
+                    {t('mediaURL.placeholder')}
                   </label>
                 </div>
                 <p className='text- md:text- px-4 '>
-                  <span>Please enter your company name</span>
+                  <span>{t('mediaURL.label1')}</span>
+                </p>
+                <p className='text- md:text- px-4 '>
+                  <span>{t('mediaURL.label2')}</span>
                 </p>
               </div>
             </div>
