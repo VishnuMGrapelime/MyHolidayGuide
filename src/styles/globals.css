@@ -26,6 +26,9 @@
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #0c4a6e */
   /* #endregion  /**======== Primary Color =========== */
 }
+::-ms-reveal {
+  display: none;
+}
 
 @layer base {
   /* inter var - latin */

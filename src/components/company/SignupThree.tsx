@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import DynamicTabs from '@/components/DynamicTabs';
 import { Button, ButtonOutline } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
+import { useTranslation } from '../../app/i18n/client';
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -65,7 +66,12 @@ const SignUpThree = ({
   formData,
   updateFormData,
   finalSubmit,
+  lang
 }) => {
+
+  const { t } = useTranslation(lang, 'privateRegistration-page');
+  const { d } = useTranslation(lang, 'dynamic-socialmediatab');
+
   const [formState, setFormState] = useState({
     companyWebsite: 'https://',
     employeeCount: '',
@@ -245,7 +251,7 @@ const SignUpThree = ({
           </div>
 
           <div className=''>
-            <DynamicTabs tabs={tabs} setTabs={setTabs} />
+            <DynamicTabs tabs={tabs} setTabs={setTabs} d={d} lang={lang} />
           </div>
 
           <div className='space-y-1'>

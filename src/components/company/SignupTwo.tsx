@@ -1,4 +1,4 @@
-import { ClipboardCheck } from 'lucide-react';
+import { ClipboardCheck, Eye, EyeOff } from 'lucide-react';
 import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
@@ -60,6 +60,20 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
   });
 
   const [errorStatus, setErrorStatus] = useState(false);
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showCnPassword, setCnShowPassword] = useState(false);
+
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleCnPasswordVisibility = () => {
+
+    setCnShowPassword(!showCnPassword);
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -268,7 +282,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
           <div className='space-y-1'>
             <div className='relative '>
               <input
-                type='password'
+                type={showPassword ? 'text' : 'password'}
                 id='default_outlined'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
@@ -283,7 +297,14 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
                 Password
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                <ClipboardCheck color='#1CCFB9' />
+                {/* <ClipboardCheck color='#1CCFB9' /> */}
+                {showPassword ? (
+
+                  <EyeOff color='#1CCFB9' onClick={togglePasswordVisibility} />
+                ) : (
+                  <Eye color='#1CCFB9' onClick={togglePasswordVisibility} />
+                )}
+
               </div>
             </div>
             <p className='text- md:text- px-4 '>
@@ -294,7 +315,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
           <div className='space-y-1'>
             <div className='relative '>
               <input
-                type='password'
+                type={showCnPassword ? 'text' : 'password'}
                 id='passwordConfirm'
                 className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
@@ -309,7 +330,14 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
                 Password confirmation
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                <ClipboardCheck color='#1CCFB9' />
+                {/* <ClipboardCheck color='#1CCFB9' /> */}
+
+                {showCnPassword ? (
+
+                  <EyeOff color='#1CCFB9' onClick={toggleCnPasswordVisibility} />
+                ) : (
+                  <Eye color='#1CCFB9' onClick={toggleCnPasswordVisibility} />
+                )}
               </div>
             </div>
             <p className='text- md:text- px-4 '>

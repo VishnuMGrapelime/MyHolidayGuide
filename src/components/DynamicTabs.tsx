@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useTranslation } from '../app/i18n/client';
+// import { useTranslation } from "react-i18next";
 
-const DynamicTabs = ({ tabs, setTabs, lang }) => {
+const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
 
   const { t } = useTranslation(lang, 'dynamic-socialmediatab');
 
