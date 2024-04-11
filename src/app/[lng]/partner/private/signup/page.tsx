@@ -76,6 +76,8 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
             if (error) {
               //toast.error(error);
               console.log(error);
+            } else {
+              console.log("success part is working");
             }
           })
           .catch((error) => {
@@ -84,8 +86,8 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
             toast.error('Failed to add user data. Please try again.');
           });
 
-        toast.success('New supplier created successfully');
-        router.push('/partner/private/signup');
+        // toast.success('New supplier created successfully');
+        router.push('/partner/success');
         // ...
       })
       .catch((error) => {

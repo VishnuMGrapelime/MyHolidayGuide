@@ -92,7 +92,7 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
           });
 
         toast.success('New supplier created successfully');
-        router.push('/partner/company/signup');
+        router.push('/partner/success');
         // ...
       })
       .catch((error) => {
