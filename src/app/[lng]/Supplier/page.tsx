@@ -241,10 +241,10 @@ function SupplierPage({ params: { lng } }: { params: Params }) {
                     {/* <div className="absolute inset-0">
                     <Image src={Main2} alt="Main2" layout='fill' objectFit='cover' />
                   </div> */}
-                    <div className='xl:container mx-auto h-1/2 lg:px-20 relative z-10 text-neutral-50'>
+                    <div className='xl:container mx-auto h-auto lg:px-20 relative z-10 text-neutral-50'>
                       <div className='flex flex-col gap-y-8 '>
                         <div className='flex flex-col gap-y-8 '>
-                          <h2 className='text-[1.5rem] md:text-[50px] md:leading-10 lg:w-7/12 xl:w-3/12  font-bold'>
+                          <h2 className='text-[1.5rem] md:text-[4.134rem] md:leading-10 lg:w-7/12 xl:w-4/12  font-bold'>
                             <span className='leading-tight'>
                               {/* We promote local tourism */}
                               {t('bottomBannerTitle')}
