@@ -1,5 +1,5 @@
 'use client';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -49,9 +49,11 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
     delete filteredData.email;
 
     createUserWithEmailAndPassword(auth, finalData.email, finalData.password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         // Signed up
         const user = userCredential.user;
+
+        await sendEmailVerification(user);
 
         const userDetails = {
           email: user.email,
@@ -87,11 +89,17 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
         // ...
       })
       .catch((error) => {
-        // const errorCode = error.code;
-        const errorMessage = error.message;
+
         setStep(2);
-        toast.error(errorMessage);
-        // ..
+        if (error.code === 'auth/email-already-in-use') {
+
+          toast.error("This email is already in use. Please use a different email address or log in.");
+        } else {
+          // Handle other errors
+          toast.error("An error occurred. Please try again.");
+
+        }
+
       });
   };
 

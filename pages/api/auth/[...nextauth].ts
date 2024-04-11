@@ -20,7 +20,7 @@ export const authOptions: any = {
   // Configure one or more authentication providers
   session: { strategy: 'jwt' },
   pages: {
-    signIn: '/signin',
+    signIn: '/Supplier',
   },
   providers: [
     CredentialsProvider({

@@ -6,44 +6,7 @@ export const Footer = () => {
   return (
     /* Additional styling */
     <footer className='dark-footer  dark:dark-footer text-[#fafafa] '>
-      {/* <div className='container mx-auto'>
-        <div className='py-6 text-center md:flex md:items-center md:justify-between'>
-          <span className='text-sm text-gray-500 sm:text-center dark:text-gray-400'>
-            © 2024{' '}
-            <a href='https://www.myholiday.guide/' className='hover:underline'>
-              MyHoliday Guide™
-            </a>
-            . All Rights Reserved.
-          </span>
-          <ul className='flex md:flex-wrap justify-center items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0'>
-            <li>
-              <Link href='/Supplier' className='hover:underline me-4 md:me-6'>
-                Supplier Registration
-              </Link>
-            </li>
-            <li>
-              <a href='#' className='hover:underline me-4 md:me-6'>
-                About
-              </a>
-            </li>
-            <li>
-              <a href='#' className='hover:underline me-4 md:me-6'>
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href='#' className='hover:underline me-4 md:me-6'>
-                Terms and Conditions
-              </a>
-            </li>
-            <li>
-              <a href='#' className='hover:underline'>
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div> */}
+
       <div className="xl:container mx-auto px-4 py-7 md:py-16">
         <div className="flex flex-col lg:flex-row gap-8 text-center justify-evenly">
           <div className='lg:min-w-[629px]'>
@@ -127,10 +90,9 @@ export const Footer = () => {
                 <h4 className='text-[#1CCFB9]'><span>Company</span></h4>
                 <div>
                   <ul className=''>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li></ul>
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Imprint</a></li>
+                  </ul>
                 </div>
               </div>
               <div className='text-start hidden md:block'>
@@ -138,10 +100,9 @@ export const Footer = () => {
                 <h4 className='text-[#1CCFB9]'><span>Work with us</span></h4>
                 <div>
                   <ul className=''>
-                    <li><a href="#">Help</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Terms and Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li></ul>
+                    <li><a href="#">Supplier Administration</a></li>
+                    <li><a href="/Supplier">Supplier Registration</a></li>
+                  </ul>
                 </div>
               </div>
 
