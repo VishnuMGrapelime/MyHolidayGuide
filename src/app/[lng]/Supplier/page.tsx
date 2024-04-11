@@ -11,7 +11,12 @@ import { useTranslation } from '../../i18n/client';
 
 
 import Main from '~/images/Main.jpg';
-function page({ params: { lng } }) {
+
+interface Params {
+  lng: string;
+}
+
+function SupplierPage({ params: { lng } }: { params: Params }) {
   console.log("Selected language is " + lng);
   const { t } = useTranslation(lng, 'supplier-page');
   console.log(t('title'));
@@ -258,4 +263,4 @@ function page({ params: { lng } }) {
   );
 }
 
-export default page;
+export default SupplierPage;

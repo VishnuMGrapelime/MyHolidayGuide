@@ -12,7 +12,11 @@ import { useTranslation } from '../i18n/client';
 
 import Logo from '~/svg/Logo.svg';
 
-const HomePage = ({ params: { lng } }) => {
+interface Params {
+  lng: string;
+}
+
+const HomePage = ({ params: { lng } }: { params: Params }) => {
   const session = useSession({
     required: true,
     // onUnauthenticated() {

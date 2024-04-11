@@ -10,7 +10,7 @@ import { addData } from '@/firebase/firestore/data';
 
 import { useTranslation } from '../../app/i18n/client';
 
-export const UserSignup = ({ lang }) => {
+export const UserSignup = ({ lang }: { lang: string }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
@@ -27,19 +27,30 @@ export const UserSignup = ({ lang }) => {
           userId: user.uid,
           userRole: 'editor',
           displayName: '',
-          createdAt: user.metadata.createdAt,
+          createdAt: user.metadata.creationTime,
         };
 
-        const { error } = addData('users', userDetails);
+        addData('users', userDetails).then(({ error }) => {
+          if (error) {
+            toast.error(String(error));
+          } else {
+            setEmail('');
+            setPassword('');
+            setPasswordAgain('');
+            toast.success('New user created successfully');
+            // Redirect or further actions
+          }
+        });
+        // const { error } = addData('users', userDetails);
 
-        if (error) {
-          toast.error(error);
-        }
+        // if (error) {
+        //   toast.error(error);
+        // }
 
-        setEmail('');
-        setPassword('');
-        setPasswordAgain('');
-        toast.success('User created successfully');
+        // setEmail('');
+        // setPassword('');
+        // setPasswordAgain('');
+        // toast.success('User created successfully');
         // ...
       })
       .catch((error) => {

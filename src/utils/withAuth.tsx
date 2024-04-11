@@ -2,8 +2,8 @@
 
 import { useSession } from 'next-auth/react';
 
-const withAuth = (WrappedComponent) => {
-  return function WithAuthVerification(props) {
+const withAuth = (WrappedComponent: any) => {
+  return function WithAuthVerification(props: any) {
     const { data: session, status } = useSession({
       required: true,
       // onUnauthenticated() {

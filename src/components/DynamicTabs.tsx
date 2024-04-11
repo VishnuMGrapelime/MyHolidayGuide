@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from '../app/i18n/client';
 // import { useTranslation } from "react-i18next";
 
-const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
+const DynamicTabs = ({ tabs, setTabs, lang, d }: { tabs: any, setTabs: any, lang: any, d: any }) => {
 
   const { t } = useTranslation(lang, 'dynamic-socialmediatab');
 
@@ -13,7 +13,7 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
   const inactiveClass =
     'border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300';
 
-  const addTab = (e) => {
+  const addTab = (e: any) => {
     e.preventDefault();
     const newTab = {
       id: tabs.length + 1,
@@ -33,10 +33,10 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
   //     socialUrl: '',
   //   },
 
-  const handleSelectChange = (tabId, value) => {
+  const handleSelectChange = (tabId: any, value: any) => {
     console.log(value);
     setTabs(
-      tabs.map((tab) => {
+      tabs.map((tab: any) => {
         if (tab.id === tabId) {
           return { ...tab, values: { ...tab.values, socialMedia: value } };
         }
@@ -45,9 +45,9 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
     );
   };
 
-  const handleInputChange = (tabId, value) => {
+  const handleInputChange = (tabId: any, value: any) => {
     setTabs(
-      tabs.map((tab) => {
+      tabs.map((tab: any) => {
         if (tab.id === tabId) {
           return { ...tab, values: { ...tab.values, socialUrl: value } };
         }
@@ -56,9 +56,9 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
     );
   };
 
-  const deleteTab = (id) => {
+  const deleteTab = (id: any) => {
     // Filter out the tab to be deleted
-    const newTabs = tabs.filter((tab) => tab.id !== id);
+    const newTabs = tabs.filter((tab: any) => tab.id !== id);
     setTabs(newTabs);
 
     // If the deleted tab was the active tab, reset the activeTab state
@@ -68,12 +68,12 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
         setActiveTab(newTabs[0].id);
       } else {
         // If no tabs are left, reset the activeTab state
-        setActiveTab(null);
+        setActiveTab(0);
       }
     }
   };
 
-  const handleTabClick = (id) => {
+  const handleTabClick = (id: any) => {
     setActiveTab(id); // Set the clicked tab as the active tab
   };
   // document.addEventListener('DOMContentLoaded', function() {
@@ -130,7 +130,7 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
       <div className='border-b border-gray-200 dark:border-gray-700 overflow-hidden'>
         <div className='scroll-container'>
           <ul className='flex flex-nowrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400'>
-            {tabs.map((tab) => (
+            {tabs.map((tab: any) => (
               <li key={tab.id} className='me-2'>
                 <a
                   href='#'
@@ -165,7 +165,7 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }) => {
       </div>
 
       <div className='mt-4'>
-        {tabs.map((tab) => (
+        {tabs.map((tab: any) => (
           <div
             key={tab.id}
             className={`mt-4 ${activeTab === tab.id ? '' : 'hidden'}`}

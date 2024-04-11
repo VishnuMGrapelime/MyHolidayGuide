@@ -6,8 +6,12 @@ import CategoryList from '@/components/Category/CategoryList';
 
 import withAuth from '@/utils/withAuth';
 
-const Category = ({ params: { lng } }) => {
-  const user = useSelector((state) => state.session.user);
+interface Params {
+  lng: string;
+}
+
+const Category = ({ params: { lng } }: { params: Params }) => {
+  const user = useSelector((state: any) => state.session.user);
 
   if (user?.userRole !== 'admin') {
     return <p>Restricted page</p>;

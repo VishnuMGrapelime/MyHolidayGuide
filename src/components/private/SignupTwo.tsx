@@ -17,6 +17,13 @@ const SignUpTwo = ({
   updateFormData,
   finalSubmit,
   lang
+}: {
+  nextStep: any,
+  prevStep: any,
+  formData: any,
+  updateFormData: any,
+  finalSubmit: any,
+  lang: any
 }) => {
 
   const { t } = useTranslation(lang, 'privateRegistration-page');
@@ -29,10 +36,9 @@ const SignUpTwo = ({
       .min(6)
       .max(24)
       .required(t('step2.password.validation')),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      t('step2.confirmPassword.validation'),
-    ),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password')], 'Passwords must match')
+      .required('Confirm Password is required'),
     preferedLanguage: Yup.string().required(t('step2.preferedLanguage.validation')),
   });
 
@@ -66,7 +72,7 @@ const SignUpTwo = ({
     }
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
 
     setFormState({ ...formState, [name]: value });
@@ -84,7 +90,7 @@ const SignUpTwo = ({
   const [tabs, setTabs] = useState([]);
   const [errorStatus, setErrorStatus] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setErrorStatus(false);
 
@@ -99,7 +105,7 @@ const SignUpTwo = ({
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
-        const errorMessages = error.inner.reduce((acc, curr) => {
+        const errorMessages = error.inner.reduce((acc: any, curr: any) => {
           acc[curr.path] = curr.message;
           return acc;
         }, {});
@@ -218,7 +224,7 @@ const SignUpTwo = ({
           </div>
           <div>
             <div className='mt-2 '>
-              <DynamicTabs tabs={tabs} setTabs={setTabs} lang={lang} />
+              <DynamicTabs tabs={tabs} setTabs={setTabs} lang={lang} d={"d"} />
             </div>
           </div>
           <div className='space-y-1'>

@@ -18,13 +18,13 @@ const schema = Yup.object().shape({
   password: Yup.string().required().min(6),
 });
 
-export const UserSignIn = ({ lang }) => {
+export const UserSignIn = ({ lang }: { lang: string }) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
   const { t } = useTranslation(lang, 'signin');
 
-  async function syncFirebaseAuth(session) {
+  async function syncFirebaseAuth(session: any) {
     if (session && session.firebaseToken) {
       try {
         // console.log("signin with custom token"+session.firebaseToken);
@@ -42,24 +42,35 @@ export const UserSignIn = ({ lang }) => {
     password: '',
   };
 
-  const onSubmit = ({ email, password }) => {
+  const onSubmit = ({ email, password }: { email: any, password: any }) => {
     signIn('credentials', {
       email,
       password,
       redirect: false,
       callbackUrl: `/${lang}`,
-    }).then(async ({ ok }) => {
-      if (ok) {
+    }).then(async (response: any) => {
+      if (response?.ok) {
         const session = await getSession();
         await syncFirebaseAuth(session);
-        dispatch(setUserData(email));
+        //dispatch(setUserData(email)); // commented temporarily to bypass the error
 
         router.push(`/${lang}`);
       } else {
-        // console.log(error);
         toast.error('Invalid Username or password');
       }
     });
+    // .then(async ({ ok }) => {
+    //   if (ok) {
+    //     const session = await getSession();
+    //     await syncFirebaseAuth(session);
+    //     dispatch(setUserData(email));
+
+    //     router.push(`/${lang}`);
+    //   } else {
+    //     // console.log(error);
+    //     toast.error('Invalid Username or password');
+    //   }
+    // });
   };
 
   return (

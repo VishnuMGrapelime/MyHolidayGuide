@@ -7,8 +7,12 @@ import { AddUserDetails } from '@/components/AddUserDetails';
 
 import withAuth from '@/utils/withAuth';
 
-function AddUser({ params: { lng } }) {
-  const user = useSelector((state) => state.session.user);
+interface Params {
+  lng: string;
+}
+
+function AddUser({ params: { lng } }: { params: Params }) {
+  const user = useSelector((state: any) => state.session.user);
 
   if (user?.userRole !== 'admin') {
     return <p>Restricted page</p>;

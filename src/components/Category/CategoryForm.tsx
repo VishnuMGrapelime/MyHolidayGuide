@@ -36,7 +36,13 @@ const CategoryForm = () => {
       },
     };
 
-    const { error } = addData('category', categoryDetails);
+    // const { error } = addData('category', categoryDetails);
+
+    addData('category', categoryDetails).then(({ error }) => {
+      console.log(error);
+    });
+
+
   }
   return (
     <div>

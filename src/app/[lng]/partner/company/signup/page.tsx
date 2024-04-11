@@ -12,7 +12,11 @@ import Stepper from '@/components/Elements/Stepper';
 import { auth } from '@/firebase/firebase';
 import { addData } from '@/firebase/firestore/data';
 
-const CompanySignUpPage = ({ params: { lng } }) => {
+interface Params {
+  lng: string;
+}
+
+const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({});
   const router = useRouter();
@@ -25,15 +29,15 @@ const CompanySignUpPage = ({ params: { lng } }) => {
     setStep(step - 1);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const updateFormData = (data) => {
+  const updateFormData = (data: any) => {
     setFormData({ ...formData, ...data });
   };
 
-  const finalSubmit = (data) => {
+  const finalSubmit = (data: any) => {
     const finalData = { ...formData, ...data };
     setFormData(finalData);
 
@@ -56,18 +60,34 @@ const CompanySignUpPage = ({ params: { lng } }) => {
           userRole: 'supplier',
           userType: 'company',
           displayName: finalData.firstName + ' ' + finalData.lastName,
-          createdAt: user.metadata.createdAt,
+          createdAt: user.metadata.creationTime,
         };
         const userData = { ...userDetails, ...filteredData };
         console.log(userData);
-        const { result, error } = addData('users', userData);
+        // const { result, error } = addData('users', userData);
 
-        if (error) {
-          toast.error(error);
-        } else {
-          console.log("Printing result");
-          console.log(result);
-        }
+        // if (error) {
+        //   toast.error(error);
+        // } else {
+        //   console.log("Printing result");
+        //   console.log(result);
+        // }
+
+        addData('users', userData)
+          .then(({ result, error }) => { // Destructure result and error directly from the resolved value
+            if (error) {
+              // toast.error(error);
+              console.log(error);
+            } else {
+              console.log("Printing result");
+              console.log(result);
+            }
+          })
+          .catch((error) => {
+            // Handle errors from addData
+            console.error("Error adding user data:", error);
+            toast.error('Failed to add user data. Please try again.');
+          });
 
         toast.success('New supplier created successfully');
         router.push('/partner/company/signup');

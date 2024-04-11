@@ -2,7 +2,11 @@ import React from 'react';
 
 import ItemsList from '@/components/Items/ItemsList';
 
-const RestaurantsPage = ({ params: { lng } }) => {
+interface Params {
+  lng: string;
+}
+
+const RestaurantsPage = ({ params: { lng } }: { params: Params }) => {
   return (
     <ItemsList
       lang={lng}

@@ -5,12 +5,12 @@ import { getFile, uploadFile } from '@/lib/storage';
 
 const fileTypes = ['JPG', 'PNG', 'GIF'];
 
-const ImageUpload = ({ folderName, updateImageUrl }) => {
+const ImageUpload = ({ folderName, updateImageUrl }: { folderName: string, updateImageUrl: any }) => {
   const [file, setFile] = useState(null);
 
-  const [uploaded, setUploaded] = useState(null);
+  const [uploaded, setUploaded] = useState("");
 
-  const handleChange = async (file) => {
+  const handleChange = async (file: any) => {
     setFile(file);
     const folder = folderName;
     const imagePath = await uploadFile(file, folder);

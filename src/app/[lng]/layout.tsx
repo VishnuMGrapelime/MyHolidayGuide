@@ -50,6 +50,13 @@ export const metadata: Metadata = {
 
 // const languages = ['en', 'de'];
 
+interface RootLayoutProps {
+  children: React.ReactNode;
+  params: {
+    lng: string; // Adjust the type of lng according to your requirements
+  };
+}
+
 export async function generateStaticParams() {
   return languages.map((lng) => ({ lng }));
 }
@@ -57,9 +64,7 @@ export async function generateStaticParams() {
 export default function RootLayout({
   children,
   params: { lng },
-}: {
-  children: React.ReactNode;
-}) {
+}: RootLayoutProps) {
   return (
     <html lang={lng} dir={dir(lng)} className='h-full bg-white-900 '>
       <body className='h-full dark:bg-black'>
@@ -67,9 +72,9 @@ export default function RootLayout({
         <ReduxProvider>
           <SessionProvider>
             <Header lang={lng} />
-            <Toaster position='top-center' duration='4000' />
+            <Toaster position='top-center' />
             {children}
-           <ScrollToTopButton />
+            <ScrollToTopButton />
             <Footer />
           </SessionProvider>
         </ReduxProvider>

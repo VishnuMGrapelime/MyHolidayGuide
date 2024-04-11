@@ -9,7 +9,11 @@ import withAuth from '@/utils/withAuth';
 
 import { useTranslation } from '../../i18n/client';
 
-const AdminPage = ({ params: { lng } }) => {
+interface Params {
+  lng: string;
+}
+
+const AdminPage = ({ params: { lng } }: { params: Params }) => {
   const session = useSession({
     required: true,
     // onUnauthenticated() {

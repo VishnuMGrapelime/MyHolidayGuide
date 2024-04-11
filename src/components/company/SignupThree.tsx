@@ -28,22 +28,22 @@ const options = [
   { value: 'transfers', label: 'Transfers' },
 ];
 const customStyles = {
-  menu: (provided) => ({
+  menu: (provided: any) => ({
     ...provided,
     borderRadius: '0 0 0.5rem 0.5rem', // Round bottom corners
     marginTop: '0', // Remove top margin
     boxShadow: 'none', // Remove shadow
     border: '1px solid #E5E7EB', // Add border
   }),
-  option: (provided) => ({
+  option: (provided: any) => ({
     ...provided,
     // padding: '0.5rem', // Add padding to options
   }),
-  indicatorSeparator: (base) => ({
+  indicatorSeparator: (base: any) => ({
     display: 'none',
   }),
 
-  control: (provided, state) => ({
+  control: (provided: any, state: any) => ({
     ...provided,
     padding: ' 5px',
     borderRadius: '8px',
@@ -53,7 +53,7 @@ const customStyles = {
       borderColor: state.isFocused ? '#1CCFB9' : provided.borderColor,
     },
   }),
-  dropdownIndicator: (base, state) => ({
+  dropdownIndicator: (base: any, state: any) => ({
     ...base,
     color: '#666', // Change this to your desired color
     padding: '0',
@@ -67,12 +67,28 @@ const SignUpThree = ({
   updateFormData,
   finalSubmit,
   lang
+}: {
+  nextStep: any,
+  prevStep: any,
+  formData: any,
+  updateFormData: any,
+  finalSubmit: any,
+  lang: string
 }) => {
 
-  const { t } = useTranslation(lang, 'privateRegistration-page');
-  const { d } = useTranslation(lang, 'dynamic-socialmediatab');
+  // const { t } = useTranslation(lang, 'privateRegistration-page');
+  const { d }: any = useTranslation(lang, 'dynamic-socialmediatab');
 
-  const [formState, setFormState] = useState({
+  // interface FormState {
+  //   companyWebsite: string;
+  //   employeeCount: string;
+  //   turnOver: string;
+  //   companyLanguage: string;
+  //   acceptTerms: boolean;
+  //   compBusinessType?: string[];
+  // }
+
+  const [formState, setFormState] = useState<{ [key: string]: any }>({
     companyWebsite: 'https://',
     employeeCount: '',
     turnOver: '',
@@ -115,32 +131,42 @@ const SignUpThree = ({
     }
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormState({ ...formState, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  interface Option {
+    value: string;
+  }
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setErrorStatus(false);
 
     try {
       // Validate the form data
 
-      const businessType = [];
+      const businessType: any = [];
 
       if (typeof selectedOption !== 'undefined') {
         //if (selectedOption.length > 0) {
-        selectedOption.map((item) => {
-          businessType.push(item.value);
-        });
+        if (selectedOption) {
+          // selectedOption.map((item: Option) => {
+          //   businessType.push(item.value);
+          // });
+
+          (selectedOption as Array<{ value: string }>).forEach((item: Option) => {
+            businessType.push(item.value);
+          });
+        }
         setFormState({ ...formState, compBusinessType: businessType });
       }
 
       console.log('working 1');
-      const socialData = [];
+      const socialData: any = [];
       if (tabs.length > 0) {
-        tabs.map((item) => {
+        tabs.map((item: any) => {
           //console.log(item);
           socialData.push(item.values);
         });
@@ -158,7 +184,7 @@ const SignUpThree = ({
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
-        const errorMessages = error.inner.reduce((acc, curr) => {
+        const errorMessages: any = error.inner.reduce((acc: any, curr: any) => {
           acc[curr.path] = curr.message;
           return acc;
         }, {});
@@ -168,11 +194,11 @@ const SignUpThree = ({
     }
   };
 
-  const setTermsAndConditions = (value) => {
+  const setTermsAndConditions = (value: boolean) => {
     setFormState({ ...formState, acceptTerms: value });
   };
 
-  const handleDateChange = (date) => {
+  const handleDateChange = (date: any) => {
     const givenDateTime = new Date(date);
 
     // Convert the Date object to a date string
@@ -184,7 +210,7 @@ const SignUpThree = ({
     setSelectedDate(date);
   };
 
-  const handleBusinessTypeChange = (value) => {
+  const handleBusinessTypeChange = (value: any) => {
     setSelectedOption(value);
     setFormState({ ...formState, selectedOption: value });
   };
@@ -281,7 +307,7 @@ const SignUpThree = ({
             <div className='relative'>
               <Datepicker
                 id='existSince'
-                defaultValue={selectedDate}
+                defaultValue={selectedDate || ""}
                 onSelectedDateChanged={handleDateChange}
                 style={{ backgroundColor: 'white', paddingTop: '12px', paddingBottom: '11px' }}
                 className='block pt-7 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 peer'

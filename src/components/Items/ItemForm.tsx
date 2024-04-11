@@ -19,8 +19,15 @@ const ItemForm = ({
   page,
   category,
   returnUrl,
+}: {
+  itemName: string,
+  itemId: any,
+  itemsData: any,
+  page: any,
+  category: any,
+  returnUrl: string,
 }) => {
-  const [langData, setLangData] = useState();
+  const [langData, setLangData] = useState({});
 
   const router = useRouter();
   const [itemsLangData, setItemsLangData] = useState([]);
@@ -29,11 +36,12 @@ const ItemForm = ({
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
 
-  const updateItemsLangData = (data) => {
+  const updateItemsLangData = (data: any) => {
     // handling data from inner component and updating state
-    const newArray = [];
+    const newArray: any = [];
     for (const key in data) {
-      if (data.hasOwnProperty(key)) {
+      //if (data.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(data, key)) {
         newArray[key] = data[key];
       }
     }
@@ -44,7 +52,7 @@ const ItemForm = ({
     console.log('Image updated ');
   }, [imageUrl]);
 
-  const handleImageUrl = (data) => {
+  const handleImageUrl = (data: any) => {
     if (data) {
       setImageUrl(data);
       console.log('Image url ' + data);
@@ -76,7 +84,7 @@ const ItemForm = ({
       console.log('Printing service details');
       console.log(serviceDetails);
 
-      const { error } = addData('services', serviceDetails);
+      const { error }: any = addData('services', serviceDetails);
       if (error) {
         toast.error(error);
       }
@@ -100,7 +108,7 @@ const ItemForm = ({
       };
 
       console.log(serviceDetails);
-      const { error } = updateData('services', itemId, serviceDetails);
+      const { error }: any = updateData('services', itemId, serviceDetails);
 
       toast.success('Service updated successfully', {
         duration: 4000,
@@ -134,10 +142,10 @@ const ItemForm = ({
   );
 
   //const tabArray = [{ name: 'en', content: EnglishTab }];
-  const tabArray = [];
+  const tabArray: any = [];
 
   useEffect(() => {
-    const langdataDb = [];
+    const langdataDb: any = [];
     if (itemsData.itemCategory) {
       // works for edit page
 
@@ -152,7 +160,8 @@ const ItemForm = ({
         const ln = itemsData['languages'][key];
 
         console.log('Print value ' + ln);
-        if (itemsData.hasOwnProperty(ln)) {
+        // if (itemsData.hasOwnProperty(ln)) {
+        if (Object.prototype.hasOwnProperty.call(itemsData, ln)) {
           // Printing Keys
 
           const tabContent = (

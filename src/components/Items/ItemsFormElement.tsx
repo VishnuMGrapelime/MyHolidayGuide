@@ -10,8 +10,15 @@ export const ItemsFormElement = ({
   itemName,
   page,
   newTab,
-  itemsLangData, // language specific
+  itemsLangData,
   updateDataField,
+}: {
+  lang: any,
+  itemName: string,
+  page: any,
+  newTab: any,
+  itemsLangData: any,
+  updateDataField: any,
 }) => {
   const schema = Yup.object().shape({
     itemName: Yup.string().required(itemName + 'name is required'),
@@ -20,9 +27,9 @@ export const ItemsFormElement = ({
     itemAddress: Yup.string().required(itemName + 'address is required'),
   });
 
-  const [itemData, setItemData] = useState({});
+  const [itemData, setItemData] = useState<{ [key: string]: any }>({});
   const [intilDataLoad, setIntilDataLoad] = useState(false);
-  const [initialValues, setInitialValues] = useState({
+  const [initialValues, setInitialValues] = useState<{ [key: string]: any }>({
     itemLang: '',
     itemName: '',
     itemType: '',
@@ -30,8 +37,10 @@ export const ItemsFormElement = ({
     itemAddress: '',
   });
 
-  const onSubmit = (values) => {
-    const selLang = langRef.current.value;
+  const langRef: any = useRef('en');
+
+  const onSubmit = (values: any) => {
+    const selLang = langRef.current;
     const langKey = selLang == 'new' ? values.itemLang : selLang;
     delete values.itemLang;
     itemsLangData[langKey] = values;
@@ -41,13 +50,13 @@ export const ItemsFormElement = ({
 
     newTab
       ? toast.success('New language added successfully', {
-          duration: 4000,
-          position: 'top-center',
-        })
+        duration: 4000,
+        position: 'top-center',
+      })
       : toast.success('Language updated successfully', {
-          duration: 4000,
-          position: 'top-center',
-        });
+        duration: 4000,
+        position: 'top-center',
+      });
   };
 
   useEffect(() => {
@@ -55,7 +64,7 @@ export const ItemsFormElement = ({
     // console.log(itemsLangData);
     if (itemsLangData) {
       setItemData(itemsLangData[lang]);
-      setInitialValues({ ...itemsLangData[lang] }, { itemLang: '' });
+      // setInitialValues({ ...itemsLangData[lang] }, { itemLang: '' }); // comenting for temparary fix
 
       setIntilDataLoad(true);
     } else {
@@ -73,10 +82,10 @@ export const ItemsFormElement = ({
     }
   }, []);
 
-  const langRef = useRef('en');
+
 
   function addNewLanguageData() {
-    const selLang = langRef.current.value;
+    const selLang = langRef.current;
     const langKey = selLang == 'new' ? itemData.itemLan : selLang;
 
     itemsLangData[langKey] = itemData;
@@ -84,13 +93,13 @@ export const ItemsFormElement = ({
 
     newTab
       ? toast.success('New language added successfully', {
-          duration: 4000,
-          position: 'top-center',
-        })
+        duration: 4000,
+        position: 'top-center',
+      })
       : toast.success('Language updated successfully', {
-          duration: 4000,
-          position: 'top-center',
-        });
+        duration: 4000,
+        position: 'top-center',
+      });
   }
 
   const languageList = [
@@ -267,7 +276,7 @@ export const ItemsFormElement = ({
               <button
                 className='disabled:opacity-40 flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500'
                 type='submit'
-                //onClick={() => addNewLanguageData()}
+              //onClick={() => addNewLanguageData()}
               >
                 {page + ' Language'}
               </button>

@@ -9,7 +9,7 @@ import { useTranslation } from '../../app/i18n/client';
 
 
 
-const SignupOne = ({ nextStep, formData, updateFormData, lang }) => {
+const SignupOne = ({ nextStep, formData, updateFormData, lang }: { nextStep: any, formData: any, updateFormData: any, lang: any }) => {
   const { t } = useTranslation(lang, 'privateRegistration-page');
 
   const schema = Yup.object().shape({
@@ -60,7 +60,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }) => {
     }
   }, []);
 
-  const handleChange = async (e) => {
+  const handleChange = async (e: any) => {
     const { name, value } = e.target;
 
     setFormState({ ...formState, [name]: value });
@@ -76,7 +76,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }) => {
 
         if (error instanceof Yup.ValidationError) {
           // Update the errors state with the validation errors
-          const errorMessages = error.inner.reduce((acc, curr) => {
+          const errorMessages: any = error.inner.reduce((acc: any, curr: any) => {
             acc[curr.path] = curr.message;
             return acc;
           }, {});
@@ -133,7 +133,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }) => {
 
   const [errorStatus, setErrorStatus] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setErrorStatus(false);
     try {
@@ -148,7 +148,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }) => {
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
-        const errorMessages = error.inner.reduce((acc, curr) => {
+        const errorMessages = error.inner.reduce((acc: any, curr: any) => {
           acc[curr.path] = curr.message;
           return acc;
         }, {});

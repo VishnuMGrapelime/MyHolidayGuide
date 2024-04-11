@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-export async function generateMetadata({ params: { lng } }) {
+interface Params {
+  lng: string;
+}
+
+export async function generateMetadata({ params: { lng } }: { params: Params }) {
   const messages = (await import(`../../i18n/locales/${lng}/meta-data.json`))
     .default;
 

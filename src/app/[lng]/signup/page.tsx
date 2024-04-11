@@ -3,7 +3,11 @@
 //   description: 'Pre-built components with awesome default',
 // };
 
-export async function generateMetadata({ params: { lng } }) {
+interface Params {
+  lng: string;
+}
+
+export async function generateMetadata({ params: { lng } }: { params: Params }) {
   const messages = (await import(`../../i18n/locales/${lng}/meta-data.json`))
     .default;
 
@@ -16,6 +20,6 @@ export async function generateMetadata({ params: { lng } }) {
 
 import { UserSignup } from '@/components/Auth/UserSignup';
 
-export default function Signup({ params: { lng } }) {
+export default function Signup({ params: { lng } }: { params: Params }) {
   return <UserSignup lang={lng} />;
 }

@@ -12,16 +12,16 @@ const schema = Yup.object().shape({
     .min(6)
     .max(24)
     .required('Password is a required field'),
-  confirmPassword: Yup.string().oneOf(
-    [Yup.ref('password'), null],
-    'Passwords must match',
-  ),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Passwords must match')
+    .required('Confirm Password is required'),
+
   phone: Yup.string().required('Phone is a required field'),
   firstName: Yup.string().required('First name is a required field'),
   lastName: Yup.string().required('Last name is a required field'),
 });
 
-const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
+const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep: any, prevStep: any, formData: any, updateFormData: any }) => {
   const [formState, setFormState] = useState({
     email: '',
     password: '',
@@ -44,7 +44,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
     }
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
 
     setFormState({ ...formState, [name]: value });
@@ -75,7 +75,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
   };
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setErrorStatus(false);
 
@@ -91,7 +91,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }) => {
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
-        const errorMessages = error.inner.reduce((acc, curr) => {
+        const errorMessages = error.inner.reduce((acc: any, curr: any) => {
           acc[curr.path] = curr.message;
           return acc;
         }, {});

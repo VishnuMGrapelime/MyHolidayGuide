@@ -21,7 +21,7 @@ const schema = Yup.object().shape({
   country: Yup.string().required('Country is a required field'),
 });
 
-const SignupOne = ({ nextStep, formData, updateFormData }) => {
+const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, formData: any, updateFormData: any }) => {
   const [formState, setFormState] = useState({
     companyIdNo: '',
     companyName: '',
@@ -52,7 +52,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
     }
   }, []);
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
 
     setFormState({ ...formState, [name]: value });
@@ -73,7 +73,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
 
   const [errorStatus, setErrorStatus] = useState(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
     setErrorStatus(false);
     try {
@@ -88,7 +88,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }) => {
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
-        const errorMessages = error.inner.reduce((acc, curr) => {
+        const errorMessages: any = error.inner.reduce((acc: any, curr: any) => {
           acc[curr.path] = curr.message;
           return acc;
         }, {});

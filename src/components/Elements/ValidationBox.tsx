@@ -1,4 +1,4 @@
-export const ValidationBox = ({ errors }) => {
+export const ValidationBox = ({ errors }: { errors: any }) => {
   return (
     <div className='flex flex-col gap-y-2 p-3 my-4 md:p-4 text-[#df3b16] border rounded-xl border-red-500 break-words'>
       <h3 className='text-p1 font-semibold'>

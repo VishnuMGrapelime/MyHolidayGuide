@@ -15,7 +15,8 @@ if (!admin.apps.length) {
   });
 }
 
-export const authOptions = {
+
+export const authOptions: any = {
   // Configure one or more authentication providers
   session: { strategy: 'jwt' },
   pages: {
@@ -40,7 +41,7 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async session({ session, token }) {
+    async session({ session, token }: { session: any, token: any }) {
       if (token && token.uid) {
         const firebaseToken = await admin.auth().createCustomToken(token.uid);
 
@@ -49,7 +50,7 @@ export const authOptions = {
       return session;
     },
 
-    async jwt({ token, user, account }) {
+    async jwt({ token, user, account }: { token: any, user: any, account: any }) {
       return { ...token, ...user, ...account };
     },
   },

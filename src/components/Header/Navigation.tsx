@@ -14,7 +14,7 @@ import { useTranslation } from '../../app/i18n/client';
 // import logo from '/images/Logo.png';
 import Logo from '~/images/Logo.png';
 
-export const Navigation = ({ user, lang }) => {
+export const Navigation = ({ user, lang }: { user: any, lang: any }) => {
   const themeSwitcherRef = useRef<HTMLDivElement>(null);
   // const [showProfileDropDown, setShowProfileDropDown] = useState(false);
   const router = useRouter();

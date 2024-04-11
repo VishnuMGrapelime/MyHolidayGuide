@@ -12,7 +12,7 @@ export function getFromSessionStorage(key: string): string | null {
   return null;
 }
 
-export function removeFromSessionStorage(key: string): string | null {
+export function removeFromSessionStorage(key: string) {
   if (typeof sessionStorage !== 'undefined') {
     sessionStorage.removeItem(key);
   }

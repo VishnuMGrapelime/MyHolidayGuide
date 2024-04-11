@@ -9,7 +9,7 @@ import { auth } from '@/firebase/firebase';
 
 import { useTranslation } from '../../app/i18n/client';
 
-export const UserForgotPassword = ({ lang }) => {
+export const UserForgotPassword = ({ lang }: { lang: string }) => {
   const [email, setEmail] = useState('');
 
   const router = useRouter();

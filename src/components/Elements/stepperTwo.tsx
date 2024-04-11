@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function StepperTwo({ currPage }) {
+export default function StepperTwo({ currPage }: { currPage: any }) {
   return (
     <>
       <div className='mb-12 '>

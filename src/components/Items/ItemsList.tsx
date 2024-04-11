@@ -13,6 +13,12 @@ const ItemsList = ({
   itemAddUrl,
   itemEditUrl,
   itemCatName,
+}: {
+  lang: any,
+  itemName: any,
+  itemAddUrl: any,
+  itemEditUrl: any,
+  itemCatName: any,
 }) => {
   console.log(lang);
   const [enableAdd, setEnableAdd] = useState(false);
@@ -31,7 +37,7 @@ const ItemsList = ({
       );
       console.log(servicesItems);
 
-      const formatedData = servicesItems?.map((item) => ({
+      const formatedData: any = servicesItems?.map((item) => ({
         id: item.id,
         itemName: item[item.languages[0]].itemName,
         itemType: item[item.languages[0]].itemType,
@@ -52,8 +58,8 @@ const ItemsList = ({
     setEnableAdd(false);
   };
 
-  const handleDelete = (serviceId) => {
-    const { error } = deleteData('services', serviceId);
+  const handleDelete = (serviceId: any) => {
+    const { error }: any = deleteData('services', serviceId);
     if (error) {
       toast.error(error);
     }
@@ -225,7 +231,7 @@ const ItemsList = ({
                       </tr>
                     </thead>
                     <tbody>
-                      {serviceList.map((service, id) => (
+                      {serviceList.map((service: any, id) => (
                         <tr key={id}>
                           <td
                             className='

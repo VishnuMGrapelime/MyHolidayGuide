@@ -4,15 +4,15 @@ import CategoryForm from '@/components/Category/CategoryForm';
 
 import { getData } from '@/firebase/firestore/data';
 
-export const CategoryList = ({ lang }) => {
+export const CategoryList = ({ lang }: { lang: string }) => {
   const [enableAdd, setEnableAdd] = useState(false);
   const [categoryList, setCategoryList] = useState([]);
 
   useEffect(() => {
     const getCategories = async () => {
-      const categoryItems = (await getData('category')).result;
+      const categoryItems: any = (await getData('category')).result;
 
-      const formatedData = categoryItems?.map((item) => ({
+      const formatedData = categoryItems?.map((item: any) => ({
         id: item.id,
         categoryName: item[lang].categoryName,
       }));
@@ -39,7 +39,7 @@ export const CategoryList = ({ lang }) => {
           <div style={{ padding: '10px 0px' }}>
             <button
               onClick={() => setEnableAdd(true)}
-              href='javascript:void(0)'
+              //href='javascript:void(0)'
               className='
               border border-primary
               py-2
@@ -126,7 +126,7 @@ export const CategoryList = ({ lang }) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {categoryList.map((category, id) => (
+                    {categoryList.map((category: any, id) => (
                       <tr key={id}>
                         <td
                           className='

@@ -5,7 +5,11 @@ import { UserSignIn } from '@/components/Auth/UserSignIn';
 //   description: 'Pre-built components with awesome default',
 // };
 
-export async function generateMetadata({ params: { lng } }) {
+interface Params {
+  lng: string;
+}
+
+export async function generateMetadata({ params: { lng } }: { params: Params }) {
   const messages = (await import(`../../i18n/locales/${lng}/meta-data.json`))
     .default;
 
@@ -16,7 +20,7 @@ export async function generateMetadata({ params: { lng } }) {
   };
 }
 
-export default async function Signin({ params: { lng } }) {
+export default async function Signin({ params: { lng } }: { params: Params }) {
   return (
     <>
       <UserSignIn lang={lng} />

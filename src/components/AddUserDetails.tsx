@@ -8,7 +8,8 @@ import { useTranslation } from '@/app/i18n/client';
 import { auth } from '@/firebase/firebase';
 import { addData } from '@/firebase/firestore/data';
 
-export const AddUserDetails = ({ lang }) => {
+
+export const AddUserDetails = ({ lang }: { lang: string }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -26,20 +27,33 @@ export const AddUserDetails = ({ lang }) => {
           userId: user.uid,
           userRole: userRole,
           displayName: '',
-          createdAt: user.metadata.createdAt,
+          createdAt: user.metadata.creationTime,
         };
 
-        const { error } = addData('users', userDetails);
+        // const { error } = addData('users', userDetails);
 
-        if (error) {
-          toast.error(error);
-        }
+        // if (error) {
+        //   toast.error(error);
+        // }
 
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
-        setUserRole('');
-        toast.success('New user created successfully');
+        // setEmail('');
+        // setPassword('');
+        // setConfirmPassword('');
+        // setUserRole('');
+        // toast.success('New user created successfully');
+
+        addData('users', userDetails).then(({ error }) => {
+          if (error) {
+            toast.error(String(error));
+          } else {
+            setEmail('');
+            setPassword('');
+            setConfirmPassword('');
+            setUserRole('');
+            toast.success('New user created successfully');
+            // Redirect or further actions
+          }
+        });
         // ...
       })
       .catch((error) => {

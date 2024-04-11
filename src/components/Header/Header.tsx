@@ -10,11 +10,11 @@ import { Navigation } from '@/components/Header/Navigation';
 import { auth } from '@/firebase/firebase';
 import { setUserData } from '@/redux/slices/sessionSlice';
 
-export const Header = ({ lang }) => {
+export const Header = ({ lang }: { lang: string }) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
+  const user = useSelector((state: any) => state.session.user);
 
-  async function syncFirebaseAuth(session) {
+  async function syncFirebaseAuth(session: any) {
     if (session && session.firebaseToken) {
       try {
         await signInWithCustomToken(auth, session.firebaseToken);
@@ -32,7 +32,7 @@ export const Header = ({ lang }) => {
       await syncFirebaseAuth(session);
 
       if (session?.user?.email) {
-        dispatch(setUserData(session?.user?.email));
+        //  dispatch(setUserData(session?.user?.email)); // commented temporarly
       }
     }
 

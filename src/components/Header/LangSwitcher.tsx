@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import gbFlag from '../../assets/img/bg_flag.png';
 import frFlag from '../../assets/img/french_flag.png';
 
-const LangSwitcher: React.FC = ({ lang }) => {
+const LangSwitcher = ({ lang }: { lang: string }) => {
   interface Option {
     country: string;
     code: string;
@@ -36,22 +36,30 @@ const LangSwitcher: React.FC = ({ lang }) => {
     if (lang) {
       const langOption = options.find(option => option.code === lang);
       //console.log(langOption.flag.src);
-      setLanguage(langOption.flag.src)
+      if (langOption) {
+        setLanguage(langOption.flag.src)
+      }
     }
 
   }, [lang])
 
   const setOption = (option: Option) => {
     let url = pathname?.toString();
-    url = url.replace(`/${lang}/`, `/${option.code}/`);
-    if (url == pathname) {
-      url = url.replace(`/${lang}`, `/${option.code}`);
+
+    if (url) {
+      url = url.replace(`/${lang}/`, `/${option.code}/`);
+      if (url == pathname) {
+        url = url.replace(`/${lang}`, `/${option.code}`);
+      }
+
+      setIsOptionsExpanded(false);
+      setLanguage(option.flag.src);
+      router.push(url);
     }
+
     //console.log('new url ' + url);
 
-    setIsOptionsExpanded(false);
-    setLanguage(option.flag);
-    router.push(url);
+
   };
 
   return (
