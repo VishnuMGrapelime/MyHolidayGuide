@@ -108,7 +108,7 @@ const SignUpThree = ({
 
   const [tabs, setTabs] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
     // console.log(formData.companyLanguage);
@@ -124,6 +124,7 @@ const SignUpThree = ({
       });
       console.log(formData.selectedOption);
       setSelectedOption(formData.selectedOption);
+      console.log("Exist since " + formData.existSince);
       setSelectedDate(formData.existSince);
       if (formData.socialTabs) {
         setTabs(formData.socialTabs);
@@ -204,6 +205,7 @@ const SignUpThree = ({
     // Convert the Date object to a date string
     const formattedDate = `${givenDateTime.getDate().toString().padStart(2, '0')}/${(givenDateTime.getMonth() + 1).toString().padStart(2, '0')}/${givenDateTime.getFullYear()}`;
 
+    console.log(formattedDate);
     setFormState({ ...formState, existSince: formattedDate });
     // console.log(formState);
 
@@ -307,7 +309,7 @@ const SignUpThree = ({
             <div className='relative'>
               <Datepicker
                 id='existSince'
-                defaultValue={selectedDate || ""}
+                value={selectedDate}
                 onSelectedDateChanged={handleDateChange}
                 style={{ backgroundColor: 'white', paddingTop: '12px', paddingBottom: '11px' }}
                 className='block pt-7 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 peer'

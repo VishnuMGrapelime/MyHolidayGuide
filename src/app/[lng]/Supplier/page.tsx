@@ -208,8 +208,16 @@ function SupplierPage({ params: { lng } }: { params: Params }) {
                             <div>
                               <div style={{ outline: 'none', width: '100%;' }}>
                                 <div className='pt-4 text-center space-y-4 md:pt-6 md:space-x-6'>
-                                  <Button label={t('privateRegistration')} />
-                                  <Button label={t('companyRegistration')} />
+                                  {/* <Button label={t('privateRegistration')} />
+                                  <Button label={t('companyRegistration')} /> */}
+                                  <LinkButton
+                                    label={t('privateRegistration')}
+                                    link='/partner/private/signup'
+                                  />
+                                  <LinkButton
+                                    label={t('companyRegistration')}
+                                    link='/partner/company/signup'
+                                  />
                                 </div>
                               </div>
                             </div>
