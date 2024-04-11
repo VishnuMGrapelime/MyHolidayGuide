@@ -105,7 +105,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
           <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
             <span>Company information</span>
           </h2>
-          <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  whitespace-nowrap'>
+          <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  md:whitespace-nowrap'>
             <span>Please be a as precise as possible</span>
           </p>
           <p className='text-[1rem] leading-6 pt-2 md:pt-9'>

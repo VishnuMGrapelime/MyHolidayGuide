@@ -58,13 +58,13 @@ export const Navigation = ({ user, lang }: { user: any, lang: any }) => {
   };
 
   return (
-    <nav className='py-9 md:py-0 px-4 dark:text-neutral-50 sticky z-10'>
-      <div className='xl:container mx-auto flex flex-wrap items-center justify-between '>
+    <nav className='xl:container mx-auto px-4 lg:px-20 py-9 md:py-0 dark:text-neutral-50 sticky z-10'>
+      <div className=' flex flex-wrap items-center justify-between '>
         <Link
           href='http://localhost:3000/'
           className='flex items-center space-x-3 rtl:space-x-reverse'
         >
-          <Image src={Logo} className='h-15' alt='Logo' width='80' />
+          <Image src={Logo} className=' w-12' alt='Logo' width='80' />
         </Link>
         <div className='flex flex-wrap gap-7  justify-between '>
           {!isAdminPage && (

@@ -23,6 +23,7 @@ function SupplierPage({ params: { lng } }: { params: Params }) {
 
   return (
     <>
+
       <div className='' id='_holidayGuide'>
         <div className='' style={{ outline: 'none' }}>
           <div style={{ outline: 'none' }}>
@@ -30,7 +31,7 @@ function SupplierPage({ params: { lng } }: { params: Params }) {
               <div style={{ outline: 'none' }}>
                 <div className='font-body'>
                   <section
-                    className='font-body flex items-center justify-center py-20 px-4 w-full relative bg-cover bg-center h-auto md:py-14 md:min-h-[620px] lg:h-[calc(100vh-300px)] before:inset-0 before:absolute before:z-0 before:bg-gradient-to-b before:from-[#0F1A3666] before:to-[#0F1A3610]'
+                    className='font-body flex items-center justify-center py-20 lg:px-4 w-full relative bg-cover bg-center h-auto md:py-14 md:min-h-[620px] lg:h-[calc(100vh-300px)] before:inset-0 before:absolute before:z-0 before:bg-gradient-to-b before:from-[#0F1A3666] before:to-[#0F1A3610]'
                   >
                     <div className='absolute inset-0'>
                       <Image
@@ -40,9 +41,9 @@ function SupplierPage({ params: { lng } }: { params: Params }) {
                         objectFit='cover'
                       />
                     </div>
-                    <div className='xl:container mx-auto relative flex flex-col justify-center items-center'>
-                      <div className='flex flex-col justify-between text-center gap-y-16 md:gap-y-[140px] '>
-                        <h1 className='text-[2rem] w-10/12 text-left md:text-[4rem] font-normal md:leading-snug text-neutral-50'>
+                    <div className='xl:container mx-auto  relative flex flex-col justify-center items-center'>
+                      <div className='flex flex-col justify-between px-4 lg:px-20 text-center gap-y-16 md:gap-y-[140px] '>
+                        <h1 className='text-[2.123rem] leading-8 w-11/12 text-left md:text-[4rem] font-normal md:leading-snug text-neutral-50'>
                           <span className='leading-10'>
                             {t('topBannerText')}
                           </span>
@@ -61,8 +62,8 @@ function SupplierPage({ params: { lng } }: { params: Params }) {
                     </div>
                   </section>
                   {/* 1 */}
-                  <section className='py-9 md:py-20 px-4 dark:text-neutral-50'>
-                    <div className='xl:container xl:mx-auto'>
+                  <section className=' xl:container xl:mx-auto py-9 md:py-20 px-4 lg:px-20 dark:text-neutral-50'>
+                    <div className=''>
                       <div className='flex flex-col gap-y-12 md:gap-y-20'>
                         <div className='flex flex-col md:flex-row gap-4'>
                           <div className='flex-1'>
@@ -240,7 +241,7 @@ function SupplierPage({ params: { lng } }: { params: Params }) {
                     {/* <div className="absolute inset-0">
                     <Image src={Main2} alt="Main2" layout='fill' objectFit='cover' />
                   </div> */}
-                    <div className='xl:container mx-auto h-1/2 relative z-10 text-neutral-50'>
+                    <div className='xl:container mx-auto h-1/2 lg:px-20 relative z-10 text-neutral-50'>
                       <div className='flex flex-col gap-y-8 '>
                         <div className='flex flex-col gap-y-8 '>
                           <h2 className='text-[1.5rem] md:text-[50px] md:leading-10 lg:w-7/12 xl:w-3/12  font-bold'>
