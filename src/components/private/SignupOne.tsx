@@ -52,7 +52,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }: { nextStep: any
         address2: formData.address2,
         street: formData.street,
         streetNumber: formData.streetNumber,
-        postOffice: formData.postOffice,
+        postOffice: (formData.postOffice) ? formData.postOffice : "",
         zipCode: formData.zipCode,
         city: formData.city,
         country: formData.country,

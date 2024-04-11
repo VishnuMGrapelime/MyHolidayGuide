@@ -91,7 +91,7 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
             toast.error('Failed to add user data. Please try again.');
           });
 
-        toast.success('New supplier created successfully');
+        // toast.success('New supplier created successfully');
         router.push('/partner/success');
         // ...
       })
