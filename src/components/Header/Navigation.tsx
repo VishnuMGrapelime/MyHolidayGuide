@@ -79,11 +79,11 @@ export const Navigation = ({ user, lang }: { user: any, lang: any }) => {
         >
           <Image src={Logo} className=' w-12' alt='Logo' width='80' />
         </Link>
-        <div className='flex flex-wrap gap-7  justify-between '>
+        <div className='flex md:flex-wrap md:gap-7  justify-between '>
           {!isAdminPage && (
             <>
               <div
-                className='items-center justify-between hidden w-full md:flex md:w-auto'
+                className='items-center justify-between  w-full md:flex md:w-auto'
                 ref={themeSwitcherRef}
               >
                 <LangSwitcher lang={lang} />
