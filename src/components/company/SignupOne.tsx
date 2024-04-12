@@ -4,24 +4,25 @@ import * as Yup from 'yup';
 
 import { Button } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
+import { useTranslation } from '@/app/i18n/client';
 
-// Yup schema to validate the form
-const schema = Yup.object().shape({
-  companyIdNo: Yup.string().required(
-    'Company identification no is a required field',
-  ),
-  companyName: Yup.string().required('Company name is a required field'),
-  // companyName2: Yup.string().required(),
-  address1: Yup.string().required('Address1 is a required field'),
-  address2: Yup.string().required('Address2 is a required field'),
-  streetNumber: Yup.string().required('Street number is a required field'),
-  // postOffice: Yup.string().required('Post Office is a required field'),
-  zipCode: Yup.string().required('Zipcode is a required field'),
-  city: Yup.string().required('City is a required field'),
-  country: Yup.string().required('Country is a required field'),
-});
 
-const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, formData: any, updateFormData: any }) => {
+
+const SignupOne = ({ nextStep, formData, updateFormData, lang }: { nextStep: any, formData: any, updateFormData: any, lang: any }) => {
+  const { t } = useTranslation(lang, 'companyRegistration-page');
+
+  // Yup schema to validate the form
+  const schema = Yup.object().shape({
+    companyIdNo: Yup.string().required(t('step1.companyIdNo.validation')),
+    companyName: Yup.string().required(t('step1.companyName.validation')),
+    address1: Yup.string().required(t('step1.address1.validation')),
+    address2: Yup.string().required(t('step1.address2.validation')),
+    streetNumber: Yup.string().required(t('step1.streetNumber.validation')),
+    zipCode: Yup.string().required(t('step1.zipCode.validation')),
+    city: Yup.string().required(t('step1.city.validation')),
+    country: Yup.string().required(t('step1.country.validation')),
+  });
+
   const [formState, setFormState] = useState({
     companyIdNo: '',
     companyName: '',
@@ -36,6 +37,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (formData) {
       setFormState({
         companyIdNo: formData.companyIdNo,
@@ -75,6 +77,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    window.scrollTo(0, 0)
     setErrorStatus(false);
     try {
       // Validate the form data
@@ -103,15 +106,14 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
       <div className='py-6 md:m-12 md:p-12'>
         <div className='w-full  mx-auto  md:text-center'>
           <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
-            <span>Company information</span>
+            <span>{t('step1Text')}</span>
           </h2>
           <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  md:whitespace-nowrap'>
-            <span>Please be a as precise as possible</span>
+            <span>{t('step1.subtext1')}</span>
           </p>
           <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
             <span>
-              Some basic information about your company, for receipts, contact
-              etc.
+              {t('step1.subtext2')}
             </span>
           </p>
         </div>
@@ -135,14 +137,14 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='default_outlined'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Company Identification no.(OIB)
+                {t('step1.companyIdNo.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company identification no</span>
+              <span>{t('step1.companyIdNo.label')}</span>
             </p>
           </div>
 
@@ -161,14 +163,14 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='default_outlined'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Company Name
+                {t('step1.companyName.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company name</span>
+              <span>{t('step1.companyName.label')}</span>
             </p>
           </div>
 
@@ -187,14 +189,14 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='default_outlined'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Company Name 2
+                {t('step1.companyName2.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company name 2 (optional)</span>
+              <span>{t('step1.companyName2.label')}</span>
             </p>
           </div>
 
@@ -213,7 +215,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='address1'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Address 1
+                {t('step1.address1.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
@@ -221,7 +223,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
             </div>
             <p className='text- md:text- px-4 '>
               <span>
-                Please enter the street address of your company headquarters
+                {t('step1.address1.label')}
               </span>
             </p>
           </div>
@@ -241,7 +243,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='address2'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Address 2
+                {t('step1.address2.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
@@ -249,7 +251,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
             </div>
             <p className='text- md:text- px-4 '>
               <span>
-                Please enter the street address of your company headquarters
+                {t('step1.address2.label')}
               </span>
             </p>
           </div>
@@ -268,7 +270,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='streetNumber'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Street Number
+                {t('step1.streetNumber.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
@@ -276,7 +278,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
             </div>
             <p className='text- md:text- px-4 '>
               <span>
-                Please enter the street address of your company headquarters
+                {t('step1.streetNumber.label')}
               </span>
             </p>
           </div>
@@ -295,7 +297,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='postOffice'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Post Office Box
+                {t('step1.postOffice.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
@@ -303,8 +305,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
             </div>
             <p className='text- md:text- px-4 '>
               <span>
-                (optional) Please enter your post office box number of your
-                organisation{' '}
+                {t('step1.postOffice.label')}
               </span>
             </p>
           </div>
@@ -323,7 +324,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='zipCode'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Zip Code
+                {t('step1.zipCode.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
@@ -331,7 +332,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
             </div>
             <p className='text- md:text- px-4 '>
               <span>
-                Please enter the zip code of your company headquarters{' '}
+                {t('step1.zipCode.label')}
               </span>
             </p>
           </div>
@@ -350,14 +351,14 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='city'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                City
+                {t('step1.city.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter the city of your company headquarters </span>
+              <span>{t('step1.city.label')} </span>
             </p>
           </div>
           <div className='space-y-1'>
@@ -375,7 +376,7 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
                 htmlFor='country'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Country
+                {t('step1.country.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
@@ -383,13 +384,13 @@ const SignupOne = ({ nextStep, formData, updateFormData }: { nextStep: any, form
             </div>
             <p className='text- md:text- px-4 '>
               <span>
-                Please enter the country of your company headquarters{' '}
+                {t('step1.country.label')}
               </span>
             </p>
           </div>
           <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-end w-full'>
             {/* <ButtonOutline label='Back' /> */}
-            <Button label='Next' />
+            <Button label={t('nextButton')} />
           </div>
         </div>
       </form>

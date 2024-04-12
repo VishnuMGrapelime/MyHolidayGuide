@@ -21,6 +21,7 @@ export const Navigation = ({ user, lang }: { user: any, lang: any }) => {
   const { t } = useTranslation(lang);
   const pathname = usePathname();
   const [isAdminPage, setIsAdminPage] = useState(true);
+  const [isSamePage, setIsSamePage] = useState(false);
   const [theme, setTheme] = useState('light');
 
   const handleLogout = () => {
@@ -32,12 +33,24 @@ export const Navigation = ({ user, lang }: { user: any, lang: any }) => {
 
   useEffect(() => {
     const url = window.location.pathname;
+
+
     const pathArray = url.split('/');
+    console.log(pathArray[2]);
+    console.log(pathArray[1]);
+
     if (url.includes('/admin')) {
       if (pathArray[2] == 'admin' || pathArray[1] == 'admin') {
         setIsAdminPage(true);
       }
+
     } else {
+      if (pathArray[2] == 'Supplier' || pathArray[1] == 'Supplier') {
+        console.log("samepage");
+        setIsSamePage(true);
+      } else {
+        setIsSamePage(false);
+      }
       setIsAdminPage(false);
     }
   }, [pathname]);
@@ -61,7 +74,7 @@ export const Navigation = ({ user, lang }: { user: any, lang: any }) => {
     <nav className='xl:container mx-auto px-4 lg:px-20 py-9 md:py-0 dark:text-neutral-50 sticky z-10'>
       <div className=' flex flex-wrap items-center justify-between '>
         <Link
-          href='/Supplier'
+          href={isSamePage ? "#" : "/Supplier"}
           className='flex items-center space-x-3 rtl:space-x-reverse'
         >
           <Image src={Logo} className=' w-12' alt='Logo' width='80' />

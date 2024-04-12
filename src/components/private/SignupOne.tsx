@@ -43,6 +43,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }: { nextStep: any
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (formData) {
       setFormState({
         personalIdNo: formData.personalIdNo,
@@ -135,6 +136,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }: { nextStep: any
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    window.scrollTo(0, 0)
     setErrorStatus(false);
     try {
       // Validate the form data

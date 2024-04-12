@@ -119,12 +119,13 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
       {/* <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'> */}
       <div className='xl:container'>
         <div className='mx-auto lg:w-10/12 xl:w-8/12'>
-          <Stepper currPage={step} />
+          <Stepper currPage={step} lang={lng} />
           {step === 1 && (
             <SignupOne
               nextStep={nextStep}
               formData={formData}
               updateFormData={updateFormData}
+              lang={lng}
             />
           )}
           {step === 2 && (
@@ -133,6 +134,7 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
               prevStep={prevStep}
               formData={formData}
               updateFormData={updateFormData}
+              lang={lng}
             />
           )}
           {step === 3 && (

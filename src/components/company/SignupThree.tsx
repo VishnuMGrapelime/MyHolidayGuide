@@ -9,18 +9,6 @@ import { Button, ButtonOutline } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
 import { useTranslation } from '../../app/i18n/client';
 
-// Yup schema to validate the form
-const schema = Yup.object().shape({
-  companyWebsite: Yup.string().required(),
-  employeeCount: Yup.string().required('Employee count is a required field'),
-  turnOver: Yup.string().required('Turn over is a required field'),
-  companyLanguage: Yup.string().required(
-    'Company language is a required field',
-  ),
-  acceptTerms: Yup.boolean()
-    .oneOf([true], 'You must accept the terms and conditions')
-    .required('You must accept the terms and conditions'),
-});
 
 const options = [
   { value: 'activities', label: 'Activities' },
@@ -76,8 +64,20 @@ const SignUpThree = ({
   lang: string
 }) => {
 
-  // const { t } = useTranslation(lang, 'privateRegistration-page');
+  const { t } = useTranslation(lang, 'companyRegistration-page');
   const { d }: any = useTranslation(lang, 'dynamic-socialmediatab');
+
+  // Yup schema to validate the form
+  const schema = Yup.object().shape({
+    companyWebsite: Yup.string().required(t('step3.companyWebsite.validation')),
+    employeeCount: Yup.string().required(t('step3.employeeCount.validation')),
+    turnOver: Yup.string().required(t('step3.turnOver.validation')),
+    companyLanguage: Yup.string().required(t('step3.companyLanguage.validation')),
+    acceptTerms: Yup.boolean()
+      .oneOf([true], t('step3.acceptTerms.validation'))
+      .required(t('step3.acceptTerms.validation')),
+  });
+
 
   // interface FormState {
   //   companyWebsite: string;
@@ -111,6 +111,7 @@ const SignUpThree = ({
   const [selectedDate, setSelectedDate] = useState("");
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     // console.log(formData.companyLanguage);
     if (formData) {
       setFormState({
@@ -143,6 +144,7 @@ const SignUpThree = ({
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    window.scrollTo(0, 0)
     setErrorStatus(false);
 
     try {
@@ -235,15 +237,14 @@ const SignUpThree = ({
         <div className='py-6 md:m-12 md:p-12'>
           <div className='w-full  mx-auto  md:text-center'>
             <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
-              <span>Company owner information</span>
+              <span>{t('step2Text')}</span>
             </h2>
             <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  md:whitespace-nowrap'>
-              <span>This person will be the administrator of the account.</span>
+              <span>{t('step3.subtext1')}</span>
             </p>
             <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
               <span>
-                You can add additional users to your company after the
-                registration.
+                {t('step3.subtext2')}
               </span>
             </p>
           </div>
@@ -267,14 +268,14 @@ const SignUpThree = ({
                 // className='floating-label dark:floating-label'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Company Website
+                {t('step3.companyWebsite.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Your main domain on the web</span>
+              <span>{t('step3.companyWebsite.label')}</span>
             </p>
           </div>
 
@@ -297,11 +298,11 @@ const SignUpThree = ({
                 htmlFor='employeeCount'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Company employee count
+                {t('step3.employeeCount.placeholder')}
               </label>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company name</span>
+              <span>{t('step3.employeeCount.label')}</span>
             </p>
           </div>
 
@@ -318,10 +319,10 @@ const SignUpThree = ({
                 htmlFor='existSince'
                 className='absolute top-[17px] bg-white left-[5px] z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900 dark:border-gray-600 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
               >
-                Company exist since
+                {t('step3.existSince.placeholder')}
               </label>
               <p className='text-md:text-px mb-4' style={{ paddingLeft: '1rem' }}>
-                <span>Please enter your company name exist since</span>
+                <span>{t('step3.existSince.label')}</span>
               </p>
             </div>
           </div>
@@ -351,11 +352,11 @@ const SignUpThree = ({
                 htmlFor='turnOver'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Company Gross turn over per year
+                {t('step3.turnOver.placeholder')}
               </label>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company name gross turn over</span>
+              <span>{t('step3.turnOver.label')}</span>
             </p>
           </div>
           <div className='space-y-1'>
@@ -364,7 +365,7 @@ const SignUpThree = ({
                 className='absolute top-3 left-[5px] z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
                 htmlFor='businessType'
               >
-                Company business types
+                {t('step3.businessType.placeholder')}
               </label>
               <Select
                 className='block w-full   pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
@@ -379,7 +380,7 @@ const SignUpThree = ({
               />
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company name gross turn over</span>
+              <span>{t('step3.businessType.label')}</span>
             </p>
           </div>
           <div className='space-y-1'>
@@ -400,11 +401,11 @@ const SignUpThree = ({
                 htmlFor='companyLanguage'
                 className='absolute z-0 text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2  origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Company language
+                {t('step3.companyLanguage.placeholder')}
               </label>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter your company name</span>
+              <span>{t('step3.companyLanguage.label')}</span>
             </p>
           </div>
         </div>
@@ -425,18 +426,18 @@ const SignUpThree = ({
             htmlFor='acceptTerms'
             className='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'
           >
-            I have read and accept the{' '}
+            {t('step3.acceptTerms.placeholder')}{' '}
             <a
               href='#'
               className='text-[#1CCFB9] hover:underline dark:text-blue-500'
             >
-              terms and conditions
+              {t('step3.acceptTerms.label')}
             </a>
           </label>
         </div>
         <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-between w-full'>
-          <ButtonOutline label='Back' prevStep={gotoPrevStep} />
-          <Button label='Send' />
+          <ButtonOutline label={t('backButton')} prevStep={gotoPrevStep} />
+          <Button label={t('sendButton')} />
         </div>
       </form>
     </>

@@ -1,0 +1,137 @@
+{
+  "title": "Enregistrement de l'hôte de l'entreprise",
+  "nextButton": "Suivant",
+  "backButton": "Retour",
+  "sendButton": "Envoyer",
+  "step1Text": "Informations sur l'entreprise",
+  "step2Text": "Propriétaire de l'entreprise",
+  "step3Text": "Informations supplémentaires",
+  "step1": {
+    "subtext1": "Veuillez être aussi précis que possible",
+    "subtext2": "Quelques informations de base sur votre entreprise, pour les reçus, les contacts, etc.",
+    "companyIdNo": {
+      "placeholder": "Numéro d'identification de l'entreprise (OIB)",
+      "label": "Veuillez entrer votre numéro d'identification de l'entreprise",
+      "validation": "Le numéro d'identification de l'entreprise est un champ obligatoire"
+    },
+    "companyName": {
+      "placeholder": "Nom de l'entreprise",
+      "label": "Veuillez entrer le nom de votre entreprise",
+      "validation": "Le nom de l'entreprise est un champ obligatoire"
+    },
+    "companyName2": {
+      "placeholder": "Nom de l'entreprise 2",
+      "label": "Veuillez entrer le deuxième nom de votre entreprise (facultatif)",
+      "validation": "Le nom de l'entreprise 2 est un champ obligatoire"
+    },
+    "address1": {
+      "placeholder": "Adresse 1",
+      "label": "Veuillez entrer l'adresse postale de votre siège social",
+      "validation": "L'adresse 1 est un champ obligatoire"
+    },
+    "address2": {
+      "placeholder": "Adresse 2",
+      "label": "Veuillez entrer l'adresse postale de votre siège social",
+      "validation": "L'adresse 2 est un champ obligatoire"
+    },
+    "streetNumber": {
+      "placeholder": "Numéro de rue",
+      "label": "Veuillez saisir le numéro de rue du siège social de votre entreprise",
+      "validation": "Le numéro de rue est un champ obligatoire"
+    },
+    "postOffice": {
+      "placeholder": "Boîte postale",
+      "label": "(facultatif) Veuillez entrer le numéro de votre boîte postale",
+      "validation": ""
+    },
+    "zipCode": {
+      "placeholder": "Code postal",
+      "label": "Veuillez entrer le code postal de votre siège social",
+      "validation": "Le code postal est un champ obligatoire"
+    },
+    "city": {
+      "placeholder": "Ville",
+      "label": "Veuillez entrer la ville de votre siège social",
+      "validation": "La ville est un champ obligatoire"
+    },
+    "country": {
+      "placeholder": "Pays",
+      "label": "Veuillez entrer le pays de votre siège social",
+      "validation": "Le pays est un champ obligatoire"
+    }
+  },
+  "step2": {
+    "subtext1": "Cette personne sera l'administrateur du compte.",
+    "subtext2": "Vous pouvez ajouter des utilisateurs supplémentaires à votre entreprise après l'enregistrement.",
+    "email": {
+      "placeholder": "E-mail",
+      "label": "Veuillez entrer l'adresse e-mail du propriétaire de l'entreprise",
+      "validation": "L'e-mail est un champ obligatoire"
+    },
+    "password": {
+      "placeholder": "Mot de passe",
+      "label": "Veuillez entrer un mot de passe (6 à 24 caractères)",
+      "validation": "Le mot de passe est un champ obligatoire"
+    },
+    "confirmPassword": {
+      "placeholder": "Confirmation du mot de passe",
+      "label": "Confirmez votre mot de passe (6 à 24 caractères)",
+      "validation": "Les mots de passe doivent correspondre",
+      "validation1": "La confirmation du mot de passe est un champ obligatoire"
+    },
+    "phone": {
+      "placeholder": "Téléphone",
+      "label": "Numéro de téléphone de contact du propriétaire",
+      "validation": "Le téléphone est un champ obligatoire"
+    },
+    "firstName": {
+      "placeholder": "Prénom",
+      "label": "Veuillez entrer le prénom du propriétaire de l'entreprise",
+      "validation": "Le prénom est un champ obligatoire"
+    },
+    "lastName": {
+      "placeholder": "Nom de famille",
+      "label": "Veuillez entrer le nom de famille du propriétaire de l'entreprise",
+      "validation": "Le nom de famille est un champ obligatoire"
+    }
+  },
+  "step3": {
+    "subtext1": "Cette personne sera l'administrateur du compte.",
+    "subtext2": "Veuillez saisir des informations supplémentaires afin de pouvoir offrir le meilleur service à votre entreprise",
+    "companyWebsite": {
+      "placeholder": "Site web de l'entreprise",
+      "label": "Votre domaine principal sur le web",
+      "validation": "Le site web de l'entreprise est un champ obligatoire"
+    },
+    "employeeCount": {
+      "placeholder": "Nombre d'employés de l'entreprise",
+      "label": "Combien d'employés compte votre entreprise",
+      "validation": "Le nombre d'employés de l'entreprise est un champ obligatoire"
+    },
+    "existSince": {
+      "placeholder": "Existence de l'entreprise depuis",
+      "label": "Depuis combien de temps votre entreprise est-elle enregistrée?",
+      "validation": "L'existence de l'entreprise depuis est un champ obligatoire"
+    },
+    "turnOver": {
+      "placeholder": "Chiffre d'affaires annuel de l'entreprise",
+      "label": "Quel est le chiffre d'affaires annuel de votre entreprise?",
+      "validation": "Le chiffre d'affaires annuel de l'entreprise est un champ obligatoire"
+    },
+    "businessType": {
+      "placeholder": "Types d'activités de l'entreprise",
+      "label": "Quels types d'activités votre entreprise propose-t-elle",
+      "validation": "Les types d'activités de l'entreprise sont un champ obligatoire"
+    },
+    "companyLanguage": {
+      "placeholder": "Langue de l'entreprise",
+      "label": "Il s'agira de la langue de l'interface utilisateur et la saisie des produits se fera également dans la langue sélectionnée.",
+      "validation": "La langue de l'entreprise est un champ obligatoire"
+    },
+    "acceptTerms": {
+      "placeholder": "J'ai lu et j'accepte les",
+      "label": "conditions générales",
+      "validation": "Vous devez accepter les conditions générales"
+    }
+  }
+}

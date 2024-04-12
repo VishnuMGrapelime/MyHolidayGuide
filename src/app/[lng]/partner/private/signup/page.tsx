@@ -119,7 +119,7 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
       <div className='xl:container'>
         <div className='mx-auto lg:w-10/12 xl:w-8/12'>
           {/* <Stepper currPage={step} /> */}
-          <StepperTwo currPage={step} />
+          <StepperTwo currPage={step} lang={lng} />
           {/* <DynamicStepper currPage={step} stepDetails={stepDetails} /> */}
           {step === 1 && (
             <SignupOne

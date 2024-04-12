@@ -68,7 +68,14 @@ export default function RootLayout({
   return (
     <html lang={lng} dir={dir(lng)} className='h-full bg-white-900 '>
       <body className='h-full dark:bg-black'>
-        <NextTopLoader />
+        <NextTopLoader color="#1CCFB9"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={true}
+          easing="ease"
+          speed={200} />
         <ReduxProvider>
           <SessionProvider>
             <Header lang={lng} />

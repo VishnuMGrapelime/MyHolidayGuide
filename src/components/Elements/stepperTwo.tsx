@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from '../../app/i18n/client';
 
-export default function StepperTwo({ currPage }: { currPage: any }) {
+export default function StepperTwo({ currPage, lang }: { currPage: any, lang: string }) {
+  const { t } = useTranslation(lang, 'privateRegistration-page');
   return (
     <>
       <div className='mb-12 '>
@@ -11,7 +13,7 @@ export default function StepperTwo({ currPage }: { currPage: any }) {
             >
               1
               <span className='absolute top-full mt-3 left-1/2 transform -translate-x-1/2 step-text'>
-                Personal information
+                {t('step1Text')}
               </span>
             </span>
           </li>
@@ -31,7 +33,7 @@ export default function StepperTwo({ currPage }: { currPage: any }) {
             >
               2
               <span className='absolute mt-3 top-full left-1/2 transform -translate-x-1/2 step-text'>
-                Additional information
+                {t('step2Text')}
               </span>
             </span>
           </li>

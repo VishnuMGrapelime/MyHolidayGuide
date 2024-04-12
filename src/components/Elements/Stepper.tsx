@@ -1,7 +1,8 @@
 import React from 'react'
+import { useTranslation } from '@/app/i18n/client';
 
-export default function Stepper({ currPage })
-{
+export default function Stepper({ currPage, lang }: { currPage: any, lang: string }) {
+  const { t } = useTranslation(lang, 'companyRegistration-page');
   return (
     <>
       <div className='mb-12'>
@@ -10,7 +11,7 @@ export default function Stepper({ currPage })
             <span className={`relative flex flex-col items-center justify-center w-10 h-10 border-[1px] border-black ${currPage == 1 ? 'stepper' : ''} rounded-full lg:h-12 lg:w-12 dark:bg-blue-800 shrink-0`}>
               1
               <span className="absolute top-full mt-3 left-1/2 transform -translate-x-1/2 step-text">
-                Company information
+                {t('step1Text')}
               </span>
             </span>
           </li>
@@ -18,7 +19,7 @@ export default function Stepper({ currPage })
             <span className={`flex relative items-center justify-center w-10 h-10 border-[1px]  border-black ${currPage == 2 ? 'stepper' : ''} rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0`}>
               2
               <span className="absolute top-full mt-3 left-1/2 transform -translate-x-1/2 step-text">
-                Company owner
+                {t('step2Text')}
               </span>
             </span>
           </li>
@@ -26,7 +27,7 @@ export default function Stepper({ currPage })
             <span className={`flex relative items-center justify-center w-10 h-10 border-[1px]   border-black ${currPage == 3 ? 'stepper' : ''} rounded-full lg:h-12 lg:w-12 dark:bg-gray-700 shrink-0`}>
               3
               <span className="absolute top-full mt-3 left-1/2 transform -translate-x-1/2 step-text">
-                Additional information
+                {t('step3Text')}
               </span>
             </span>
           </li>

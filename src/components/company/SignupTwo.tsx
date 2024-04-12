@@ -4,24 +4,29 @@ import * as Yup from 'yup';
 
 import { Button, ButtonOutline } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
+import { useTranslation } from '@/app/i18n/client';
 
-// Yup schema to validate the form
-const schema = Yup.object().shape({
-  email: Yup.string().email().required('Email is a required field'),
-  password: Yup.string()
-    .min(6)
-    .max(24)
-    .required('Password is a required field'),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Passwords must match')
-    .required('Confirm Password is required'),
 
-  phone: Yup.string().required('Phone is a required field'),
-  firstName: Yup.string().required('First name is a required field'),
-  lastName: Yup.string().required('Last name is a required field'),
-});
 
-const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep: any, prevStep: any, formData: any, updateFormData: any }) => {
+const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData, lang }: { nextStep: any, prevStep: any, formData: any, updateFormData: any, lang: any }) => {
+  const { t } = useTranslation(lang, 'companyRegistration-page');
+
+  // Yup schema to validate the form
+  const schema = Yup.object().shape({
+    email: Yup.string().email().required(t('step2.email.validation')),
+    password: Yup.string()
+      .min(6)
+      .max(24)
+      .required(t('step2.password.validation')),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password')], t('step2.confirmPassword.validation'))
+      .required(t('step2.confirmPassword.validation1')),
+
+    phone: Yup.string().required(t('step2.phone.validation')),
+    firstName: Yup.string().required(t('step2.firstName.validation')),
+    lastName: Yup.string().required(t('step2.lastName.validation')),
+  });
+
   const [formState, setFormState] = useState({
     email: '',
     password: '',
@@ -32,6 +37,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (formData) {
       setFormState({
         email: formData.email,
@@ -76,7 +82,9 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
 
 
   const handleSubmit = async (e: any) => {
+
     e.preventDefault();
+    window.scrollTo(0, 0)
     setErrorStatus(false);
 
     try {
@@ -108,144 +116,19 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
 
   return (
     <div>
-      {/* <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={onSubmit}
-      >
-        <Form>
-          <h2 className='text-xl font-bold mb-6'>Company owner information</h2>
-          <div>
-            <label
-              htmlFor='email'
-              className='block text-sm font-medium leading-6'
-            >
-              Email
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='email'
-                name='email'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='email' component='div' />
-            </div>
-          </div>
 
-          <div>
-            <label
-              htmlFor='password'
-              className='block text-sm font-medium leading-6'
-            >
-              Password
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='password'
-                name='password'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='password' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='confirmPassword'
-              className='block text-sm font-medium leading-6'
-            >
-              Confirm Password
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='password'
-                name='confirmPassword'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='confirmPassword' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='phone'
-              className='block text-sm font-medium leading-6'
-            >
-              Phone
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='phone'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='phone' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='firstName'
-              className='block text-sm font-medium leading-6'
-            >
-              First Name
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='firstName'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='firstName' component='div' />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor='lastName'
-              className='block text-sm font-medium leading-6'
-            >
-              Last Name
-            </label>
-            <div className='mt-2'>
-              <Field
-                type='text'
-                name='lastName'
-                className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-              />
-              <ErrorMessage name='lastName' component='div' />
-            </div>
-          </div>
-
-          <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-            onClick={prevStep}
-          >
-            Back
-          </button>
-
-          <button
-            className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-            // onClick={nextStep}
-            type='submit'
-          >
-            Next
-          </button>
-        </Form>
-      </Formik> */}
       <form onSubmit={handleSubmit}>
         <div className='py-6 md:m-12 md:p-12'>
           <div className='w-full  mx-auto  md:text-center'>
             <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
-              <span>Company owner information</span>
+              <span>{t('step2Text')}</span>
             </h2>
             <p className='text-p1 md:text-[1.3125rem] leading-6 font-bold  md:whitespace-nowrap'>
-              <span>This person will be the administrator of the account.</span>
+              <span>{t('step2.subtext1')}</span>
             </p>
             <p className='text-[1rem] leading-6 pt-2 md:pt-9'>
               <span>
-                You can add additional users to your company after the
-                registration.
+                {t('step2.subtext2')}
               </span>
             </p>
           </div>
@@ -268,14 +151,14 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
                 htmlFor='default_outlined'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Email
+                {t('step2.email.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter the e-mail address of the company owner</span>
+              <span>{t('step2.email.label')}</span>
             </p>
           </div>
 
@@ -294,7 +177,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
                 htmlFor='default_outlined'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Password
+                {t('step2.password.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 {/* <ClipboardCheck color='#1CCFB9' /> */}
@@ -308,7 +191,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter a password (6-24 characters)</span>
+              <span>{t('step2.password.label')}</span>
             </p>
           </div>
 
@@ -327,7 +210,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
                 htmlFor='passwordConfirm'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Password confirmation
+                {t('step2.confirmPassword.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 {/* <ClipboardCheck color='#1CCFB9' /> */}
@@ -341,7 +224,7 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Confirm your password (6-24 characters)</span>
+              <span>{t('step2.confirmPassword.label')}</span>
             </p>
           </div>
 
@@ -360,14 +243,14 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
                 htmlFor='phonenum'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Phone
+                {t('step2.phone.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>The owner's contact phone number</span>
+              <span>{t('step2.phone.label')}</span>
             </p>
           </div>
           <div className='space-y-1'>
@@ -385,14 +268,14 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
                 htmlFor='default_outlined'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                First name
+                {t('step2.firstName.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter the first name of the company owner</span>
+              <span>{t('step2.firstName.label')}</span>
             </p>
           </div>
 
@@ -411,20 +294,20 @@ const SignUpTwo = ({ nextStep, prevStep, formData, updateFormData }: { nextStep:
                 htmlFor='lastname'
                 className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
-                Last name
+                {t('step2.lastName.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
             <p className='text- md:text- px-4 '>
-              <span>Please enter the last name of the company owner</span>
+              <span>{t('step2.lastName.label')}</span>
             </p>
           </div>
 
           <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-between w-full'>
-            <ButtonOutline label='Back' prevStep={gotoPrevStep} />
-            <Button label='Next' />
+            <ButtonOutline label={t('backButton')} prevStep={gotoPrevStep} />
+            <Button label={t('nextButton')} />
           </div>
         </div>
       </form>

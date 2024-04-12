@@ -1,0 +1,137 @@
+{
+  "title": "Company host registration",
+  "nextButton": "Next",
+  "backButton": "Back",
+  "sendButton": "Send",
+  "step1Text": "Company information",
+  "step2Text": "Company owner",
+  "step3Text": "Additional information",
+  "step1": {
+    "subtext1": "Please be a as precise as possible",
+    "subtext2": "Some basic information about your company, for receipts, contact etc.",
+    "companyIdNo": {
+      "placeholder": "Company Identification no.(OIB)",
+      "label": "Please enter your company identification no",
+      "validation": "Company Identification no is a required field"
+    },
+    "companyName": {
+      "placeholder": "Company Name",
+      "label": "Please enter your company name",
+      "validation": "Company name is a required field"
+    },
+    "companyName2": {
+      "placeholder": "Company Name 2",
+      "label": "Please enter your company name 2 (optional)",
+      "validation": "Company Name 2 is a required field"
+    },
+    "address1": {
+      "placeholder": "Address 1",
+      "label": "Please enter the street address of your company headquarters",
+      "validation": "Address 1 is a required field"
+    },
+    "address2": {
+      "placeholder": "Address 2",
+      "label": "Please enter the street address of your company headquarters",
+      "validation": "Address 2 is a required field"
+    },
+    "streetNumber": {
+      "placeholder": "Street Number",
+      "label": "Please enter the street number of your company headquarters",
+      "validation": "Street number is a required field"
+    },
+    "postOffice": {
+      "placeholder": "Post Office Box",
+      "label": "(optional) Please enter your post office box number of your organisation",
+      "validation": ""
+    },
+    "zipCode": {
+      "placeholder": "Zip Code",
+      "label": "Please enter the zip code of your company headquarters",
+      "validation": "Zipcode is a required field"
+    },
+    "city": {
+      "placeholder": "City",
+      "label": "Please enter the city of your company headquarters",
+      "validation": "City is a required field"
+    },
+    "country": {
+      "placeholder": "Country",
+      "label": "Please enter the country of your company headquarters",
+      "validation": "Country is a required field"
+    }
+  },
+  "step2": {
+    "subtext1": "This person will be the administrator of the account.",
+    "subtext2": "You can add additional users to your company after the registration.",
+    "email": {
+      "placeholder": "Email",
+      "label": "Please enter the e-mail address of the company owner",
+      "validation": "Email is a required field"
+    },
+    "password": {
+      "placeholder": "Password",
+      "label": "Please enter a password (6-24 characters)",
+      "validation": "Password is a required field"
+    },
+    "confirmPassword": {
+      "placeholder": "Password Confirmation",
+      "label": "Confirm your password (6-24 characters)",
+      "validation": "Passwords must match",
+      "validation1": "Confirm password is a required field"
+    },
+    "phone": {
+      "placeholder": "Phone",
+      "label": "The owner's contact phone number",
+      "validation": "Phone is a required field"
+    },
+    "firstName": {
+      "placeholder": "First Name",
+      "label": "Please enter the first name of the company owner",
+      "validation": "First name is a required field"
+    },
+    "lastName": {
+      "placeholder": "Last Name",
+      "label": "Please enter the last name of the company owner",
+      "validation": "Last name is a required field"
+    }
+  },
+  "step3": {
+    "subtext1": "This person will be the administrator of the account.",
+    "subtext2": "Please enter some additional information, in order to be able to deliver the best service for your company",
+    "companyWebsite": {
+      "placeholder": "Company Website",
+      "label": "Your main domain on the web",
+      "validation": "Company website is a required field"
+    },
+    "employeeCount": {
+      "placeholder": "Company employee count",
+      "label": "How many employees does your company have",
+      "validation": "Company employee count is a required field"
+    },
+    "existSince": {
+      "placeholder": "Company exists since",
+      "label": "How long is your company registered?",
+      "validation": "Company exists since is a required field"
+    },
+    "turnOver": {
+      "placeholder": "Company gross turnover per year",
+      "label": "How much revenue does your company earn on a yearly basis?",
+      "validation": "Company gross turnover per year is a required field"
+    },
+    "businessType": {
+      "placeholder": "Company business types",
+      "label": "Which business types does your company offer",
+      "validation": "Company business types is a required field"
+    },
+    "companyLanguage": {
+      "placeholder": "Company Language",
+      "label": "This will be the user-interface language and that product input also occurs in the selected language.",
+      "validation": "Company language is a required field"
+    },
+    "acceptTerms": {
+      "placeholder": "I have read and accept the",
+      "label": "terms and conditions",
+      "validation": "You must accept the terms and conditions"
+    }
+  }
+}
