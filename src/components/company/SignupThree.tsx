@@ -254,7 +254,7 @@ const SignUpThree = ({
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className='py-6 md:m-12 md:p-12'>
+        <div className='py-6 md:m-12 md:p-12 label'>
           <div className='w-full  mx-auto  md:text-center'>
             <h2 className='pb-6 md:pb-6 md:leading-6 text-h2 md:text-[2.35rem] font-bold  whitespace-nowrap'>
               <span>{t('step2Text')}</span>
@@ -276,7 +276,7 @@ const SignUpThree = ({
               <input
                 type='text'
                 id='companyWebsite'
-                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                className='block px-2.5 input-field   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#1CCFB9] focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
                 // className='form-field dark:form-field'
                 name='companyWebsite'
@@ -286,7 +286,7 @@ const SignUpThree = ({
               <label
                 htmlFor='companyWebsite'
                 // className='floating-label dark:floating-label'
-                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#010e1e] px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-[#1CCFB9] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 {t('step3.companyWebsite.placeholder')}
               </label>
@@ -294,7 +294,7 @@ const SignUpThree = ({
                 <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
-            <p className='text- md:text- px-4 '>
+            <p className='text- md:text- px-4 label'>
               <span>{t('step3.companyWebsite.label')}</span>
             </p>
           </div>
@@ -308,7 +308,7 @@ const SignUpThree = ({
               <input
                 type='text'
                 id='employeeCount'
-                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                className='block px-2.5 input-field   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#1CCFB9] focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 placeholder=' '
                 name='employeeCount'
                 value={formState.employeeCount}
@@ -316,12 +316,12 @@ const SignUpThree = ({
               />
               <label
                 htmlFor='employeeCount'
-                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#010e1e] px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-[#1CCFB9] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 {t('step3.employeeCount.placeholder')}
               </label>
             </div>
-            <p className='text- md:text- px-4 '>
+            <p className='text- md:text- px-4 label'>
               <span>{t('step3.employeeCount.label')}</span>
             </p>
           </div>
@@ -332,16 +332,16 @@ const SignUpThree = ({
                 id='existSince'
                 value={selectedDate}
                 onSelectedDateChanged={handleDateChange}
-                style={{ backgroundColor: 'white', paddingTop: '12px', paddingBottom: '11px' }}
-                className='block pt-7 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 peer'
+                style={{ backgroundColor: 'transparent', paddingTop: '12px', paddingBottom: '12px' }}
+                className='block pt-7 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1  border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 peer'
               />
               <label
                 htmlFor='existSince'
-                className='absolute top-[17px] bg-white left-[5px] z-10 px-1 text-[11px] text-gray-500 dark:bg-gray-900 dark:border-gray-600 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
+                className='absolute top-[17px] bg-white left-[5px] z-10 px-1 text-[11px] text-gray-500 dark:bg-[#010e1e] dark:border-gray-600 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
               >
                 {t('step3.existSince.placeholder')}
               </label>
-              <p className='text-md:text-px mb-4' style={{ paddingLeft: '1rem' }}>
+              <p className='text-md:text-px mb-4 label' style={{ paddingLeft: '1rem' }}>
                 <span>{t('step3.existSince.label')}</span>
               </p>
             </div>
@@ -351,11 +351,7 @@ const SignUpThree = ({
             <div className='relative '>
               <select
                 id='turnOver'
-                className='block px-2.5   pb-2.5 pt-3 w-full text-sm 
-              text-gray-900 bg-transparent rounded-lg 
-              border-1 border-gray-300 appearance-none dark:text-white
-              dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
-               focus:ring-0 focus:border-[#1CCFB9] peer'
+                className='block  px-2.5 input-field   pb-2.5 pt-4 w-full text-sm dark:bg-transparent text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#1CCFB9] focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 name='turnOver'
                 value={formState.turnOver}
                 onChange={handleChange}
@@ -370,25 +366,25 @@ const SignUpThree = ({
               </select>
               <label
                 htmlFor='turnOver'
-                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                className='absolute text-sm text-gray-500 dark:text-gray-400  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#010e1e] px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-[#1CCFB9] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 {t('step3.turnOver.placeholder')}
               </label>
             </div>
-            <p className='text- md:text- px-4 '>
+            <p className='text- md:text- px-4 label'>
               <span>{t('step3.turnOver.label')}</span>
             </p>
           </div>
           <div className='space-y-1'>
             <div className='relative'>
               <label
-                className='absolute top-3 left-[5px] z-10 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
+                className='absolute top-3 left-[5px] bg-transparent z-30 px-1 text-[11px] text-gray-500 bg-white dark:bg-gray-900  dark:border-gray-600 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4'
                 htmlFor='businessType'
               >
                 {t('step3.businessType.placeholder')}
               </label>
               <Select
-                className='block w-full   pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                className='block w-full dark:border-gray-600 z-20   pt-6 text-sm text-gray-900 bg-transparent rounded-b-lg border-0 appearance-none dark:text-white focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 id='businessType'
                 options={options}
                 isMulti
@@ -399,7 +395,7 @@ const SignUpThree = ({
                 styles={customStyles}
               />
             </div>
-            <p className='text- md:text- px-4 '>
+            <p className='text- md:text- px-4 label'>
               <span>{t('step3.businessType.label')}</span>
             </p>
           </div>
@@ -407,7 +403,7 @@ const SignUpThree = ({
             <div className='relative '>
               <select
                 id='companyLanguage'
-                className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                className='block px-2.5 input-field   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#1CCFB9] focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                 name='companyLanguage'
                 value={formState.companyLanguage}
                 onChange={handleChange}
@@ -419,12 +415,12 @@ const SignUpThree = ({
               </select>
               <label
                 htmlFor='companyLanguage'
-                className='absolute z-0 text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2  origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#010e1e] px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-[#1CCFB9] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
               >
                 {t('step3.companyLanguage.placeholder')}
               </label>
             </div>
-            <p className='text- md:text- px-4 '>
+            <p className='text- md:text- px-4 label '>
               <span>{t('step3.companyLanguage.label')}</span>
             </p>
           </div>

@@ -9,8 +9,9 @@ const ThankYouPage = () => {
       <div className="h-[748px] flex items-center justify-center">
         <div class="text-center">
           <div class="flex flex-col justify-center items-center gap-8 mb-4">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-12 w-12 text-green-500">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="#1CCFB9" viewBox="0 0 24 24" width="70" height="70">
+              <circle cx="12" cy="12" r="11" fill="green" />
+              <path fill="white" d="M9.172 17.172a1 1 0 0 1-1.414 0L4.95 13.95a1 1 0 0 1 1.414-1.414L9 15.586l7.636-7.636a1 1 0 0 1 1.414 1.414l-8.5 8.5a1 1 0 0 1-1.414 0z" />
             </svg>
             <h1 class="text-4xl font-bold ml-4">REGISTRATION COMPLETE</h1>
           </div>

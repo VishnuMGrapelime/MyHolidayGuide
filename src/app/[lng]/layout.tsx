@@ -67,7 +67,7 @@ export default function RootLayout({
 }: RootLayoutProps) {
   return (
     <html lang={lng} dir={dir(lng)} className='h-full bg-white-900 '>
-      <body className='h-full dark:bg-black'>
+      <body className='h-full dark:bg-[#010e1e]>
         <NextTopLoader color="#1CCFB9"
           initialPosition={0.08}
           crawlSpeed={200}

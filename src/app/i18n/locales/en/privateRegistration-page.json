@@ -5,7 +5,7 @@
   "step1Text": "Personal information",
   "step2Text": "Additional information",
   "step1": {
-    "subtext1": "Please be a as precise as possible",
+    "subtext1": "Please be  as precise as possible",
     "subtext2": "Some basic information about your self, for receipts, contact etc.",
     "personalIdentification": {
       "placeholder": "Personal Identification no.",
