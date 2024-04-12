@@ -192,22 +192,22 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }: { tabs: any, setTabs: any, lang
               <div className='relative '>
                 <select
                   id='default_outlined'
-                  className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                  className='block px-2.5 input-field dark:bg-transparent  pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#1CCFB9] focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                   name='companyName'
                   value={tab.values.socialMedia}
                   onChange={(e) => handleSelectChange(tab.id, e.target.value)}
                 >
-                  <option value='youtube'>Youtube</option>
+                  <option  value='youtube'>Youtube</option>
                   <option value='instagram'>Instagram</option>
                 </select>
                 <label
                   htmlFor='default_outlined'
-                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#010e1e] px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-[#1CCFB9] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
                 >
                   {t('mediaType.placeholder')}
                 </label>
               </div>
-              <p className='text- md:text- px-4 '>
+              <p className='text- md:text- px-4 label'>
                 <span>{t('mediaType.label')}</span>
               </p>
             </div>
@@ -231,7 +231,7 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }: { tabs: any, setTabs: any, lang
                   <input
                     type='text'
                     id='url'
-                    className='block px-2.5   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
+                    className='block px-2.5 input-field   pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-[#1CCFB9] focus:outline-none focus:ring-0 focus:border-[#1CCFB9] peer'
                     placeholder=' '
                     name='companyName'
                     value={tab.values.socialUrl}
@@ -239,15 +239,15 @@ const DynamicTabs = ({ tabs, setTabs, lang, d }: { tabs: any, setTabs: any, lang
                   />
                   <label
                     htmlFor='url'
-                    className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
+                    className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-[#010e1e] px-2 peer-focus:px-2 peer-focus:text-[#1CCFB9] peer-focus:dark:text-[#1CCFB9] peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto'
                   >
                     {t('mediaURL.placeholder')}
                   </label>
                 </div>
-                <p className='text- md:text- px-4 '>
+                <p className='text- md:text- px-4 label'>
                   <span>{t('mediaURL.label1')}</span>
                 </p>
-                <p className='text- md:text- px-4 '>
+                <p className='text- md:text- px-4 label'>
                   <span>{t('mediaURL.label2')}</span>
                 </p>
               </div>

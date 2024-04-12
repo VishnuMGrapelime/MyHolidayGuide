@@ -127,6 +127,15 @@
   }
 }
 
+@layer components {
+  .dark .input-field {
+      @apply text-white;
+  }
+  .dark .label {
+    @apply  text-white;
+}
+ }
+  
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -379,4 +388,11 @@ li a:hover {
 }
 .footerTrans::first-letter {
   text-transform: capitalize;
+}
+
+.dark option {
+  background-color: #0f1b38;
+}
+.dark option:hover {
+  background-color: lightgray;
 }
