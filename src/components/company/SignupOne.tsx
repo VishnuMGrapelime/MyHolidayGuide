@@ -88,16 +88,7 @@ const SignupOne = ({ nextStep, formData, updateFormData, lang }: { nextStep: any
       updateFormData(formState);
       nextStep();
     } catch (error) {
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
-      focus: outline - none
+
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
         // Update the errors state with the validation errors
