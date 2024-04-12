@@ -82,7 +82,7 @@ export default function RootLayout({
             <Toaster position='top-center' />
             {children}
             <ScrollToTopButton />
-            <Footer />
+            <Footer lang={lng} />
           </SessionProvider>
         </ReduxProvider>
       </body>

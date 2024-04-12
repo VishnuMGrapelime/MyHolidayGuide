@@ -381,3 +381,6 @@ line-height: 1.5;
  [type='checkbox'],[type='radio'] {
   color: #1CCFB9;
  }
+ .footerTrans::first-letter {
+  text-transform: capitalize;
+}

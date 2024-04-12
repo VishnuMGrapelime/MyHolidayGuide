@@ -1,8 +1,10 @@
+"use client"
 import { Button } from '@/components/Elements/Button';
+import LangSwitcherFooter from '@/components/Header/LangSwitcherFooter';
 import Link from 'next/link';
 import React from 'react';
 
-export const Footer = () => {
+export const Footer = ({ lang }: { lang: string }) => {
   return (
     /* Additional styling */
     <footer className='dark-footer  dark:dark-footer text-[#fafafa] '>
@@ -55,12 +57,11 @@ export const Footer = () => {
                     <span>Language</span>
 
                   </h4>
-                  <p className='text-md flex items-center justify-center'>
-                    <span>En</span>&nbsp;
-                    <svg className="-mr-1 h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                      <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                    </svg>
-                  </p>
+                  <span className='text-md flex items-center justify-center'>
+                    {/* <span>En</span>&nbsp; */}
+                    <LangSwitcherFooter lang={lang} />
+
+                  </span>
                 </div>
                 <div className='flex-col space-y-4'>
                   <h4 className='text-inherit '>
