@@ -71,7 +71,14 @@ const SignUpThree = ({
   const schema = Yup.object().shape({
     companyWebsite: Yup.string().required(t('step3.companyWebsite.validation')),
     employeeCount: Yup.string().required(t('step3.employeeCount.validation')),
+    existSince: Yup.string().required(t('step3.existSince.validation')),
     turnOver: Yup.string().required(t('step3.turnOver.validation')),
+    //compBusinessType: Yup.string().required(t('step3.businessType.validation')),
+    compBusinessType: Yup.array()
+      .of(Yup.string().required(t('step3.businessType.validation')))
+      .min(1, t('step3.businessType.validation'))
+      .required(t('step3.businessType.validation')),
+
     companyLanguage: Yup.string().required(t('step3.companyLanguage.validation')),
     acceptTerms: Yup.boolean()
       .oneOf([true], t('step3.acceptTerms.validation'))
@@ -122,6 +129,8 @@ const SignUpThree = ({
           ? formData.companyLanguage
           : formState.companyLanguage,
         acceptTerms: formData.acceptTerms,
+        compBusinessType: formData.compBusinessType,
+        existSince: formData.existSince,
       });
       console.log(formData.selectedOption);
       setSelectedOption(formData.selectedOption);
@@ -150,21 +159,23 @@ const SignUpThree = ({
     try {
       // Validate the form data
 
-      const businessType: any = [];
+      // const businessType: any = [];
+      // console.log(selectedOption);
+      // if (typeof selectedOption !== 'undefined') {
+      //   //if (selectedOption.length > 0) {
+      //   if (selectedOption) {
+      //     // selectedOption.map((item: Option) => {
+      //     //   businessType.push(item.value);
+      //     // });
 
-      if (typeof selectedOption !== 'undefined') {
-        //if (selectedOption.length > 0) {
-        if (selectedOption) {
-          // selectedOption.map((item: Option) => {
-          //   businessType.push(item.value);
-          // });
+      //     (selectedOption as Array<{ value: string }>).forEach((item: Option) => {
+      //       businessType.push(item.value);
+      //     });
+      //   }
+      //   setFormState({ ...formState, compBusinessType: businessType });
 
-          (selectedOption as Array<{ value: string }>).forEach((item: Option) => {
-            businessType.push(item.value);
-          });
-        }
-        setFormState({ ...formState, compBusinessType: businessType });
-      }
+      //   setSelectedActivities(businessType);
+      // }
 
       console.log('working 1');
       const socialData: any = [];
@@ -211,12 +222,21 @@ const SignUpThree = ({
     setFormState({ ...formState, existSince: formattedDate });
     // console.log(formState);
 
-    setSelectedDate(date);
+    setSelectedDate(formattedDate);
   };
 
   const handleBusinessTypeChange = (value: any) => {
+    console.log(value);
     setSelectedOption(value);
-    setFormState({ ...formState, selectedOption: value });
+    // setFormState({ ...formState, selectedOption: value });
+
+    const businessType: any = [];
+    (value as Array<{ value: string }>).forEach((item: Option) => {
+      businessType.push(item.value);
+    });
+
+    setFormState({ ...formState, selectedOption: value, compBusinessType: businessType });
+    console.log(formState);
   };
 
   const gotoPrevStep = () => {

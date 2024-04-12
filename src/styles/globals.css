@@ -377,3 +377,7 @@ line-height: 1.5;
   color: #1CCFB9;
   cursor: pointer;
  }
+
+ [type='checkbox'],[type='radio'] {
+  color: #1CCFB9;
+ }

@@ -80,6 +80,7 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
             if (error) {
               // toast.error(error);
               console.log(error);
+
             } else {
               console.log("Printing result");
               console.log(result);
@@ -100,7 +101,7 @@ const CompanySignUpPage = ({ params: { lng } }: { params: Params }) => {
         setStep(2);
         if (error.code === 'auth/email-already-in-use') {
 
-          toast.error("This email is already in use. Please use a different email address or log in.");
+          toast.error("This email is already in use. Please use a different email address.");
         } else {
           // Handle other errors
           toast.error("An error occurred. Please try again.");
