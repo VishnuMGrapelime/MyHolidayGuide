@@ -67,13 +67,13 @@ const LangSwitcherFooter = ({ lang }: { lang: string }) => {
     <div className='flex items-center justify-center'>
       <div className='relative text-lg '>
         <button
-          className='justify-between rounded-lg hover:bg-gray-100 hover:rounded-lg
-           focus:outline-none font-normal bg-white  dark:bg-black text-sm px-2  py-2.5 text-center 
-          inline-flex items-center dark:focus:ring-blue-800 dark:hover:bg-neutral-800'
+          className='justify-between rounded-lg  hover:rounded-lg
+           focus:outline-none     text-sm px-1   text-center 
+          inline-flex items-center dark:focus:ring-blue-800 '
           onClick={() => setIsOptionsExpanded(!isOptionsExpanded)}
           onBlur={() => setIsOptionsExpanded(false)}
         >
-          <span style={{ 'background': 'red' }} className="footerTrans">{language}</span>
+          <span className="footerTrans">{language}</span>
         </button>
         <div
           className={`transition-transform duration-500 ease-custom ${!isOptionsExpanded
@@ -81,7 +81,8 @@ const LangSwitcherFooter = ({ lang }: { lang: string }) => {
             : 'translate-y-0 scale-y-100 opacity-100'
             }`}
         >
-          <ul className='absolute left-0 right-0 mb-4 bg-white shadow-md  items-center text-center overflow-hidden  '>
+          <ul className='absolute left-0 right-0 mb-4 text-black w-11
+           bg-white shadow-md  items-center text-center overflow-hidden  '>
             {options.map((option, index) => (
               <li
                 key={index}

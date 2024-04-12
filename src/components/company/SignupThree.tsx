@@ -332,7 +332,7 @@ const SignUpThree = ({
                 id='existSince'
                 value={selectedDate}
                 onSelectedDateChanged={handleDateChange}
-                style={{ backgroundColor: 'transparent', paddingTop: '12px', paddingBottom: '12px' }}
+                style={{ backgroundColor: 'transparent', paddingTop: '12px', paddingBottom: '12px', paddingLeft:'39px' }}
                 className='block pt-7 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1  border-gray-300 appearance-none dark:text-white dark:border-gray-600 focus:outline-none focus:ring-0 peer'
               />
               <label
