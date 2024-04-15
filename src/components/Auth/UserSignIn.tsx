@@ -1,6 +1,5 @@
 'use client';
 import { signInWithCustomToken } from 'firebase/auth';
-import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useRouter } from 'next/navigation';
 import { getSession, signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
@@ -93,7 +92,7 @@ export const UserSignIn = ({ lang }: { lang: string }) => {
         if (response?.ok) {
           const session = await getSession();
           await syncFirebaseAuth(session);
-          //dispatch(setUserData(email)); // commented temporarily to bypass the error
+          dispatch(setUserData(email));
 
           router.push(`/${lang}`);
         } else {

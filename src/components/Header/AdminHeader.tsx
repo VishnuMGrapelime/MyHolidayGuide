@@ -32,7 +32,7 @@ export const AdminHeader = ({ lang }: { lang: string }) => {
       await syncFirebaseAuth(session);
 
       if (session?.user?.email) {
-        // dispatch(setUserData(session?.user?.email)); // commented to fix temporary error
+        dispatch(setUserData(session?.user?.email)); // commented to fix temporary error
       }
     }
 

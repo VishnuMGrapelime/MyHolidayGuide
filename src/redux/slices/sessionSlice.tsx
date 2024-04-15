@@ -13,7 +13,7 @@ const initialState: any = {
   user: null
 };
 
-export const setUserData = createAsyncThunk("setUserData", async (email) => {
+export const setUserData: any = createAsyncThunk("setUserData", async (email) => {
 
   const user = await getDataByFieldValue('users', "email", email)
 

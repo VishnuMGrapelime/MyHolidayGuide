@@ -32,7 +32,7 @@ export const Header = ({ lang }: { lang: string }) => {
       await syncFirebaseAuth(session);
 
       if (session?.user?.email) {
-        //  dispatch(setUserData(session?.user?.email)); // commented temporarly
+        dispatch(setUserData(session?.user?.email)); // commented temporarly
       }
     }
 

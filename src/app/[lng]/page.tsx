@@ -11,6 +11,7 @@ import withAuth from '@/utils/withAuth';
 import { useTranslation } from '../i18n/client';
 
 import Logo from '~/svg/Logo.svg';
+import { useSelector } from 'react-redux';
 
 interface Params {
   lng: string;
@@ -24,6 +25,10 @@ const HomePage = ({ params: { lng } }: { params: Params }) => {
     // },
   });
 
+  const user = useSelector((state: any) => state.session.user);
+  console.log(session?.data?.user?.email);
+  console.log(user);
+
   const { t } = useTranslation(lng, 'home-page');
 
   return (
@@ -31,7 +36,7 @@ const HomePage = ({ params: { lng } }: { params: Params }) => {
       <section className='bg-white'>
         <div className='layout flex min-h-screen flex-col items-center justify-center py-12 text-center'>
           <Logo className='w-16' />
-          <div className='text-white'>{session?.data?.user?.email}</div>
+          <div className=''>{session?.data?.user?.email}</div>
           <button className='' onClick={() => signOut()}>
             {t('logout')}
           </button>
