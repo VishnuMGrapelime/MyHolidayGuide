@@ -8,6 +8,8 @@ import '@/lib/env';
 import withAuth from '@/utils/withAuth';
 
 import { useTranslation } from '../../i18n/client';
+import { useSelector } from 'react-redux';
+import SideMenu from '@/components/Admin/SideMenu/SideMenu';
 
 interface Params {
   lng: string;
@@ -21,10 +23,17 @@ const AdminPage = ({ params: { lng } }: { params: Params }) => {
     // },
   });
 
+  const user = useSelector((state: any) => state.session.user);
+
+  // if (user?.userRole !== 'admin') {
+  //   return <p>Restricted page</p>;
+  // }
+
   const { t } = useTranslation(lng, 'home-page');
 
   return (
     <main>
+      <SideMenu />
       <section className='bg-white'>
         <div className='layout flex min-h-screen flex-col items-center justify-center py-12 text-center'>
           <h1>Admin Dashboard</h1>

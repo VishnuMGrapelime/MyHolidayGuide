@@ -1,19 +1,15 @@
 'use client';
-import { signInWithCustomToken } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
-import { getSession, signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-
-import { auth } from '@/firebase/firebase';
-import { setUserData } from '@/redux/slices/sessionSlice';
 
 import { useTranslation } from '../../app/i18n/client';
 import { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
+import { signInAndSync } from "@/utils/auth";
 
 // Yup schema to validate the form
 const schema = Yup.object().shape({
@@ -34,24 +30,6 @@ export const UserSignIn = ({ lang }: { lang: string }) => {
   const dispatch = useDispatch();
 
   const { t } = useTranslation(lang, 'signin');
-
-  async function syncFirebaseAuth(session: any) {
-    if (session && session.firebaseToken) {
-      try {
-        // console.log("signin with custom token"+session.firebaseToken);
-        await signInWithCustomToken(auth, session.firebaseToken);
-      } catch (error) {
-        console.error('Error signing in with custom token:', error); // eslint-disable-line
-      }
-    } else {
-      auth.signOut();
-    }
-  }
-
-  const initialValues = {
-    email: '',
-    password: '',
-  };
 
   const [formState, setFormState] = useState({
     emailId: '',
@@ -81,25 +59,14 @@ export const UserSignIn = ({ lang }: { lang: string }) => {
       await schema.validate(formState, { abortEarly: false });
 
       console.log('Form is valid', formState);
+
       const email = formState.emailId;
       const password = formState.password;
-      signIn('credentials', {
-        email,
-        password,
-        redirect: false,
-        callbackUrl: `/${lang}`,
-      }).then(async (response: any) => {
-        if (response?.ok) {
-          const session = await getSession();
-          await syncFirebaseAuth(session);
-          dispatch(setUserData(email));
+      const responseData: any = await signInAndSync('credentials', email, password, router, dispatch);
 
-          router.push(`/${lang}`);
-        } else {
-          toast.error('Invalid Username or password');
-        }
-      });
-
+      if (responseData != "Authsuccess") {
+        toast.error(responseData);
+      }
     } catch (error) {
       setErrorStatus(true);
       if (error instanceof Yup.ValidationError) {
@@ -113,19 +80,6 @@ export const UserSignIn = ({ lang }: { lang: string }) => {
       }
     }
 
-
-    // .then(async ({ ok }) => {
-    //   if (ok) {
-    //     const session = await getSession();
-    //     await syncFirebaseAuth(session);
-    //     dispatch(setUserData(email));
-
-    //     router.push(`/${lang}`);
-    //   } else {
-    //     // console.log(error);
-    //     toast.error('Invalid Username or password');
-    //   }
-    // });
   };
 
   return (
