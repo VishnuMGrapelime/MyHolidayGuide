@@ -1,9 +1,18 @@
 {
   "title": "Sign in to your account",
-  "email-address": "Email address",
-  "password": "Password",
+  "emailId": {
+    "placeholder": "Email Id",
+    "label": "Please enter your email",
+    "validation": "Email Id is a required field"
+  },
+  "password": {
+    "placeholder": "Password",
+    "label": "Please enter your password",
+    "validation": "Password is a required field"
+  },
   "forgot-password": "Forgot Password?",
   "signin": "Sign In",
+  "signinButton": "Sign In",
   "signup": "Sign Up",
   "not-a-member": "Not a member?"
 }

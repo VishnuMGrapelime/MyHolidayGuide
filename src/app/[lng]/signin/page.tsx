@@ -22,8 +22,13 @@ export async function generateMetadata({ params: { lng } }: { params: Params }) 
 
 export default async function Signin({ params: { lng } }: { params: Params }) {
   return (
-    <>
-      <UserSignIn lang={lng} />
-    </>
+    <div className='py-8 md:pt-0 md:pb-20 px-4 flex justify-center'>
+      {/* <div className='w-[600px] max-w-full px-6 py-1 mx-auto rounded-lg'> */}
+      <div className='sm:container mx-auto px-4'>
+        <div className='mx-auto lg:w-10/12 xl:w-8/12'>
+          <UserSignIn lang={lng} />
+        </div>
+      </div>
+    </div>
   );
 }

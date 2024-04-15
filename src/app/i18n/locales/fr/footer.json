@@ -1,3 +1,24 @@
 {
-  "languageSwitcher": "Wechseln von <1>{{lng}}</1> nach: "
+  "newsletter": {
+    "title": "Les aventures en Croatie vous attendent !",
+    "subtext": "Inscrivez-vous à notre newsletter et découvrez les expériences que vous allez adorer.",
+    "placeholder": "Entrez votre email",
+    "button": "S'inscrire"
+  },
+  "languageTitle": "Langue",
+  "currencyTitle": "Devise",
+  "suportText": "Support",
+  "companyText": "Entreprise",
+  "workWithUsText": "Travaillez avec nous",
+  "helpLink": "Aide",
+  "contactLink": "Contact",
+  "privacyLink": "Confidentialité",
+  "termsAndConditionsLink": "Conditions générales",
+  "privacyPolicyLink": "Politique de confidentialité",
+  "aboutusLink": "À propos de nous",
+  "imprintLink": "Mentions légales",
+  "supplierAdministrationLink": "Administration des fournisseurs",
+  "supplierRegistrationLink": "Inscription des fournisseurs",
+  "siteName": "My Holiday Guide™",
+  "alrightText": "Tous droits réservés."
 }

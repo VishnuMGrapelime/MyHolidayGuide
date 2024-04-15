@@ -1,3 +1,24 @@
 {
-  "languageSwitcher": "Switch from <1>{{lng}}</1> to: "
+  "newsletter": {
+    "title": "Croatia's adventures are waiting for you!",
+    "subtext": "Sign up for our newsletter and discover experiences you'll love.",
+    "placeholder": "Enter your mail",
+    "button": "Signup"
+  },
+  "languageTitle": "Language",
+  "currencyTitle": "Currency",
+  "suportText": "Support",
+  "companyText": "Company",
+  "workWithUsText": "Work With Us",
+  "helpLink": "Help",
+  "contactLink": "Contact",
+  "privacyLink": "Privacy",
+  "termsAndConditionsLink": "Terms and Conditions",
+  "privacyPolicyLink": "Privacy Policy",
+  "aboutusLink": "About us",
+  "imprintLink": "Imprint",
+  "supplierAdministrationLink": "Supplier Administration",
+  "supplierRegistrationLink": "Supplier Registration",
+  "siteName": "My Holiday Guide™",
+  "alrightText": "All Rights Reserved."
 }
