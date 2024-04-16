@@ -8,6 +8,13 @@ import {
   query,
   updateDoc,
   where,
+  orderBy,
+  limit,
+  startAfter,
+  endBefore,
+  startAt,
+  limitToLast,
+  getCountFromServer
 } from 'firebase/firestore';
 
 import { db } from '../firebase';
@@ -92,10 +99,43 @@ export async function getDataByFieldValue(
     console.log(e);
   }
 
-  // console.log(result);
-
   return result;
 }
+
+// export async function getAllDataByFieldValue(
+//   collectionName,
+//   fieldName,
+//   fieldValue,
+// ) {
+//   let result = [];
+//   let error = null;
+
+//   try {
+//     // console.log(collectionName);
+//     var collectionRef = collection(db, collectionName);
+
+//     const qData = query(collectionRef, where(fieldName, '==', fieldValue), orderBy('createdAt', "desc"), limit(5));
+
+//     const querySnapshot = await getDocs(qData);
+
+
+//     querySnapshot.forEach((doc) => {
+//       result.push({ ...doc.data(), id: doc.id });
+//     });
+
+//     const countData = query(collectionRef, where(fieldName, '==', fieldValue));
+//     const snapshot = await getCountFromServer(countData);
+
+//     const totalSize = snapshot.data().count;
+
+
+//   } catch (e) {
+//     error = e;
+//     console.log(e);
+//   }
+
+//   return result;
+// }
 
 export async function getAllDataByFieldValue(
   collectionName,
@@ -117,6 +157,56 @@ export async function getAllDataByFieldValue(
       console.log(doc.data());
       result.push({ ...doc.data(), id: doc.id });
     });
+  } catch (e) {
+    error = e;
+    console.log(e);
+  }
+
+  return result;
+}
+
+export async function getPaginatedDataByFieldValue(
+  collectionName,
+  fieldName,
+  fieldValue,
+  startAfterLimit,
+  Datalimit,
+  action
+) {
+  let result = [];
+  let error = null;
+
+  try {
+    // console.log(collectionName);
+    var collectionRef = collection(db, collectionName);
+    console.log("Action is" + action);
+    let qData = "";
+    if (action == "load") {
+      qData = query(collectionRef, where(fieldName, '==', fieldValue), orderBy('createdAt', "desc"), limit(Datalimit));
+    } else if (action == "next") {
+      console.log("startAfter is " + startAfterLimit)
+      qData = query(collectionRef, where(fieldName, '==', fieldValue), orderBy('createdAt', "desc"), startAfter(startAfterLimit), limit(Datalimit));
+
+    } else if (action == "previous") {
+      console.log("endBefore is " + startAfterLimit)
+      qData = query(collectionRef, where(fieldName, '==', fieldValue), orderBy('createdAt', "desc"), endBefore(startAfterLimit), limitToLast(Datalimit));
+
+    }
+
+
+    const querySnapshot = await getDocs(qData);
+
+
+    querySnapshot.forEach((doc) => {
+      result.push({ ...doc.data(), id: doc.id });
+    });
+
+    const countData = query(collectionRef, where(fieldName, '==', fieldValue));
+    const snapshot = await getCountFromServer(countData);
+
+    const totalSize = snapshot.data().count;
+
+
   } catch (e) {
     error = e;
     console.log(e);
