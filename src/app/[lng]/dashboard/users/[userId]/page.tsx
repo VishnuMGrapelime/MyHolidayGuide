@@ -47,7 +47,7 @@ const EditUserPage = ({ params }: { params: any }) => {
     <div className="flex w-full">
       <SideMenuNew />
       <div className="w-4/5 bg-white mr-1 mt-4">
-        <h1 className="text-2xl font-bold pb-8">Suppliers Deatils</h1>
+        <h1 className="text-2xl font-bold pb-8">Suppliers Details</h1>
 
         {userData ? (
           <UsersForm
