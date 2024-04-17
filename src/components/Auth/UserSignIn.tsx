@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import { useTranslation } from '../../app/i18n/client';
 import { useState } from 'react';
-import { Eye, EyeOff } from 'lucide-react';
+import { ClipboardCheck, Eye, EyeOff } from 'lucide-react';
 import { Button } from '@/components/Elements/Button';
 import { ValidationBox } from '@/components/Elements/ValidationBox';
 import { signInAndSync } from "@/utils/auth";
@@ -111,12 +111,10 @@ export const UserSignIn = ({ lang }: { lang: string }) => {
                 {t('emailId.placeholder')}
               </label>
               <div className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                {/* <ClipboardCheck color='#1CCFB9' /> */}
+                <ClipboardCheck color='#1CCFB9' />
               </div>
             </div>
-            <p className='text- md:text- px-4 label '>
-              <span>{t('emailId.label')}</span>
-            </p>
+
           </div>
 
           <div className='space-y-1'>
@@ -147,103 +145,37 @@ export const UserSignIn = ({ lang }: { lang: string }) => {
 
               </div>
             </div>
-            <p className='text- md:text- px-4 label'>
-              <span>{t('password.label')}</span>
-            </p>
+
           </div>
-          <div className='py-6 flex flex-col gap-y-6 md:gap-x-20 md:flex-row justify-end w-full'>
+          <div className='py-6 flex flex-col mx-auto gap-y-6 md:gap-x-20 md:flex-row w-full'>
 
             <Button label={t('signinButton')} />
+          </div>
+
+          <div className='flex items-start mb-5'>
+            <div className='flex items-center h-5'>
+              <input
+                id='terms'
+                type='checkbox'
+                name='acceptTerms'
+                // checked={formState.acceptTerms}
+                //onChange={(e) => setTermsAndConditions(e.target.checked)}
+                className='w-4 h-4 border border-gray-300 rounded bg-gray-50 
+              focus:ring-[#1CCFB9] dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-[#1CCFB9] 
+              |dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 custom-checkbox'
+              />
+            </div>
+            <label
+              htmlFor='acceptTerms'
+              className='ms-2 text-sm font-medium text-gray-900 dark:text-gray-300'
+            >
+              {t('rememberme')}{' '}
+
+            </label>
           </div>
         </div>
 
       </form>
-      {/* <Formik
-        initialValues={initialValues}
-        validationSchema={schema}
-        onSubmit={onSubmit}
-      >
-        <Form>
-          <div className='flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8'>
-            <div className='sm:mx-auto sm:w-full sm:max-w-sm'>
-
-              <h2 className='mt-10 text-center text-2xl font-bold leading-9 tracking-tight'>
-                {t('title')}
-              </h2>
-            </div>
-
-            <div className='mt-10 sm:mx-auto sm:w-full sm:max-w-sm'>
-              <div className='space-y-6'>
-                <div>
-                  <label
-                    htmlFor='email'
-                    className='block text-sm font-medium leading-6'
-                  >
-                    {t('email-address')}
-                  </label>
-                  <div className='mt-2'>
-                    <Field
-                      type='email'
-                      name='email'
-                      className='block w-full rounded-md border-1 bg-white/5 py-1.5 shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-                    />
-                    <ErrorMessage name='email' component='div' />
-                  </div>
-                </div>
-
-                <div>
-                  <div className='flex items-center justify-between'>
-                    <label
-                      htmlFor='password'
-                      className='block text-sm font-medium leading-6 '
-                    >
-                      {t('password')}
-                    </label>
-                    <div className='text-sm'>
-                      <div
-                        onClick={() => router.push(`/${lang}/forgot-password`)}
-                        className='cursor-pointer font-semibold text-indigo-400 hover:text-indigo-300'
-                      >
-                        {t('forgot-password')}
-                      </div>
-                    </div>
-                  </div>
-                  <div className='mt-2'>
-
-                    <Field
-                      type='password'
-                      name='password'
-                      className='block w-full rounded-md border-1 bg-white/5 py-1.5  shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6'
-                    />
-                    <ErrorMessage name='password' component='div' />
-                  </div>
-                </div>
-
-                <div>
-                  <button
-                    //onClick={() => handleLogin()}
-                    //disabled={!email || !password}
-                    type='submit'
-                    className='text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'
-                  >
-                    {t('signin')}
-                  </button>
-                </div>
-              </div>
-
-              <p className='mt-10 text-center text-sm text-gray-400'>
-                {t('not-a-member')}{' '}
-                <button
-                  onClick={() => router.push(`/${lang}/signup`)}
-                  className='font-semibold leading-6 text-indigo-400 hover:text-indigo-300'
-                >
-                  {t('signup')}
-                </button>
-              </p>
-            </div>
-          </div>
-        </Form>
-      </Formik> */}
     </div >
   );
 };

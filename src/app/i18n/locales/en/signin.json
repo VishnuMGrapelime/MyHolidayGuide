@@ -1,5 +1,5 @@
 {
-  "title": "Sign in to your account",
+  "title": "Login",
   "emailId": {
     "placeholder": "Email Id",
     "label": "Please enter your email",
@@ -14,5 +14,6 @@
   "signin": "Sign In",
   "signinButton": "Sign In",
   "signup": "Sign Up",
-  "not-a-member": "Not a member?"
+  "not-a-member": "Not a member?",
+  "rememberme": "Remember me"
 }
