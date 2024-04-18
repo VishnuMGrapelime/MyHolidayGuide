@@ -54,7 +54,7 @@ export const Footer = ({ lang }: { lang: string }) => {
           <div>
             <div className="flex flex-col md:flex-row md:gap-8 leading-8 md:justify-between lg:justify-center">
               <div className=" flex justify-around py-6 md:py-0 md:flex-col md:gap-1 items-start">
-                <div className='flex-col space-y-4'>
+                <div className='flex-col space-y-4 mb-4'>
                   <h4 className='text-inherit '>
                     <span>{t("languageTitle")}</span>
 
